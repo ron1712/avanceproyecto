@@ -171,7 +171,7 @@ public class FrmMenuPrincipal extends JFrame {
         mnVendedor= new JMenu("Vendedor");
         mniNuevoVendedor= new JMenuItem("Nuevo");
         mniNuevoVendedor.addActionListener(new ActionListener() {
-            @Override
+        @Override
             public void actionPerformed(ActionEvent e) {
                 mniNuevoVendedorActionPerformed(e);
             }

@@ -36,7 +36,7 @@ public class FrmNuevoVenta extends JInternalFrame{
         this.setLayout(new BorderLayout());
         pnlCentral= new JPanel();
         pnlPie= new JPanel();
-        pnlCentral.setLayout(new GridLayout(3, 2, 5, 5));
+        pnlCentral.setLayout(new GridLayout(4, 2, 5, 5));
         pnlPie.setLayout(new GridLayout(1,2,5,5));
         
         lblTitulo0 = new JLabel("Datos Venta");
@@ -109,19 +109,19 @@ public class FrmNuevoVenta extends JInternalFrame{
     }
     public void btnAceptarActionListener(ActionEvent e){
         try {
-            IVentas ventasDao = new VentaImpl();
-            Ventas ventas = new Ventas();
-            ventas.setCodigo(Integer.parseInt(txtCodigo.getText()));            
-            ventas.setCliente((Cliente) cmbCliente.getSelectedItem());
+            IVentas ventaDao = new VentaImpl();
+            Ventas venta = new Ventas();
+            venta.setCodigo(Integer.parseInt(txtCodigo.getText()));            
+            venta.setCliente((Cliente) cmbCliente.getSelectedItem());
             DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
             try {                        
-            ventas.setFecha( formatoFecha.parse(txtFecha.getText()));
+            venta.setFecha( formatoFecha.parse(txtFecha.getText()));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,"Error en la fecha!!",
-                "Transacción", JOptionPane.INFORMATION_MESSAGE);
-            ventas.setVendedor((Vendedor) cmbVendedor.getSelectedItem());
+                "Transacción", JOptionPane.INFORMATION_MESSAGE);            
         }
-            if(ventasDao.insertar(ventas)>0 ){
+            venta.setVendedor((Vendedor) cmbVendedor.getSelectedItem());
+            if(ventaDao.insertar(venta)>0 ){
                 JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
                 "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
             }

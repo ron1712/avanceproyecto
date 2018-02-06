@@ -45,7 +45,7 @@ public class FrmListaVenta extends JInternalFrame{
         }
         for(Ventas est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(), est.getCliente().getCodigo(),
-               est.getFecha().toString(), est.getVendedor().getLogin()});
+               est.getFecha(), est.getVendedor().getLogin()});
         }
         tabla.setModel(modelo);
     }

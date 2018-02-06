@@ -92,9 +92,10 @@ public class SalidaImpl implements ISalida{
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 salida = new Salida();
-                salida.setCodigo(rst.getInt(1));                                
-                salida.setValorcompra(rst.getDouble(2));                             
-                salida.setFecha(rst.getDate(3));
+                salida.setCodigo(rst.getInt(1));   
+                salida.setFecha(rst.getDate(2));
+                salida.setValorcompra(rst.getDouble(3));                             
+                
             }
         } catch (Exception e) {
             throw e;
@@ -108,7 +109,7 @@ public class SalidaImpl implements ISalida{
     @Override
     public List<Salida> obtener() throws Exception {
         List<Salida> lista = new ArrayList<>();
-         String sql = "SELECT codigo, codProveedor, fecha, valortotal FROM salida ";        
+         String sql = "SELECT codigo,fecha, valorcompra FROM salida ";        
         Conexion con = null;
         try {
             con = new Conexion();
@@ -117,9 +118,9 @@ public class SalidaImpl implements ISalida{
             Salida salida=null;
             while (rst.next()) {
                 salida = new Salida();
-                salida.setCodigo(rst.getInt(1));                                
-                salida.setValorcompra(rst.getDouble(2));                             
-                salida.setFecha(rst.getDate(3));                              
+                salida.setCodigo(rst.getInt(1));   
+                salida.setFecha(rst.getDate(2));
+                salida.setValorcompra(rst.getDouble(3));                               
                 lista.add(salida);
             }
         } catch (Exception e) {

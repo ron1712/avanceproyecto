@@ -43,7 +43,7 @@ public class FrmListaSalida extends JInternalFrame{
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Salida est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha().toString(),
+            modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha(),
                 est.getValorcompra()});
         }
         tabla.setModel(modelo);
