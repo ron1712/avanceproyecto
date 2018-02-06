@@ -23,7 +23,7 @@ public class VentaImpl implements IVentas{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -49,7 +49,7 @@ public class VentaImpl implements IVentas{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -70,7 +70,7 @@ public class VentaImpl implements IVentas{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -91,7 +91,7 @@ public class VentaImpl implements IVentas{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 ventas = new Ventas();
                 ventas.setCodigo(rst.getInt(1));
@@ -121,7 +121,7 @@ public class VentaImpl implements IVentas{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, null);
+            ResultSet rst = con.ejecutarQuery(sql, null);
             Ventas ventas=null;
             while (rst.next()) {
                 ventas = new Ventas();

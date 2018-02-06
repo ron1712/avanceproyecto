@@ -26,7 +26,7 @@ public class VendedorImpl implements IVendedor {
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -56,7 +56,7 @@ public class VendedorImpl implements IVendedor {
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -77,7 +77,7 @@ public class VendedorImpl implements IVendedor {
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -99,7 +99,7 @@ public class VendedorImpl implements IVendedor {
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 vendedor = new Vendedor();
                 vendedor.setLogin(rst.getString(1));
@@ -130,7 +130,7 @@ public class VendedorImpl implements IVendedor {
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, null);
+            ResultSet rst = con.ejecutarQuery(sql, null);
             Vendedor vendedor=null;
             while (rst.next()) {
                 vendedor = new Vendedor();                

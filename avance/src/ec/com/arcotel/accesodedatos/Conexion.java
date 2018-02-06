@@ -26,7 +26,7 @@ public class Conexion {
         }
     }
 
-    public ResultSet ejecutaQuery(String sql, List<Parametro> lst) {
+    public ResultSet ejecutarQuery(String sql, List<Parametro> lst) {
         ResultSet rst = null;
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class Conexion {
         return rst;
     }
 
-    public int ejecutaComando(String sql, List<Parametro> lst) {
+    public int ejecutarComando(String sql, List<Parametro> lst) {
         int numFilasAfectadas = 0;
         try {
             PreparedStatement pstm = con.prepareStatement(sql);

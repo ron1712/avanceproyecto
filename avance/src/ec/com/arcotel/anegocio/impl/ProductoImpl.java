@@ -24,7 +24,7 @@ public class ProductoImpl implements IProducto{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -53,7 +53,7 @@ public class ProductoImpl implements IProducto{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -74,7 +74,7 @@ public class ProductoImpl implements IProducto{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -96,7 +96,7 @@ public class ProductoImpl implements IProducto{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 producto = new Producto();
                 producto.setCodigo(rst.getInt(1));
@@ -123,7 +123,7 @@ public class ProductoImpl implements IProducto{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, null);
+            ResultSet rst = con.ejecutarQuery(sql, null);
             Producto producto=null;
             while (rst.next()) {
                 producto = new Producto();

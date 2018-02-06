@@ -23,7 +23,7 @@ public class EntradaImpl implements IEntrada{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -49,7 +49,7 @@ public class EntradaImpl implements IEntrada{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -70,7 +70,7 @@ public class EntradaImpl implements IEntrada{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -91,7 +91,7 @@ public class EntradaImpl implements IEntrada{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 entrada = new Entrada();
                 entrada.setCodigo(rst.getInt(1));
@@ -119,7 +119,7 @@ public class EntradaImpl implements IEntrada{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, null);
+            ResultSet rst = con.ejecutarQuery(sql, null);
             Entrada entrada=null;
             while (rst.next()) {
                 entrada = new Entrada();

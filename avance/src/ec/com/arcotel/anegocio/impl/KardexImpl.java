@@ -27,7 +27,7 @@ public class KardexImpl implements IKardex{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -59,7 +59,7 @@ public class KardexImpl implements IKardex{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -80,7 +80,7 @@ public class KardexImpl implements IKardex{
         try {
             con = new Conexion();
             con.conectar();
-            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -103,7 +103,7 @@ public class KardexImpl implements IKardex{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 kardex = new Kardex();
                 kardex.setCodigo(rst.getInt(1));
@@ -142,7 +142,7 @@ public class KardexImpl implements IKardex{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql, null);
+            ResultSet rst = con.ejecutarQuery(sql, null);
             Kardex kardex=null;
             while (rst.next()) {
                 kardex = new Kardex();
