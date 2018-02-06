@@ -48,5 +48,5 @@ public class Entrada {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+   
 }
