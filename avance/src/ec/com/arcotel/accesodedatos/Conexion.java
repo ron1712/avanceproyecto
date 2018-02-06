@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.com.arcotel.accesodedatos;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Conexion {
@@ -90,13 +84,5 @@ public class Conexion {
             System.out.println("Error desconocido al desconectar:"
                     + e.getMessage());
         }
-    }
-
-    public int ejecutarComando(String csql, ArrayList<Parametro> lstP) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ResultSet ejecutarQuery(String csql, Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

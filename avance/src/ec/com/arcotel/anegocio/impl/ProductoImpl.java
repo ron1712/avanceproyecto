@@ -47,6 +47,7 @@ public class ProductoImpl implements IProducto{
         lstPar.add(new Parametro(3, producto.getCantidad()));
         lstPar.add(new Parametro(4, producto.getValorunitario()));        
         lstPar.add(new Parametro(5, producto.getDescripcion()));
+        lstPar.add(new Parametro(6, producto.getCodigo()));
         
         Conexion con = null;
         try {
@@ -117,7 +118,7 @@ public class ProductoImpl implements IProducto{
     @Override
     public List<Producto> obtener() throws Exception {
         List<Producto> lista = new ArrayList<>();
-         String sql = "SELECT codigo, codProveedor, fecha, valorunitario,descripcion FROM producto ";        
+         String sql = "SELECT codigo, nombre, cantidad, valorunitario,descripcion FROM producto ";        
         Conexion con = null;
         try {
             con = new Conexion();
