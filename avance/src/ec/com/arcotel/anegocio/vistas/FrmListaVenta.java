@@ -1,6 +1,4 @@
 package ec.com.arcotel.anegocio.vistas;
-
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import ec.com.arcotel.anegocio.dao.*;
 import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.*;
@@ -11,7 +9,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;  
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class FrmListaVenta extends JInternalFrame{
@@ -30,7 +28,7 @@ public class FrmListaVenta extends JInternalFrame{
         this.add(jscTabla, BorderLayout.CENTER);
         cargarTabla();        
     }
-        public void cargarTabla(){
+            public void cargarTabla(){
         modelo= new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Cliente");
