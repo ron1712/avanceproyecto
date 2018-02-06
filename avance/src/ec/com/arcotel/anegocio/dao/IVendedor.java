@@ -8,6 +8,6 @@ public interface IVendedor {
    public int insertar(Vendedor vendedor) throws Exception;
     public int modificar(Vendedor vendedor) throws Exception;
     public int eliminar(Vendedor vendedor) throws Exception;
-    public Vendedor obtener(int login) throws Exception;
+    public Vendedor obtener(String login) throws Exception;
     public List<Vendedor> obtener() throws Exception;  
 }
