@@ -119,7 +119,7 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
              DetalleEntrada ntienda = new DetalleEntrada();
              ntienda.setEntrada((Entrada) cmbEntrada.getSelectedItem());
              ntienda.setProducto((Producto) cmbProducto.getSelectedItem());
-             ntienda.setValorcompra(txtValorcompra.getText());
+             ntienda.setValorcompra(Integer.parseInt(txtValorcompra.getText()));
 
               
               try{

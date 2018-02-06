@@ -41,7 +41,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao = new EntradaImpl();
         Producto producto=null;
         IProducto producDao=new ProductoImpl();
-        String csql = "Select codigoEntrada, codigoProducto, valorcompra From DetalleEntrada Where codigo=?";
+        String csql = "Select codigo, codigo, valorcompra From DetalleEntrada Where codigo=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigoDetalleEntrada));
         Conexion con = null;
@@ -56,7 +56,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 trata=new DetalleEntrada();
                 trata.setEntrada(entrada);
                 trata.setProducto(producto);
-                trata.setValorcompra(rst.getString(3));
+                trata.setValorcompra(rst.getInt(3));
                
             }
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao=new EntradaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codigoEntrada, codigoProducto, valorcompra from DetalleEntrada";
+        String csql="select codigo, codigo, valorcompra from DetalleEntrada";
         Conexion con=null;
         try {
             con=new Conexion();
@@ -91,7 +91,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 comp=new DetalleEntrada();
                 comp.setEntrada(entrada);
                 comp.setProducto(producto);
-                comp.setValorcompra(rst.getString(3));             
+                comp.setValorcompra(rst.getInt(3));             
                 comps.add(comp);
             }
         } catch (Exception e) {

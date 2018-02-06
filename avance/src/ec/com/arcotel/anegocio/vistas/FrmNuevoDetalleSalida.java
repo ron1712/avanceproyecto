@@ -118,9 +118,8 @@ public class FrmNuevoDetalleSalida extends JInternalFrame{
              DetalleSalida ntienda = new DetalleSalida();
              ntienda.setSalida((Salida) cmbSalida.getSelectedItem());
              ntienda.setProducto((Producto) cmbProducto.getSelectedItem());
-             ntienda.setCantidad(txtCantidad.getText());
-
-              
+             ntienda.setCantidad(Integer.parseInt(txtCantidad.getText()));
+                           
               try{
                   
                   if (tiendaDao.insertar(ntienda) > 0) {

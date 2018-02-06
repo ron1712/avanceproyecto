@@ -17,7 +17,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
     @Override
     public int insertar(DetalleSalida detallesalida) throws Exception {
         int Filas = 0;
-        String csql = "Insert into DetalleSalida (codigoSalida, codigoProducto, cantidad) Values (?,?,?)";
+        String csql = "Insert into DetalleSalida (codSalida, codProducto, cantidad) Values (?,?,?)";
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, detallesalida.getSalida().getCodigo()));
         lstP.add(new Parametro(2, detallesalida.getProducto().getCodigo()));
@@ -45,7 +45,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
         ISalida salidaDao = new SalidaImpl();
         Producto producto=null;
         IProducto producDao=new ProductoImpl();
-        String csql = "Select codigoSalida, codigoProducto, cantidad From DetalleSalida Where codigo=?";
+        String csql = "Select codigo, codigo, cantidad From DetalleSalida Where codigo=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigoDetalleSalida));
         Conexion con = null;
@@ -60,7 +60,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
                 trata=new DetalleSalida();
                 trata.setSalida(salida);
                 trata.setProducto(producto);
-                trata.setCantidad(rst.getString(3));
+                trata.setCantidad(rst.getInt(3));
                 
             }
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
         ISalida salidaDao=new SalidaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codigoSalida, codigoProducto, cantidad from DeatlleSalida";
+        String csql="select codigo, codigo, cantidad from DeatlleSalida";
         Conexion con=null;
         try {
             con=new Conexion();
@@ -95,7 +95,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
                 comp=new DetalleSalida();
                 comp.setSalida(salida);
                 comp.setProducto(producto);
-                comp.setCantidad(rst.getString(3));
+                comp.setCantidad(rst.getInt(3));
              
                 comps.add(comp);
             }
