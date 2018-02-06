@@ -122,7 +122,6 @@ public class KardexImpl implements IKardex{
                 kardex.setCantidadinicial(rst.getInt(8));                
                 kardex.setCantidadactual(rst.getInt(9));                  
                 kardex.setEntrada(entrada);
-
                
             }
         } catch (Exception e) {

@@ -50,8 +50,7 @@ public class FrmListaVendedor extends JInternalFrame{
         }
         for(Vendedor est : lista){
             modelo.addRow(new Object[]{ est.getLogin(), est.getClave(),est.getNombre(),
-               est.getApellido(), est.getCedula(),est.getDireccion(),
-                est.getTelefono(),est.getEmail()});
+               est.getApellido(), est.getCedula(),est.getDireccion(),est.getTelefono(),est.getEmail()});
         }
         tabla.setModel(modelo);
     }

@@ -120,22 +120,22 @@ public class FrmMenuPrincipal extends JFrame {
         
         mnProducto= new JMenu("Producto");
         mniNuevoProducto= new JMenuItem("Nuevo");
-/*        mniNuevoProducto.addActionListener(new ActionListener() {
+        mniNuevoProducto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniNuevoProductoActionPerformed(e);
             }           
-        });*/
+        });
         mniModificaProducto= new JMenuItem("Modifica");
         mniEliminaProducto= new JMenuItem("Elimina");
         mniBuscaProducto= new JMenuItem("Busca");
         mniListaProducto= new JMenuItem("Lista");
-        /*mniListaProducto.addActionListener(new ActionListener() {
+        mniListaProducto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniListaProductoActionPerformed(e);
             }
-        });*/
+        });
         mnProducto.add(mniNuevoProducto);
         mnProducto.add(mniModificaProducto);
         mnProducto.add(mniEliminaProducto);
@@ -185,13 +185,7 @@ public class FrmMenuPrincipal extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 mniListaVendedorActionPerformed(e);
             }
-        });
-        mniListaVendedor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mniListaVendedorActionPerformed(e);
-            }
-        });
+        });        
         mnVendedor.add(mniNuevoVendedor);
         mnVendedor.add(mniModificaVendedor);
         mnVendedor.add(mniEliminaVendedor);
@@ -311,12 +305,12 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaDetalleSalida= new JMenuItem("Elimina");
         mniBuscaDetalleSalida= new JMenuItem("Busca");
         mniListaDetalleSalida= new JMenuItem("Lista");               
-        /*mniListaDetalleSalida.addActionListener(new ActionListener() {
+        mniListaDetalleSalida.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniListaDetalleSalidaActionPerformed(e);
             }
-        });*/
+        });
         mnDetalleSalida.add(mniNuevoDetalleSalida);
         mnDetalleSalida.add(mniModificaDetalleSalida);
         mnDetalleSalida.add(mniEliminaDetalleSalida);
@@ -406,7 +400,7 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-    /*public void mniNuevoProductoActionPerformed(ActionEvent e){
+    public void mniNuevoProductoActionPerformed(ActionEvent e){
         FrmNuevoProducto frm = new FrmNuevoProducto();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
@@ -415,7 +409,7 @@ public class FrmMenuPrincipal extends JFrame {
         FrmListaProducto frm = new FrmListaProducto();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
-    }*/
+    }
     public void mniNuevoProveedorActionPerformed(ActionEvent e){
         FrmNuevoProveedor frm = new FrmNuevoProveedor();
         dkpEscritorio.add(frm);
@@ -481,11 +475,11 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }  
-    /*public void mniListaDetalleSalidaActionPerformed(ActionEvent e){
+    public void mniListaDetalleSalidaActionPerformed(ActionEvent e){
         FrmListaDetalleSalida frm = new FrmListaDetalleSalida();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
-    } */
+    } 
     public void mniNuevoDetalleVentaActionPerformed(ActionEvent e){
         FrmNuevoDetalleVenta frm = new FrmNuevoDetalleVenta();
         dkpEscritorio.add(frm);
@@ -495,8 +489,8 @@ public class FrmMenuPrincipal extends JFrame {
         FrmListaDetalleVenta frm = new FrmListaDetalleVenta();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
-    }*/
-      public void mniNuevoKardexActionPerformed(ActionEvent e){
+    }
+     */ public void mniNuevoKardexActionPerformed(ActionEvent e){
         FrmNuevoKardex frm = new FrmNuevoKardex();
         dkpEscritorio.add(frm);
         frm.setVisible(true);

@@ -41,8 +41,8 @@ public class VendedorImpl implements IVendedor {
     public int modificar(Vendedor vendedor) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE vendedor"
-                + "   SET codigo=?,clave=?,nombre=?,, apellido=? cedula=?,direccion=?,"
-                + "telefono=?, email=? where codigo=?";
+                + "   SET login=?,clave=?,nombre=?,apellido=? cedula=?,direccion=?,"
+                + "telefono=?, email=? where login=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, vendedor.getLogin()));
         lstPar.add(new Parametro(2, vendedor.getClave()));
@@ -70,7 +70,7 @@ public class VendedorImpl implements IVendedor {
     @Override
     public int eliminar(Vendedor vendedor) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM vendedor  where codigo=?";
+         String sql = "DELETE FROM vendedor  where login=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, vendedor.getLogin()));       
         Conexion con = null;
@@ -89,12 +89,12 @@ public class VendedorImpl implements IVendedor {
     }
 
     @Override
-    public Vendedor obtener(int codigo) throws Exception {
+    public Vendedor obtener(int login) throws Exception {
         Vendedor vendedor = null;
-        String sql = "SELECT codigo,nombre,apellido,cedula,direccion,"
-                + " telefono, email FROM vendedor where codigo=?;";
+        String sql = "SELECT login,clave,nombre,apellido,cedula,direccion,"
+                + " telefono, email FROM vendedor where login=?;";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, codigo));
+        lstPar.add(new Parametro(1, login));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -109,7 +109,7 @@ public class VendedorImpl implements IVendedor {
                 vendedor.setCedula(rst.getString(5));
                 vendedor.setDireccion(rst.getString(6));
                 vendedor.setTelefono(rst.getString(7));
-                vendedor.setEmail(rst.getString(8));                
+                vendedor.setEmail(rst.getString(8));               
             
             }
         } catch (Exception e) {
@@ -124,8 +124,8 @@ public class VendedorImpl implements IVendedor {
     @Override
     public List<Vendedor> obtener() throws Exception {
         List<Vendedor> lista = new ArrayList<>();
-         String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ing, "
-                + "telefono,  sexo, direccion, cod_curso   FROM vendedor ";        
+         String sql = "SELECT login, clave, nombre, apellido,cedula ,direccion,"
+                + "telefono, email  FROM vendedor ";        
         Conexion con = null;
         try {
             con = new Conexion();

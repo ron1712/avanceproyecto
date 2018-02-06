@@ -49,7 +49,7 @@ public class FrmNuevoVendedor extends JInternalFrame{
         lblClave= new JLabel("Clave:");
         lblNombres= new JLabel("Nombres:");
         lblApellidos= new JLabel("Apellidos:");
-        lblCedula= new JLabel("Cedua:");
+        lblCedula= new JLabel("Cedula:");
         lblDireccion= new JLabel("Dirección:");
         lblTelefono= new JLabel("Teléfono:");
         lblEmail= new JLabel("Email:");
@@ -108,7 +108,8 @@ public class FrmNuevoVendedor extends JInternalFrame{
         vendedor.setLogin(txtLogin.getText());
         vendedor.setClave(txtClave.getText());
         vendedor.setNombre(txtNombres.getText());
-        vendedor.setApellido(txtApellidos.getText());    
+        vendedor.setApellido(txtApellidos.getText()); 
+        vendedor.setCedula(txtCedula.getText());
         vendedor.setDireccion(txtDireccion.getText());      
         vendedor.setTelefono(txtTelefono.getText());                      
         vendedor.setEmail(txtEmail.getText());
