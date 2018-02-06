@@ -60,7 +60,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
                 trata=new DetalleSalida();
                 trata.setSalida(salida);
                 trata.setProducto(producto);
-                trata.setCantidad(rst.getInt(3));
+                trata.setCantidad(rst.getString(3));
                 
             }
         } catch (Exception e) {
@@ -95,7 +95,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
                 comp=new DetalleSalida();
                 comp.setSalida(salida);
                 comp.setProducto(producto);
-                comp.setCantidad(rst.getInt(3));
+                comp.setCantidad(rst.getString(3));
              
                 comps.add(comp);
             }
