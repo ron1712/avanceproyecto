@@ -43,7 +43,7 @@ public class FrmMenuPrincipal extends JFrame {
     JMenuItem mniBuscaEntrada;
     JMenuItem mniListaEntrada;    
     JMenu mnKardex;
-    JMenuItem mniKardex;
+    JMenuItem mniNuevoKardex;
     JMenuItem mniModificaKardex;
     JMenuItem mniEliminaKardex;
     JMenuItem mniBuscaKardex;
@@ -130,6 +130,12 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaProducto= new JMenuItem("Elimina");
         mniBuscaProducto= new JMenuItem("Busca");
         mniListaProducto= new JMenuItem("Lista");
+        mniListaProducto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaProductoActionPerformed(e);
+            }
+        });
         mnProducto.add(mniNuevoProducto);
         mnProducto.add(mniModificaProducto);
         mnProducto.add(mniEliminaProducto);
@@ -149,6 +155,12 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaProveedor= new JMenuItem("Elimina");
         mniBuscaProveedor= new JMenuItem("Busca");
         mniListaProveedor= new JMenuItem("Lista");
+        mniListaProveedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaProveedorActionPerformed(e);
+            }
+        });
          mnProveedor.add(mniNuevoProveedor);
         mnProveedor.add(mniModificaProveedor);
         mnProveedor.add(mniEliminaProveedor);
@@ -174,6 +186,12 @@ public class FrmMenuPrincipal extends JFrame {
                 mniListaVendedorActionPerformed(e);
             }
         });
+        mniListaVendedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaVendedorActionPerformed(e);
+            }
+        });
         mnVendedor.add(mniNuevoVendedor);
         mnVendedor.add(mniModificaVendedor);
         mnVendedor.add(mniEliminaVendedor);
@@ -192,13 +210,19 @@ public class FrmMenuPrincipal extends JFrame {
         mniModificaEntrada= new JMenuItem("Modifica");
         mniEliminaEntrada= new JMenuItem("Elimina");
         mniBuscaEntrada= new JMenuItem("Busca");
-        mniListaEntrada= new JMenuItem("Lista");               
-        mnEntrada.add(mniNuevoDetalleEntrada);
-        mnEntrada.add(mniModificaDetalleEntrada);
-        mnEntrada.add(mniEliminaDetalleEntrada);
+        mniListaEntrada= new JMenuItem("Lista");  
+        mniListaEntrada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaEntradaActionPerformed(e);
+            }
+        });
+        mnEntrada.add(mniNuevoEntrada);
+        mnEntrada.add(mniModificaEntrada);
+        mnEntrada.add(mniEliminaEntrada);
         mnEntrada.addSeparator();
-        mnEntrada.add(mniBuscaDetalleEntrada);
-        mnEntrada.add(mniListaDetalleEntrada); 
+        mnEntrada.add(mniBuscaEntrada);
+        mnEntrada.add(mniListaEntrada); 
         
         mnSalida= new JMenu("Salida");        
         mniNuevoSalida= new JMenuItem("Nuevo");
@@ -211,13 +235,19 @@ public class FrmMenuPrincipal extends JFrame {
         mniModificaSalida= new JMenuItem("Modifica");
         mniEliminaSalida= new JMenuItem("Elimina");
         mniBuscaSalida= new JMenuItem("Busca");
-        mniListaSalida= new JMenuItem("Lista");               
-        mnSalida.add(mniNuevoDetalleEntrada);
-        mnSalida.add(mniModificaDetalleEntrada);
-        mnSalida.add(mniEliminaDetalleEntrada);
+        mniListaSalida= new JMenuItem("Lista");   
+        mniListaSalida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaSalidaActionPerformed(e);
+            }
+        });
+        mnSalida.add(mniNuevoSalida);
+        mnSalida.add(mniModificaSalida);
+        mnSalida.add(mniEliminaSalida);
         mnSalida.addSeparator();
-        mnSalida.add(mniBuscaDetalleEntrada);
-        mnSalida.add(mniListaDetalleEntrada);
+        mnSalida.add(mniBuscaSalida);
+        mnSalida.add(mniListaSalida);
         
         mnVenta= new JMenu("Venta");        
         mniNuevoVenta= new JMenuItem("Nuevo");
@@ -230,13 +260,19 @@ public class FrmMenuPrincipal extends JFrame {
         mniModificaVenta= new JMenuItem("Modifica");
         mniEliminaVenta= new JMenuItem("Elimina");
         mniBuscaVenta= new JMenuItem("Busca");
-        mniListaVenta= new JMenuItem("Lista");               
-        mnVenta.add(mniNuevoDetalleEntrada);
-        mnVenta.add(mniModificaDetalleEntrada);
-        mnVenta.add(mniEliminaDetalleEntrada);
+        mniListaVenta= new JMenuItem("Lista"); 
+        mniListaVenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaVentaActionPerformed(e);
+            }
+        });
+        mnVenta.add(mniNuevoVenta);
+        mnVenta.add(mniModificaVenta);
+        mnVenta.add(mniEliminaVenta);
         mnVenta.addSeparator();
-        mnVenta.add(mniBuscaDetalleEntrada);
-        mnVenta.add(mniListaDetalleEntrada);
+        mnVenta.add(mniBuscaVenta);
+        mnVenta.add(mniListaVenta);
         
         mnDetalleEntrada= new JMenu("Detalle Entrada");        
         mniNuevoDetalleEntrada= new JMenuItem("Nuevo");
@@ -249,7 +285,13 @@ public class FrmMenuPrincipal extends JFrame {
         mniModificaDetalleEntrada= new JMenuItem("Modifica");
         mniEliminaDetalleEntrada= new JMenuItem("Elimina");
         mniBuscaDetalleEntrada= new JMenuItem("Busca");
-        mniListaDetalleEntrada= new JMenuItem("Lista");               
+        mniListaDetalleEntrada= new JMenuItem("Lista");    
+        mniListaDetalleEntrada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaDetalleEntradaActionPerformed(e);
+            }
+        });
         mnDetalleEntrada.add(mniNuevoDetalleEntrada);
         mnDetalleEntrada.add(mniModificaDetalleEntrada);
         mnDetalleEntrada.add(mniEliminaDetalleEntrada);
@@ -269,12 +311,18 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaDetalleSalida= new JMenuItem("Elimina");
         mniBuscaDetalleSalida= new JMenuItem("Busca");
         mniListaDetalleSalida= new JMenuItem("Lista");               
-        mnDetalleSalida.add(mniNuevoDetalleEntrada);
-        mnDetalleSalida.add(mniModificaDetalleEntrada);
-        mnDetalleSalida.add(mniEliminaDetalleEntrada);
+        mniListaDetalleSalida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaDetalleSalidaActionPerformed(e);
+            }
+        });
+        mnDetalleSalida.add(mniNuevoDetalleSalida);
+        mnDetalleSalida.add(mniModificaDetalleSalida);
+        mnDetalleSalida.add(mniEliminaDetalleSalida);
         mnDetalleSalida.addSeparator();
-        mnDetalleSalida.add(mniBuscaDetalleEntrada);
-        mnDetalleSalida.add(mniListaDetalleEntrada);
+        mnDetalleSalida.add(mniBuscaDetalleSalida);
+        mnDetalleSalida.add(mniListaDetalleSalida);
         
         mnDetalleVenta= new JMenu("Detalle Venta");        
         mniNuevoDetalleVenta= new JMenuItem("Nuevo");
@@ -287,17 +335,23 @@ public class FrmMenuPrincipal extends JFrame {
         mniModificaDetalleVenta= new JMenuItem("Modifica");
         mniEliminaDetalleVenta= new JMenuItem("Elimina");
         mniBuscaDetalleVenta= new JMenuItem("Busca");
-        mniListaDetalleVenta= new JMenuItem("Lista");               
-        mnDetalleVenta.add(mniNuevoDetalleEntrada);
-        mnDetalleVenta.add(mniModificaDetalleEntrada);
-        mnDetalleVenta.add(mniEliminaDetalleEntrada);
+        mniListaDetalleVenta= new JMenuItem("Lista");  
+        mniListaDetalleVenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaDetalleVentaActionPerformed(e);
+            }
+        });
+        mnDetalleVenta.add(mniNuevoDetalleVenta);
+        mnDetalleVenta.add(mniModificaDetalleVenta);
+        mnDetalleVenta.add(mniEliminaDetalleVenta);
         mnDetalleVenta.addSeparator();
-        mnDetalleVenta.add(mniBuscaDetalleEntrada);
-        mnDetalleVenta.add(mniListaDetalleEntrada);
+        mnDetalleVenta.add(mniBuscaDetalleVenta);
+        mnDetalleVenta.add(mniListaDetalleVenta);
         
         mnKardex= new JMenu("Kardex");        
-        mniKardex= new JMenuItem("Nuevo");
-        mniKardex.addActionListener(new ActionListener() {
+        mniNuevoKardex= new JMenuItem("Nuevo");
+        mniNuevoKardex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniNuevoKardexActionPerformed(e);
@@ -307,12 +361,18 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaKardex= new JMenuItem("Elimina");
         mniBuscaKardex= new JMenuItem("Busca");
         mniListaKardex= new JMenuItem("Lista");               
-        mnKardex.add(mniNuevoDetalleEntrada);
-        mnKardex.add(mniModificaDetalleEntrada);
-        mnKardex.add(mniEliminaDetalleEntrada);
+        mniListaKardex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaKardexActionPerformed(e);
+            }
+        });
+        mnKardex.add(mniNuevoKardex);
+        mnKardex.add(mniModificaKardex);
+        mnKardex.add(mniEliminaKardex);
         mnKardex.addSeparator();
-        mnKardex.add(mniBuscaDetalleEntrada);
-        mnKardex.add(mniListaDetalleEntrada);
+        mnKardex.add(mniBuscaKardex);
+        mnKardex.add(mniListaKardex);
         
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
@@ -336,18 +396,23 @@ public class FrmMenuPrincipal extends JFrame {
     //    JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo) 
    //  SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenSkin"); // Setencia que aplica el skin Creme de Substance
     }    
-    public void mniNuevoDetalleEntradaActionPerformed(ActionEvent e){
-        FrmNuevoDetalleEntrada frm = new FrmNuevoDetalleEntrada();
+    public void mniNuevoClienteActionPerformed(ActionEvent e){
+        FrmNuevoCliente frm = new FrmNuevoCliente();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-    public void mniNuevoVendedorActionPerformed(ActionEvent e){
-        FrmNuevoVendedor frm = new FrmNuevoVendedor();
+    public void mniListaClienteActionPerformed(ActionEvent e){
+        FrmListaCliente frm = new FrmListaCliente();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-     public void mniListaVendedorActionPerformed(ActionEvent e){
-        FrmListaVendedor frm = new FrmListaVendedor();
+    public void mniNuevoProductoActionPerformed(ActionEvent e){
+        FrmNuevoProducto frm = new FrmNuevoProducto();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniListaProductoActionPerformed(ActionEvent e){
+        FrmListaProducto frm = new FrmListaProducto();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
@@ -356,18 +421,88 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-     public void mniNuevoProductoActionPerformed(ActionEvent e){
-        FrmNuevoProducto frm = new FrmNuevoProducto();
+    public void mniListaProveedorActionPerformed(ActionEvent e){
+        FrmListaProveedor frm = new FrmListaProveedor();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-    public void mniNuevoClienteActionPerformed(ActionEvent e){
-        FrmNuevoCliente frm = new FrmNuevoCliente();
+    public void mniNuevoVendedorActionPerformed(ActionEvent e){
+        FrmNuevoVendedor frm = new FrmNuevoVendedor();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-    public void mniListaClienteActionPerformed(ActionEvent e){
-        FrmListaCliente frm = new FrmListaCliente();
+    public void mniListaVendedorActionPerformed(ActionEvent e){
+        FrmListaVendedor frm = new FrmListaVendedor();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniNuevoEntradaActionPerformed(ActionEvent e){
+        FrmNuevoEntrada frm = new FrmNuevoEntrada();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniListaEntradaActionPerformed(ActionEvent e){
+        FrmListaEntrada frm = new FrmListaEntrada();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniNuevoSalidaActionPerformed(ActionEvent e){
+        FrmNuevoSalida frm = new FrmNuevoSalida();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+        public void mniListaSalidaActionPerformed(ActionEvent e){
+        FrmListaSalida frm = new FrmListaSalida();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniNuevoVentaActionPerformed(ActionEvent e){
+        FrmNuevoVenta frm = new FrmNuevoVenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    public void mniListaVentaActionPerformed(ActionEvent e){
+        FrmListaVenta frm = new FrmListaVenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }    
+    public void mniNuevoDetalleEntradaActionPerformed(ActionEvent e){
+        FrmNuevoDetalleEntrada frm = new FrmNuevoDetalleEntrada();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }  
+    public void mniListaDetalleEntradaActionPerformed(ActionEvent e){
+        FrmListaDetalleEntrada frm = new FrmListaDetalleEntrada();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }    
+    public void mniNuevoDetalleSalidaActionPerformed(ActionEvent e){
+        FrmNuevoDetalleSalida frm = new FrmNuevoDetalleSalida();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }  
+    public void mniListaDetalleSalidaActionPerformed(ActionEvent e){
+        FrmListaDetalleSalida frm = new FrmListaDetalleSalida();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    } 
+    public void mniNuevoDetalleVentaActionPerformed(ActionEvent e){
+        FrmNuevoDetalleVenta frm = new FrmNuevoDetalleVenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }  
+    public void mniListaDetalleVentaActionPerformed(ActionEvent e){
+        FrmListaDetalleVenta frm = new FrmListaDetalleVenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+      public void mniNuevoKardexActionPerformed(ActionEvent e){
+        FrmNuevoKardex frm = new FrmNuevoKardex();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }  
+    public void mniListaKardexActionPerformed(ActionEvent e){
+        FrmListaKardex frm = new FrmListaKardex();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
