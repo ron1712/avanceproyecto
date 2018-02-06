@@ -8,11 +8,12 @@ public class Cliente {
     private String telefono;
     private String direccion;  
     private String email;
+    private Ventas ventas;
     
     public Cliente() {
     }
 
-    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
+    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email, Ventas ventas) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -20,14 +21,7 @@ public class Cliente {
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+        this.ventas = ventas;
     }
 
     public int getCodigo() {
@@ -77,7 +71,23 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Ventas getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(Ventas ventas) {
+        this.ventas = ventas;
+    }
+
    
-    
 }
     
