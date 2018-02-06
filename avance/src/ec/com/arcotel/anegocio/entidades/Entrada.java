@@ -48,5 +48,10 @@ public class Entrada {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public int hashCode() {
+        return codigo; 
+    }
    
 }

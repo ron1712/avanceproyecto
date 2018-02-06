@@ -149,10 +149,10 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
 
     private void cargarEntrada() {
        
-        IEntrada personaDao = new EntradaImpl();
+        IEntrada entradaDao = new EntradaImpl();
         try{
             
-            lstEntrada = personaDao.obtener();
+            lstEntrada = entradaDao.obtener();
             
         }catch(Exception ex){
              JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS PERSONAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
