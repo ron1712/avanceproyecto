@@ -54,7 +54,6 @@ public class FrmNuevoProducto extends JInternalFrame{
         
 
         txtCodigo = new JTextField(2);
-    
         txtNombre= new JTextField(2);
         txtCantidad= new JTextField(2);
         txtValorunitario= new JTextField(2);
