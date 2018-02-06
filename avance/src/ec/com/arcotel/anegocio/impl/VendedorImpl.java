@@ -89,7 +89,7 @@ public class VendedorImpl implements IVendedor {
     }
 
     @Override
-    public Vendedor obtener(int login) throws Exception {
+    public Vendedor obtener(String login) throws Exception {
         Vendedor vendedor = null;
         String sql = "SELECT login,clave,nombre,apellido,cedula,direccion,"
                 + " telefono, email FROM vendedor where login=?;";
