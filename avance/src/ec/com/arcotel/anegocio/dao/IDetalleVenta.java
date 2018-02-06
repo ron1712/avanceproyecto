@@ -7,6 +7,6 @@ public interface IDetalleVenta {
     public int insertar(Detalleventa detalleventa) throws Exception;
     public int modificar(Detalleventa detalleventa) throws Exception;
     public int eliminar(Detalleventa detalleventa) throws Exception;
-    public Detalleventa obtener(int codVenta, int codProducto) throws Exception;
+    public Detalleventa obtener(int codVenta) throws Exception;
     public List<Detalleventa> obtener() throws Exception;    
 }

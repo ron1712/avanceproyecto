@@ -3,22 +3,22 @@ package ec.com.arcotel.anegocio.entidades;
 public class DetalleSalida {
    private Salida salida;
    private Producto producto;
-   private int cantidad;
+   private String cantidad;
 
     public DetalleSalida() {
     }
 
-    public DetalleSalida(Salida salida, Producto producto, int cantidad) {
+    public DetalleSalida(Salida salida, Producto producto, String cantidad) {
         this.salida = salida;
         this.producto = producto;
         this.cantidad = cantidad;
     }
 
-    public int getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 
