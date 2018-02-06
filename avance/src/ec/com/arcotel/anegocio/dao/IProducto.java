@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.com.arcotel.anegocio.dao;
 
-/**
- *
- * @author flavi
- */
+import ec.com.arcotel.anegocio.entidades.*;
+import java.util.List;
+
 public interface IProducto {
-    
+    public int insertar(Producto producto) throws Exception;
+    public int modificar(Producto producto) throws Exception;
+    public int eliminar(Producto producto) throws Exception;
+    public Producto obtener(int codigo) throws Exception;
+    public List<Producto> obtener() throws Exception; 
 }
