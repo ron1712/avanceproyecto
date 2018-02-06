@@ -56,7 +56,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 trata=new DetalleEntrada();
                 trata.setEntrada(entrada);
                 trata.setProducto(producto);
-                trata.setValorcompra(rst.getString(3));
+                trata.setValorcompra(rst.getInt(3));
                
             }
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 comp=new DetalleEntrada();
                 comp.setEntrada(entrada);
                 comp.setProducto(producto);
-                comp.setValorcompra(rst.getString(3));             
+                comp.setValorcompra(rst.getInt(3));             
                 comps.add(comp);
             }
         } catch (Exception e) {
