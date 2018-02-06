@@ -103,7 +103,7 @@ public class FrmNuevoVenta extends JInternalFrame{
         try {
             lstVendedor = vendedorDao.obtener();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error al cargar los vendedors!!",
+            JOptionPane.showMessageDialog(this,"Error al cargar los vendedores!!",
                 "Error"+e.getMessage(), JOptionPane.ERROR_MESSAGE);
         }       
     }

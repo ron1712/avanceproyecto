@@ -12,15 +12,15 @@ public class ProveedorImpl implements IProveedor {
     @Override
     public int insertar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into proveedor  values "
+        String sql = "insert into proveedor values "
                 +"(?,?,?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, proveedor.getCodigo()));
         lstPar.add(new Parametro(2, proveedor.getNombre()));
         lstPar.add(new Parametro(3, proveedor.getApellido()));
         lstPar.add(new Parametro(4, proveedor.getCedula()));
-        lstPar.add(new Parametro(5, proveedor.getTelefono()));
-        lstPar.add(new Parametro(6, proveedor.getDireccion()));
+         lstPar.add(new Parametro(5, proveedor.getDireccion()));
+         lstPar.add(new Parametro(6,proveedor.getTelefono()));       
         lstPar.add(new Parametro(7, proveedor.getEmail()));     
         Conexion con = null;
         try {
@@ -50,8 +50,7 @@ public class ProveedorImpl implements IProveedor {
         lstPar.add(new Parametro(4, proveedor.getCedula()));
         lstPar.add(new Parametro(5, proveedor.getTelefono()));
         lstPar.add(new Parametro(6, proveedor.getDireccion()));
-        lstPar.add(new Parametro(7, proveedor.getEmail())); 
-        lstPar.add(new Parametro(8, proveedor.getCodigo()));
+        lstPar.add(new Parametro(7, proveedor.getEmail()));         
         Conexion con = null;
         try {
             con = new Conexion();

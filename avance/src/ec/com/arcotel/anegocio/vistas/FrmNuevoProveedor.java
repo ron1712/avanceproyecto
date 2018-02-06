@@ -109,7 +109,7 @@ public class FrmNuevoProveedor extends JInternalFrame{
         proveedor.setCedula(txtCedula.getText());
         proveedor.setDireccion(txtDireccion.getText());      
         proveedor.setTelefono(txtTelefono.getText());                              
-        proveedor.setCedula(txtEmail.getText());
+        proveedor.setEmail(txtEmail.getText());
         try {
             if(proveedorDao.insertar(proveedor)>0){
                 JOptionPane.showMessageDialog(this,"Guaradado correctamente!!",

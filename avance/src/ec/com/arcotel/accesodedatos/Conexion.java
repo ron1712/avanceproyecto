@@ -13,7 +13,7 @@ public class Conexion {
 
     final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     final String URL = "jdbc:sqlserver://172.30.62.50:1433;databaseName=Proyecto";
-    final String USER = "angel";
+    final String USER = "ramos";
     final String PASS = "123";
     Connection con = null;
 
