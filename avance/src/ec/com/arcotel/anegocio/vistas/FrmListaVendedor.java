@@ -14,16 +14,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;  
 import javax.swing.table.DefaultTableModel;
 
-public class FrmListaProveedor extends JInternalFrame{
+public class FrmListaVendedor extends JInternalFrame{
     JLabel lblTitulo;
     JTable tabla;
     DefaultTableModel modelo;
     JScrollPane jscTabla;
-    public FrmListaProveedor(){
+    public FrmListaVendedor(){
         this.setSize(800, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
-        lblTitulo = new JLabel("Listado Proveedor");
+        lblTitulo = new JLabel("Listado Vendedor");
         tabla= new JTable();
         jscTabla = new JScrollPane(tabla);
         this.add(lblTitulo, BorderLayout.NORTH);
@@ -32,7 +32,8 @@ public class FrmListaProveedor extends JInternalFrame{
     }
         public void cargarTabla(){
         modelo= new DefaultTableModel();
-        modelo.addColumn("Codigo");
+        modelo.addColumn("Login");
+        modelo.addColumn("Clave");       
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Cedula");        
@@ -40,16 +41,16 @@ public class FrmListaProveedor extends JInternalFrame{
         modelo.addColumn("Telefono");
         modelo.addColumn("Email");        
         
-        List<Proveedor> lista = new ArrayList<>();
+        List<Vendedor> lista = new ArrayList<>();
         try{
-            IProveedor proveedorDao = new ProveedorImpl();
-            lista = proveedorDao.obtener();
+            IVendedor vendedorDao = new VendedorImpl();
+            lista = vendedorDao.obtener();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        for(Proveedor est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(), est.getNombre(),
+        for(Vendedor est : lista){
+            modelo.addRow(new Object[]{ est.getLogin(), est.getClave(),est.getNombre(),
                est.getApellido(), est.getCedula(),est.getDireccion(),
                 est.getTelefono(),est.getEmail()});
         }
