@@ -57,5 +57,8 @@ public class Producto {
     public void setValorunitario(double valorunitario) {
         this.valorunitario = valorunitario;
     }
-    
+    @Override
+    public String toString() {
+        return nombre; 
+    }
 }

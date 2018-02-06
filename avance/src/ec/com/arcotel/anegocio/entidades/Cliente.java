@@ -87,7 +87,10 @@ public class Cliente {
     public void setVentas(Ventas ventas) {
         this.ventas = ventas;
     }
-
+    @Override
+    public String toString() {
+        return nombre; 
+    }
    
 }
     
