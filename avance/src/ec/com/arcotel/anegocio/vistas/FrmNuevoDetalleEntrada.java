@@ -1,5 +1,5 @@
 package ec.com.arcotel.anegocio.vistas;
 
-public class FrmNuevoCliente {
+public class FrmNuevoDetalleEntrada {
     
 }

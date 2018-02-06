@@ -1,6 +1,5 @@
 package ec.com.arcotel.anegocio.entidades;
-
-import java.sql.Date;
+import java.util.*;
 
 public class Detalleventa {
     private Ventas ventas;

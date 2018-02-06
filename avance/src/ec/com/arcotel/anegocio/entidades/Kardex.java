@@ -1,6 +1,5 @@
 package ec.com.arcotel.anegocio.entidades;
 
-
 public class Kardex {
    private int codigo;
    private Producto producto;
