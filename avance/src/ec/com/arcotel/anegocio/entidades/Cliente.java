@@ -7,18 +7,29 @@ public class Cliente {
     private String cedula;
     private String telefono;
     private String direccion;  
+    private String email;
     
     public Cliente() {
     }
-   
-    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion) {
+
+    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.email = email;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -66,7 +77,7 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+   
     
 }
     

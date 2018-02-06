@@ -3,17 +3,27 @@ package ec.com.arcotel.anegocio.entidades;
 import java.sql.Date;
 
 public class Ventas {
-   public int codigo;
-   public Cliente cliente;
-   public Date fecha;
+   private int codigo;
+   private Cliente cliente;
+   private Date fecha;
+   private Vendedor vendedor;
 
     public Ventas() {
     }
 
-    public Ventas(int codigo, Cliente cliente, Date fecha) {
+    public Ventas(int codigo, Cliente cliente, Date fecha, Vendedor vendedor) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.fecha = fecha;
+        this.vendedor = vendedor;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
     }
 
     public int getCodigo() {
@@ -39,5 +49,6 @@ public class Ventas {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
    
 }

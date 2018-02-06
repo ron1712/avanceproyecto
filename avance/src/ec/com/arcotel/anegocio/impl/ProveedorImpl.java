@@ -7,21 +7,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteImpl implements ICliente {
+public class ProveedorImpl implements IProveedor {
 
     @Override
-    public int insertar(Cliente cliente) throws Exception {
+    public int insertar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into cliente  values "
+        String sql = "insert into proveedor  values "
                 +"(?,?,?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, cliente.getCodigo()));
-        lstPar.add(new Parametro(2, cliente.getNombre()));
-        lstPar.add(new Parametro(3, cliente.getApellido()));
-        lstPar.add(new Parametro(4, cliente.getCedula()));
-        lstPar.add(new Parametro(5, cliente.getDireccion()));
-        lstPar.add(new Parametro(6, cliente.getTelefono()));
-        lstPar.add(new Parametro(7, cliente.getEmail()));     
+        lstPar.add(new Parametro(1, proveedor.getCodigo()));
+        lstPar.add(new Parametro(2, proveedor.getNombre()));
+        lstPar.add(new Parametro(3, proveedor.getApellido()));
+        lstPar.add(new Parametro(4, proveedor.getCedula()));
+        lstPar.add(new Parametro(5, proveedor.getDireccion()));
+        lstPar.add(new Parametro(6, proveedor.getTelefono()));
+        lstPar.add(new Parametro(7, proveedor.getEmail()));     
         Conexion con = null;
         try {
             con = new Conexion();
@@ -38,19 +38,19 @@ public class ClienteImpl implements ICliente {
     }
 
     @Override
-    public int modificar(Cliente cliente) throws Exception {
+    public int modificar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE cliente"
+        String sql = "UPDATE proveedor"
                 + "   SET codigo=?,nombre=?,, apellido=? cedula=?,direccion=?, "
                 + "telefono=?, email=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, cliente.getCodigo()));
-        lstPar.add(new Parametro(2, cliente.getNombre()));
-        lstPar.add(new Parametro(3, cliente.getApellido()));
-        lstPar.add(new Parametro(4, cliente.getCedula()));
-        lstPar.add(new Parametro(5, cliente.getDireccion()));
-        lstPar.add(new Parametro(6, cliente.getTelefono()));
-        lstPar.add(new Parametro(7, cliente.getEmail())); 
+        lstPar.add(new Parametro(1, proveedor.getCodigo()));
+        lstPar.add(new Parametro(2, proveedor.getNombre()));
+        lstPar.add(new Parametro(3, proveedor.getApellido()));
+        lstPar.add(new Parametro(4, proveedor.getCedula()));
+        lstPar.add(new Parametro(5, proveedor.getDireccion()));
+        lstPar.add(new Parametro(6, proveedor.getTelefono()));
+        lstPar.add(new Parametro(7, proveedor.getEmail())); 
         Conexion con = null;
         try {
             con = new Conexion();
@@ -67,11 +67,11 @@ public class ClienteImpl implements ICliente {
     }
 
     @Override
-    public int eliminar(Cliente cliente) throws Exception {
+    public int eliminar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cliente  where codigo=?";
+         String sql = "DELETE FROM proveedor  where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, cliente.getCodigo()));       
+        lstPar.add(new Parametro(1, proveedor.getCodigo()));       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -88,10 +88,10 @@ public class ClienteImpl implements ICliente {
     }
 
     @Override
-    public Cliente obtener(int codigo) throws Exception {
-        Cliente cliente = null;
+    public Proveedor obtener(int codigo) throws Exception {
+        Proveedor proveedor = null;
         String sql = "SELECT codigo,nombre,apellido,cedula,direccion,"
-                + " telefono, email FROM cliente where codigo=?;";
+                + " telefono, email FROM proveedor where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -100,14 +100,14 @@ public class ClienteImpl implements ICliente {
             con.conectar();
             ResultSet rst = con.ejecutaQuery(sql, lstPar);
             while (rst.next()) {
-                cliente = new Cliente();
-                cliente.setCodigo(rst.getInt(1));
-                cliente.setNombre(rst.getString(2));
-                cliente.setApellido(rst.getString(3));
-                cliente.setCedula(rst.getString(4));
-                cliente.setDireccion(rst.getString(5));
-                cliente.setTelefono(rst.getString(6));
-                cliente.setEmail(rst.getString(7));                
+                proveedor = new Proveedor();
+                proveedor.setCodigo(rst.getInt(1));
+                proveedor.setNombre(rst.getString(2));
+                proveedor.setApellido(rst.getString(3));
+                proveedor.setCedula(rst.getString(4));
+                proveedor.setDireccion(rst.getString(5));
+                proveedor.setTelefono(rst.getString(6));
+                proveedor.setEmail(rst.getString(7));                
             
             }
         } catch (Exception e) {
@@ -116,30 +116,30 @@ public class ClienteImpl implements ICliente {
             if(con!=null)
             con.desconectar();
         }
-        return cliente;
+        return proveedor;
     }
 
     @Override
-    public List<Cliente> obtener() throws Exception {
-        List<Cliente> lista = new ArrayList<>();
+    public List<Proveedor> obtener() throws Exception {
+        List<Proveedor> lista = new ArrayList<>();
          String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ing, "
-                + "telefono,  sexo, direccion, cod_curso   FROM cliente ";        
+                + "telefono,  sexo, direccion, cod_curso   FROM proveedor ";        
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
             ResultSet rst = con.ejecutaQuery(sql, null);
-            Cliente cliente=null;
+            Proveedor proveedor=null;
             while (rst.next()) {
-                cliente = new Cliente();
-                cliente.setCodigo(rst.getInt(1));
-                cliente.setNombre(rst.getString(2));
-                cliente.setApellido(rst.getString(3));
-                cliente.setCedula(rst.getString(4));
-                cliente.setDireccion(rst.getString(5));
-                cliente.setTelefono(rst.getString(6));
-                cliente.setEmail(rst.getString(7));  
-                lista.add(cliente);
+                proveedor = new Proveedor();
+                proveedor.setCodigo(rst.getInt(1));
+                proveedor.setNombre(rst.getString(2));
+                proveedor.setApellido(rst.getString(3));
+                proveedor.setCedula(rst.getString(4));
+                proveedor.setDireccion(rst.getString(5));
+                proveedor.setTelefono(rst.getString(6));
+                proveedor.setEmail(rst.getString(7));  
+                lista.add(proveedor);
             }
         } catch (Exception e) {
             throw e;
