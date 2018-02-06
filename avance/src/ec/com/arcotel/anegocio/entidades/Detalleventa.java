@@ -1,41 +1,47 @@
-
 package ec.com.arcotel.anegocio.entidades;
 
 import java.sql.Date;
 
-
 public class Detalleventa {
-    private int codigoVenta;
-    private int codigoArticulo;
+    private Ventas ventas;
+    private Producto producto;
     private int cantidad;
     private Date fecha;
-    private int total;
+    private double total;
 
     public Detalleventa() {
     }
 
-    public Detalleventa(int codigoVenta, int codigoArticulo, int cantidad, Date fecha, int total) {
-        this.codigoVenta = codigoVenta;
-        this.codigoArticulo = codigoArticulo;
+    public Detalleventa(Ventas ventas, Producto producto, int cantidad, Date fecha, double total) {
+        this.ventas = ventas;
+        this.producto = producto;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.total = total;
     }
 
-    public int getCodigoVenta() {
-        return codigoVenta;
+    public double getTotal() {
+        return total;
     }
 
-    public void setCodigoVenta(int codigoVenta) {
-        this.codigoVenta = codigoVenta;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public int getCodigoArticulo() {
-        return codigoArticulo;
+    public Ventas getVentas() {
+        return ventas;
     }
 
-    public void setCodigoArticulo(int codigoArticulo) {
-        this.codigoArticulo = codigoArticulo;
+    public void setVentas(Ventas ventas) {
+        this.ventas = ventas;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad() {
@@ -52,14 +58,6 @@ public class Detalleventa {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
     
 }

@@ -3,35 +3,43 @@ package ec.com.arcotel.anegocio.entidades;
 import java.sql.Date;
 
 public class Entrada {
-    private int codigoEntrada;
-    private int codigoProveedor;
+    private int codigo;
+    private Proveedor proveedor;
     private Date fecha;
-    private int valortotal;
+    private double valortotal;
 
     public Entrada() {
     }
 
-    public Entrada(int codigoEntrada, int codigoProveedor, Date fecha, int valortotal) {
-        this.codigoEntrada = codigoEntrada;
-        this.codigoProveedor = codigoProveedor;
+    public Entrada(int codigo, Proveedor proveedor, Date fecha, double valortotal) {
+        this.codigo = codigo;
+        this.proveedor = proveedor;
         this.fecha = fecha;
         this.valortotal = valortotal;
     }
 
-    public int getCodigoEntrada() {
-        return codigoEntrada;
+    public double getValortotal() {
+        return valortotal;
     }
 
-    public void setCodigoEntrada(int codigoEntrada) {
-        this.codigoEntrada = codigoEntrada;
+    public void setValortotal(double valortotal) {
+        this.valortotal = valortotal;
     }
 
-    public int getCodigoProveedor() {
-        return codigoProveedor;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoProveedor(int codigoProveedor) {
-        this.codigoProveedor = codigoProveedor;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
     public Date getFecha() {
@@ -41,14 +49,5 @@ public class Entrada {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-    public int getValortotal() {
-        return valortotal;
-    }
-
-    public void setValortotal(int valortotal) {
-        this.valortotal = valortotal;
-    }
     
-   
 }

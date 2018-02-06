@@ -1,42 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.com.arcotel.anegocio.entidades;
 
-/**
- *
- * @author flavi
- */
 public class DetalleSalida {
-    private int codigoSalida;
-    private int codigoArticulo;
-    private int cantidad;
+   private Salida salida;
+   private Producto producto;
+   private int cantidad;
 
     public DetalleSalida() {
     }
 
-    public DetalleSalida(int codigoSalida, int codigoArticulo, int cantidad) {
-        this.codigoSalida = codigoSalida;
-        this.codigoArticulo = codigoArticulo;
+    public DetalleSalida(Salida salida, Producto producto, int cantidad) {
+        this.salida = salida;
+        this.producto = producto;
         this.cantidad = cantidad;
-    }
-
-    public int getCodigoSalida() {
-        return codigoSalida;
-    }
-
-    public void setCodigoSalida(int codigoSalida) {
-        this.codigoSalida = codigoSalida;
-    }
-
-    public int getCodigoArticulo() {
-        return codigoArticulo;
-    }
-
-    public void setCodigoArticulo(int codigoArticulo) {
-        this.codigoArticulo = codigoArticulo;
     }
 
     public int getCantidad() {
@@ -46,5 +21,21 @@ public class DetalleSalida {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
+
+    public Salida getSalida() {
+        return salida;
+    }
+
+    public void setSalida(Salida salida) {
+        this.salida = salida;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+   
 }

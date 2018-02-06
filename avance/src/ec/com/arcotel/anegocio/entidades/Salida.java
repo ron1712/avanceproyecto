@@ -1,27 +1,34 @@
-
 package ec.com.arcotel.anegocio.entidades;
 import java.sql.Date;
 
 public class Salida {
-    private int codigoSalida;
-    private Date fecha;
-    private int valorcompra;
+   private int codigo;
+   private Date fecha;
+   private double valorcompra;
 
     public Salida() {
     }
 
-    public Salida(int codigoSalida, Date fecha, int valorcompra) {
-        this.codigoSalida = codigoSalida;
+    public Salida(int codigo, Date fecha, double valorcompra) {
+        this.codigo = codigo;
         this.fecha = fecha;
         this.valorcompra = valorcompra;
     }
 
-    public int getCodigoSalida() {
-        return codigoSalida;
+    public double getValorcompra() {
+        return valorcompra;
     }
 
-    public void setCodigoSalida(int codigoSalida) {
-        this.codigoSalida = codigoSalida;
+    public void setValorcompra(double valorcompra) {
+        this.valorcompra = valorcompra;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public Date getFecha() {
@@ -31,14 +38,5 @@ public class Salida {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-    public int getValorcompra() {
-        return valorcompra;
-    }
-
-    public void setValorcompra(int valorcompra) {
-        this.valorcompra = valorcompra;
-    }
-    
-    
+   
 }

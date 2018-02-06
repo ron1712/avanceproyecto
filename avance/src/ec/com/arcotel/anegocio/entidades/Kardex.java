@@ -1,63 +1,70 @@
-
 package ec.com.arcotel.anegocio.entidades;
 
 
 public class Kardex {
-    private int codigokardex;
-    private int codigoArticulo;
-    private int codigoEntrada;
-    private int codigoSalida;
-    private int cantidad;
-    private int preciocompra;
-    private int precioventa;
-    private int cantidadinicial;
-    private int cantidadfinal;
+   private int codigo;
+   private Producto producto;
+   private Entrada entrada;
+   private Salida salida;
+   private int cantidad;
+   private double preciocompra;
+   private double precioventa;
+   private int cantidadinicial;
+   private int cantidadactual;
 
     public Kardex() {
     }
 
-    public Kardex(int codigokardex, int codigoArticulo, int codigoEntrada, int codigoSalida, int cantidad, int preciocompra, int precioventa, int cantidadinicial, int cantidadfinal) {
-        this.codigokardex = codigokardex;
-        this.codigoArticulo = codigoArticulo;
-        this.codigoEntrada = codigoEntrada;
-        this.codigoSalida = codigoSalida;
+    public Kardex(int codigo, Producto producto, Entrada entrada, Salida salida, int cantidad, double preciocompra, double precioventa, int cantidadinicial, int cantidadactual) {
+        this.codigo = codigo;
+        this.producto = producto;
+        this.entrada = entrada;
+        this.salida = salida;
         this.cantidad = cantidad;
         this.preciocompra = preciocompra;
         this.precioventa = precioventa;
         this.cantidadinicial = cantidadinicial;
-        this.cantidadfinal = cantidadfinal;
+        this.cantidadactual = cantidadactual;
     }
 
-    public int getCodigokardex() {
-        return codigokardex;
+    public int getCantidadactual() {
+        return cantidadactual;
     }
 
-    public void setCodigokardex(int codigokardex) {
-        this.codigokardex = codigokardex;
+    public void setCantidadactual(int cantidadactual) {
+        this.cantidadactual = cantidadactual;
     }
 
-    public int getCodigoArticulo() {
-        return codigoArticulo;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoArticulo(int codigoArticulo) {
-        this.codigoArticulo = codigoArticulo;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public int getCodigoEntrada() {
-        return codigoEntrada;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setCodigoEntrada(int codigoEntrada) {
-        this.codigoEntrada = codigoEntrada;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public int getCodigoSalida() {
-        return codigoSalida;
+    public Entrada getEntrada() {
+        return entrada;
     }
 
-    public void setCodigoSalida(int codigoSalida) {
-        this.codigoSalida = codigoSalida;
+    public void setEntrada(Entrada entrada) {
+        this.entrada = entrada;
+    }
+
+    public Salida getSalida() {
+        return salida;
+    }
+
+    public void setSalida(Salida salida) {
+        this.salida = salida;
     }
 
     public int getCantidad() {
@@ -68,19 +75,19 @@ public class Kardex {
         this.cantidad = cantidad;
     }
 
-    public int getPreciocompra() {
+    public double getPreciocompra() {
         return preciocompra;
     }
 
-    public void setPreciocompra(int preciocompra) {
+    public void setPreciocompra(double preciocompra) {
         this.preciocompra = preciocompra;
     }
 
-    public int getPrecioventa() {
+    public double getPrecioventa() {
         return precioventa;
     }
 
-    public void setPrecioventa(int precioventa) {
+    public void setPrecioventa(double precioventa) {
         this.precioventa = precioventa;
     }
 
@@ -91,14 +98,5 @@ public class Kardex {
     public void setCantidadinicial(int cantidadinicial) {
         this.cantidadinicial = cantidadinicial;
     }
-
-    public int getCantidadfinal() {
-        return cantidadfinal;
-    }
-
-    public void setCantidadfinal(int cantidadfinal) {
-        this.cantidadfinal = cantidadfinal;
-    }
-    
-    
+   
 }

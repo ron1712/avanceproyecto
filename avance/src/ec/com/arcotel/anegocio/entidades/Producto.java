@@ -1,38 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.com.arcotel.anegocio.entidades;
 
-/**
- *
- * @author flavi
- */
 public class Producto {
-    private int codigoProducto;
+    private int codigo;
     private String nombre;
-    private String cantidad;
-    private String valorunitario;
+    private int cantidad;
+    private double valorunitario;
     private String descripcion;
 
     public Producto() {
     }
 
-    public Producto(int codigoProducto, String nombre, String cantidad, String valorunitario, String descripcion) {
-        this.codigoProducto = codigoProducto;
+    public Producto(int codigo, String nombre, int cantidad, double valorunitario, String descripcion) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.valorunitario = valorunitario;
         this.descripcion = descripcion;
     }
 
-    public int getCodigoProducto() {
-        return codigoProducto;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCodigoProducto(int codigoProducto) {
-        this.codigoProducto = codigoProducto;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -43,28 +42,20 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
-    public String getValorunitario() {
+    public double getValorunitario() {
         return valorunitario;
     }
 
-    public void setValorunitario(String valorunitario) {
+    public void setValorunitario(double valorunitario) {
         this.valorunitario = valorunitario;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
     
 }

@@ -1,33 +1,30 @@
-
 package ec.com.arcotel.anegocio.entidades;
 
 public class Cliente {
-    private int codigoCliente;
+    private int codigo;
     private String nombre;
     private String apellido;
     private String cedula;
     private String telefono;
-    private String direccion;
-
-    
+    private String direccion;  
     
     public Cliente() {
     }
    
-    public Cliente(int codigoCliente, String nombre, String apellido, String cedula, String telefono, String direccion) {
-        this.codigoCliente = codigoCliente;
+    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.telefono = telefono;
         this.direccion = direccion;
     }
-    public int getCodigoCliente() {
-        return codigoCliente;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoCliente(int codigoCliente) {
-        this.codigoCliente = codigoCliente;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {

@@ -1,9 +1,8 @@
-
 package ec.com.arcotel.anegocio.entidades;
 
 
 public class Proveedor {
-    private int codigoProveedor;
+    private int codigo;
     private String nombre;
     private String apellido;
     private String cedula;
@@ -14,8 +13,8 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int codigoProveedor, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
-        this.codigoProveedor = codigoProveedor;
+    public Proveedor(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -24,12 +23,12 @@ public class Proveedor {
         this.email = email;
     }
 
-    public int getCodigoProveedor() {
-        return codigoProveedor;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoProveedor(int codigoProveedor) {
-        this.codigoProveedor = codigoProveedor;
+    public void setCodigo(int codigoProveedor) {
+        this.codigo = codigoProveedor;
     }
 
     public String getNombre() {
