@@ -19,8 +19,8 @@ public class ProveedorImpl implements IProveedor {
         lstPar.add(new Parametro(2, proveedor.getNombre()));
         lstPar.add(new Parametro(3, proveedor.getApellido()));
         lstPar.add(new Parametro(4, proveedor.getCedula()));
-        lstPar.add(new Parametro(5, proveedor.getDireccion()));
-        lstPar.add(new Parametro(6, proveedor.getTelefono()));
+        lstPar.add(new Parametro(5, proveedor.getTelefono()));
+        lstPar.add(new Parametro(6, proveedor.getDireccion()));
         lstPar.add(new Parametro(7, proveedor.getEmail()));     
         Conexion con = null;
         try {
@@ -41,16 +41,17 @@ public class ProveedorImpl implements IProveedor {
     public int modificar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE proveedor"
-                + "   SET codigo=?,nombre=?,, apellido=? cedula=?,direccion=?, "
-                + "telefono=?, email=? where codigo=?";
+                + "   SET codigo=?,nombre=?,, apellido=? cedula=?,telefono=?, "
+                + "direccion=?, email=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, proveedor.getCodigo()));
         lstPar.add(new Parametro(2, proveedor.getNombre()));
         lstPar.add(new Parametro(3, proveedor.getApellido()));
         lstPar.add(new Parametro(4, proveedor.getCedula()));
-        lstPar.add(new Parametro(5, proveedor.getDireccion()));
-        lstPar.add(new Parametro(6, proveedor.getTelefono()));
+        lstPar.add(new Parametro(5, proveedor.getTelefono()));
+        lstPar.add(new Parametro(6, proveedor.getDireccion()));
         lstPar.add(new Parametro(7, proveedor.getEmail())); 
+        lstPar.add(new Parametro(8, proveedor.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -90,8 +91,8 @@ public class ProveedorImpl implements IProveedor {
     @Override
     public Proveedor obtener(int codigo) throws Exception {
         Proveedor proveedor = null;
-        String sql = "SELECT codigo,nombre,apellido,cedula,direccion,"
-                + " telefono, email FROM proveedor where codigo=?;";
+        String sql = "SELECT codigo,nombre,apellido,cedula,telefono,"
+                + "direccion , email FROM proveedor where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -105,8 +106,8 @@ public class ProveedorImpl implements IProveedor {
                 proveedor.setNombre(rst.getString(2));
                 proveedor.setApellido(rst.getString(3));
                 proveedor.setCedula(rst.getString(4));
-                proveedor.setDireccion(rst.getString(5));
-                proveedor.setTelefono(rst.getString(6));
+                proveedor.setTelefono(rst.getString(5));
+                proveedor.setDireccion(rst.getString(6));
                 proveedor.setEmail(rst.getString(7));                
             
             }
@@ -122,8 +123,8 @@ public class ProveedorImpl implements IProveedor {
     @Override
     public List<Proveedor> obtener() throws Exception {
         List<Proveedor> lista = new ArrayList<>();
-         String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ing, "
-                + "telefono,  sexo, direccion, cod_curso   FROM proveedor ";        
+         String sql = "SELECT codigo,nombre,apellido,cedula,telefono,"
+                + "direccion , email FROM proveedor ";       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -136,8 +137,8 @@ public class ProveedorImpl implements IProveedor {
                 proveedor.setNombre(rst.getString(2));
                 proveedor.setApellido(rst.getString(3));
                 proveedor.setCedula(rst.getString(4));
-                proveedor.setDireccion(rst.getString(5));
-                proveedor.setTelefono(rst.getString(6));
+                proveedor.setTelefono(rst.getString(5));
+                proveedor.setDireccion(rst.getString(6));
                 proveedor.setEmail(rst.getString(7));  
                 lista.add(proveedor);
             }

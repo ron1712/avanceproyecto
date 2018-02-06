@@ -39,7 +39,7 @@ public class ProductoImpl implements IProducto{
     public int modificar(Producto producto) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE producto"
-                + "   SET codigo=?, nombre=?, cantidad=?, valortotal=? "
+                + "   SET codigo=?, nombre=?, cantidad=?, valorunitario=? "
                 + "descripcion=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, producto.getCodigo()));
@@ -117,7 +117,7 @@ public class ProductoImpl implements IProducto{
     @Override
     public List<Producto> obtener() throws Exception {
         List<Producto> lista = new ArrayList<>();
-         String sql = "SELECT codigo, codProveedor, fecha, valortotal FROM producto ";        
+         String sql = "SELECT codigo, codProveedor, fecha, valorunitario,descripcion FROM producto ";        
         Conexion con = null;
         try {
             con = new Conexion();
