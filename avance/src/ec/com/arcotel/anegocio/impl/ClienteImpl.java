@@ -21,7 +21,8 @@ public class ClienteImpl implements ICliente {
         lstPar.add(new Parametro(4, cliente.getCedula()));
         lstPar.add(new Parametro(5, cliente.getDireccion()));
         lstPar.add(new Parametro(6, cliente.getTelefono()));
-        lstPar.add(new Parametro(7, cliente.getEmail()));     
+        lstPar.add(new Parametro(7, cliente.getEmail()));  
+       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -51,6 +52,7 @@ public class ClienteImpl implements ICliente {
         lstPar.add(new Parametro(5, cliente.getDireccion()));
         lstPar.add(new Parametro(6, cliente.getTelefono()));
         lstPar.add(new Parametro(7, cliente.getEmail())); 
+         lstPar.add(new Parametro(8, cliente.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -107,7 +109,8 @@ public class ClienteImpl implements ICliente {
                 cliente.setCedula(rst.getString(4));
                 cliente.setDireccion(rst.getString(5));
                 cliente.setTelefono(rst.getString(6));
-                cliente.setEmail(rst.getString(7));                
+                cliente.setEmail(rst.getString(7));  
+                
             
             }
         } catch (Exception e) {
@@ -122,8 +125,8 @@ public class ClienteImpl implements ICliente {
     @Override
     public List<Cliente> obtener() throws Exception {
         List<Cliente> lista = new ArrayList<>();
-         String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ing, "
-                + "telefono,  sexo, direccion, cod_curso   FROM cliente ";        
+         String sql ="SELECT codigo,nombre,apellido,cedula,direccion,"
+                + " telefono, email FROM cliente";       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -138,7 +141,7 @@ public class ClienteImpl implements ICliente {
                 cliente.setCedula(rst.getString(4));
                 cliente.setDireccion(rst.getString(5));
                 cliente.setTelefono(rst.getString(6));
-                cliente.setEmail(rst.getString(7));  
+                cliente.setEmail(rst.getString(7));
                 lista.add(cliente);
             }
         } catch (Exception e) {
