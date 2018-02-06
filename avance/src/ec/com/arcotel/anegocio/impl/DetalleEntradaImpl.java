@@ -41,7 +41,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao = new EntradaImpl();
         Producto producto=null;
         IProducto producDao=new ProductoImpl();
-        String csql = "Select codigoEntrada, codigoProducto, valorcompra From DetalleEntrada Where codigo=?";
+        String csql = "Select codigo, codigo, valorcompra From DetalleEntrada Where codigo=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigoDetalleEntrada));
         Conexion con = null;
@@ -76,7 +76,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao=new EntradaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codigoEntrada, codigoProducto, valorcompra from DetalleEntrada";
+        String csql="select codigo, codigo, valorcompra from DetalleEntrada";
         Conexion con=null;
         try {
             con=new Conexion();
