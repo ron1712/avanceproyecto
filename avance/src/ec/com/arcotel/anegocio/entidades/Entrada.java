@@ -6,23 +6,25 @@ public class Entrada {
     private Proveedor proveedor;
     private Date fecha;
     private double valortotal;
+    private String detalle;
 
     public Entrada() {
     }
 
-    public Entrada(int codigo, Proveedor proveedor, Date fecha, double valortotal) {
+    public Entrada(int codigo, Proveedor proveedor, Date fecha, double valortotal, String detalle) {
         this.codigo = codigo;
         this.proveedor = proveedor;
         this.fecha = fecha;
         this.valortotal = valortotal;
+        this.detalle = detalle;
     }
 
-    public double getValortotal() {
-        return valortotal;
+    public String getDetalle() {
+        return detalle;
     }
 
-    public void setValortotal(double valortotal) {
-        this.valortotal = valortotal;
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
 
     public int getCodigo() {
@@ -49,9 +51,17 @@ public class Entrada {
         this.fecha = fecha;
     }
 
-    @Override
-    public int hashCode() {
-        return codigo; 
+    public double getValortotal() {
+        return valortotal;
     }
-   
+
+    public void setValortotal(double valortotal) {
+        this.valortotal = valortotal;
+    }
+
+    @Override
+    public String toString() {
+        return detalle;
+    }
+    
 }
