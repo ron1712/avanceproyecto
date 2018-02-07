@@ -85,7 +85,7 @@ public class DetalleVentaImpl implements IDetalleVenta{
         IVentas ventaDao=new VentaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codigoVenta, codigoProducto, cantidad, fecha, total from Compra";
+        String csql="select codVenta, codProducto, cantidad, fecha, total from DetalleVenta";
         Conexion con=null;
         try {
             con=new Conexion();
