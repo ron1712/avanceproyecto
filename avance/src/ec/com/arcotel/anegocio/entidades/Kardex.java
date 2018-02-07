@@ -97,5 +97,10 @@ public class Kardex {
     public void setCantidadinicial(int cantidadinicial) {
         this.cantidadinicial = cantidadinicial;
     }
+
+    @Override
+    public String toString() {
+        return codigo;
+    }
    
 }

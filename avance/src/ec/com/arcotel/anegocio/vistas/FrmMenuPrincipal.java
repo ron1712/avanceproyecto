@@ -330,12 +330,12 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaDetalleVenta= new JMenuItem("Elimina");
         mniBuscaDetalleVenta= new JMenuItem("Busca");
         mniListaDetalleVenta= new JMenuItem("Lista");  
-       /* mniListaDetalleVenta.addActionListener(new ActionListener() {
+       mniListaDetalleVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniListaDetalleVentaActionPerformed(e);
             }
-        });*/
+        });
         mnDetalleVenta.add(mniNuevoDetalleVenta);
         mnDetalleVenta.add(mniModificaDetalleVenta);
         mnDetalleVenta.add(mniEliminaDetalleVenta);
@@ -485,11 +485,11 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }  
-    /*public void mniListaDetalleVentaActionPerformed(ActionEvent e){
+    public void mniListaDetalleVentaActionPerformed(ActionEvent e){
         FrmListaDetalleVenta frm = new FrmListaDetalleVenta();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
-    }*/
+    }
     public void mniNuevoKardexActionPerformed(ActionEvent e){
         FrmNuevoKardex frm = new FrmNuevoKardex();
         dkpEscritorio.add(frm);

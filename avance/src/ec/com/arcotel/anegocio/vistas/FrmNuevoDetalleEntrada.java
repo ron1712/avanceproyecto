@@ -35,8 +35,8 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
     JLabel Titulo;
     JLabel Entrada;
     JLabel Producto;
-    JLabel Valorcompra;
-    JTextField txtValorcompra;
+    JLabel Preciocompra;
+    JTextField txtPreciocompra;
 
     
     JButton btnLimpiar;
@@ -58,14 +58,14 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
         pnlA.setLayout(new GridLayout(12, 2, 5, 5));
         pnlB.setLayout(new GridLayout(1, 2, 5, 5));
         
-        Titulo = new JLabel("DATOS DE LA DETALE ENTRADA");
+        Titulo = new JLabel("DATOS DE LA DETALLE ENTRADA");
         
         Entrada = new JLabel("ENTRADA");
         Producto = new JLabel("PRODUCTO");
-        Valorcompra = new JLabel("VALOR COMPRA");
+        Preciocompra = new JLabel("PRECIO COMPRA");
         
         
-        txtValorcompra = new JTextField();
+        txtPreciocompra = new JTextField();
         cargarProducto();
         cmbProducto = new JComboBox(lstProducto.toArray());
         cargarEntrada();
@@ -79,8 +79,8 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
         pnlA.add(cmbEntrada);
         pnlA.add(Producto);
         pnlA.add(cmbProducto);
-        pnlA.add(Valorcompra);
-        pnlA.add(txtValorcompra);
+        pnlA.add(Preciocompra);
+        pnlA.add(txtPreciocompra);
         pnlB.add(btnAceptar);
         pnlB.add(btnLimpiar);
         
@@ -106,8 +106,8 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
     
        public static void main(String[] args) {
 
-        FrmNuevoDetalleEntrada frmcompra = new FrmNuevoDetalleEntrada();
-        frmcompra.setVisible(true);
+        FrmNuevoDetalleEntrada frm = new FrmNuevoDetalleEntrada();
+        frm.setVisible(true);
 
     }         
      public void btnAceptarActionListener(ActionEvent e) {                  
@@ -115,7 +115,7 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
              DetalleEntrada detalleentrada = new DetalleEntrada();
              detalleentrada.setEntrada((Entrada) cmbEntrada.getSelectedItem());
              detalleentrada.setProducto((Producto) cmbProducto.getSelectedItem());
-             detalleentrada.setPreciocompra(Integer.parseInt(txtValorcompra.getText()));
+             detalleentrada.setPreciocompra(Integer.parseInt(txtPreciocompra.getText()));
             try{                  
                   if (detalleentradaDao.insertar(detalleentrada) > 0) {
 
@@ -128,13 +128,10 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
      }
          
 
-    private void cargarProducto() {
-        
+    private void cargarProducto() {        
         IProducto productoDao = new ProductoImpl();
-        try{
-            
-            lstProducto = productoDao.obtener();
-            
+        try{            
+            lstProducto = productoDao.obtener();            
         }catch(Exception ex){
              JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LOS PRODUCTOS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
         }

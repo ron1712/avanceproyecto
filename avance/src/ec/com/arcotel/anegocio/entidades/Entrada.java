@@ -61,7 +61,7 @@ public class Entrada {
 
     @Override
     public String toString() {
-        return descripcion;
+        return codigo;
     }
     
 }

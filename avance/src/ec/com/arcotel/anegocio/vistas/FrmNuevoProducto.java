@@ -16,7 +16,7 @@ public class FrmNuevoProducto extends JInternalFrame{
     JLabel lblCodigo;
     JLabel lblNombre;
     JLabel lblCantidad;
-    JLabel lblValorunitario;
+    JLabel lblPreciounitario;
     JLabel lblDescripcion;
     
     JLabel lblTitulo0;
@@ -24,7 +24,7 @@ public class FrmNuevoProducto extends JInternalFrame{
     JTextField txtCodigo;
     JTextField txtNombre;
     JTextField txtCantidad;
-    JTextField txtValorunitario;
+    JTextField txtPreciounitario;
     JTextField txtDescripcion;     
 
    
@@ -48,7 +48,7 @@ public class FrmNuevoProducto extends JInternalFrame{
         lblCodigo= new JLabel("Código:");
         lblNombre= new JLabel("Nombres:");
         lblCantidad= new JLabel("Cantidad:");
-        lblValorunitario= new JLabel("Valor unitario:");
+        lblPreciounitario= new JLabel("Precio unitario:");
         lblDescripcion= new JLabel("Descripcion:");
        
         
@@ -56,7 +56,7 @@ public class FrmNuevoProducto extends JInternalFrame{
         txtCodigo = new JTextField(2);
         txtNombre= new JTextField(2);
         txtCantidad= new JTextField(2);
-        txtValorunitario= new JTextField(2);
+        txtPreciounitario= new JTextField(2);
         txtDescripcion= new JTextField(2);        
        
        
@@ -69,8 +69,8 @@ public class FrmNuevoProducto extends JInternalFrame{
         pnlCentral.add(txtNombre);
         pnlCentral.add(lblCantidad);
         pnlCentral.add(txtCantidad);
-        pnlCentral.add(lblValorunitario);
-        pnlCentral.add(txtValorunitario);
+        pnlCentral.add(lblPreciounitario);
+        pnlCentral.add(txtPreciounitario);
         pnlCentral.add(lblDescripcion);
         pnlCentral.add(txtDescripcion);
         
@@ -106,7 +106,7 @@ public class FrmNuevoProducto extends JInternalFrame{
         producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
         producto.setNombre(txtNombre.getText());
         producto.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        producto.setPreciounitario(Integer.parseInt(txtValorunitario.getText()));
+        producto.setPreciounitario(Integer.parseInt(txtPreciounitario.getText()));
         producto.setDescripcion(txtDescripcion.getText());
         
          try{

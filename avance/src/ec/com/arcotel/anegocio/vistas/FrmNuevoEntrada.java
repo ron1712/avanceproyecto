@@ -18,14 +18,14 @@ public class FrmNuevoEntrada extends JInternalFrame{
     JLabel lblCodigo;
     JLabel lblProveedor;
     JLabel lblFecha;
-    JLabel lblValortotal;
-    JLabel lblDetalle;
+    JLabel lblPreciototal;
+    JLabel lblDescripcion;
     JLabel lblTitulo0;
     
     JTextField txtCodigo;
     JTextField txtFecha;
-    JTextField txtValortotal;
-    JTextField txtDetalle;
+    JTextField txtPreciototal;
+    JTextField txtDescripcion;
  
     JButton btnLimpiar;
     JButton btnAceptar;
@@ -45,15 +45,15 @@ public class FrmNuevoEntrada extends JInternalFrame{
         lblCodigo= new JLabel("Código:");
         lblProveedor= new JLabel("Proveedor:");
         lblFecha= new JLabel("Fecha:");
-        lblValortotal= new JLabel("Valor total:");
-        lblDetalle= new JLabel("Detalle:");
+        lblPreciototal= new JLabel("Precio total:");
+        lblDescripcion= new JLabel("Descripcion:");
         
         txtCodigo = new JTextField(2);        
         cargarProveedores();
         cmbProveedor= new JComboBox(lstProveedor.toArray());
         txtFecha= new JTextField(2);
-        txtValortotal= new JTextField(2);                
-        txtDetalle = new JTextField(2);
+        txtPreciototal= new JTextField(2);                
+        txtDescripcion = new JTextField(2);
         
         btnAceptar= new JButton("Aceptar");
         btnLimpiar= new JButton("Limpiar");
@@ -64,10 +64,10 @@ public class FrmNuevoEntrada extends JInternalFrame{
         pnlCentral.add(cmbProveedor);
         pnlCentral.add(lblFecha);
         pnlCentral.add(txtFecha);
-        pnlCentral.add(lblValortotal);
-        pnlCentral.add(txtValortotal);       
-        pnlCentral.add(lblDetalle);
-        pnlCentral.add(txtDetalle);       
+        pnlCentral.add(lblPreciototal);
+        pnlCentral.add(txtPreciototal);       
+        pnlCentral.add(lblDescripcion);
+        pnlCentral.add(txtDescripcion);       
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,8 +109,8 @@ public class FrmNuevoEntrada extends JInternalFrame{
             JOptionPane.showMessageDialog(this,"Error en la fecha!!",
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
         }
-        entrada.setPreciototal(Double.parseDouble(txtValortotal.getText()));      
-        entrada.setDescripcion(txtDetalle.getText());
+        entrada.setPreciototal(Double.parseDouble(txtPreciototal.getText()));      
+        entrada.setDescripcion(txtDescripcion.getText());
         
         try {
             if(entradaDao.insertar(entrada)>0){

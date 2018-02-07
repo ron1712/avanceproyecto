@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.com.arcotel.anegocio.vistas;
 
-import ec.com.arcotel.anegocio.dao.IDetalleSalida;
-import ec.com.arcotel.anegocio.entidades.DetalleSalida;
-import ec.com.arcotel.anegocio.impl.DetalleSalidaImpl;
+import ec.com.arcotel.anegocio.dao.*;
+import ec.com.arcotel.anegocio.entidades.*;
+import ec.com.arcotel.anegocio.impl.*;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,50 +13,40 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author SYSTEMarket-pc
- */
 public class FrmListaDetalleSalida extends JInternalFrame{
-
     JLabel lblTitulo;
     JTable tabla;
     DefaultTableModel modelo;
     JScrollPane jscTabla;
-    
-    public FrmListaDetalleSalida() {
-      this.setSize(800,600);
+    public FrmListaDetalleSalida(){
+        this.setSize(600, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
-        lblTitulo=new JLabel("Listado de DetalleSalidas");
-        tabla=new JTable();
-        jscTabla=new JScrollPane(tabla);
-        
+        lblTitulo = new JLabel("Listado DetalleDetalleSalidas");
+        tabla= new JTable();
+        jscTabla = new JScrollPane(tabla);
         this.add(lblTitulo, BorderLayout.NORTH);
         this.add(jscTabla, BorderLayout.CENTER);
-        cargarTabla();  
+        cargarTabla();        
     }
-    public void cargarTabla(){
-        modelo=new DefaultTableModel();
-        modelo.addColumn("Salida");
-//      
-        modelo.addColumn("Salida");
+        public void cargarTabla(){
+        modelo= new DefaultTableModel();
+        modelo.addColumn("DetalleSalida");       
         modelo.addColumn("Producto");
-        modelo.addColumn("Cantidad");
-        
-        List<DetalleSalida> lista =new ArrayList<>();
-        try {
-            IDetalleSalida tiendaDao = new DetalleSalidaImpl();
-            lista=tiendaDao.obtener();
+        modelo.addColumn("Cantidad");        
+        List<DetalleSalida> lista = new ArrayList<>();
+        try{
+            IDetalleSalida detallesalidaDao = new DetalleSalidaImpl();
+            lista = detallesalidaDao.obtener();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(),"Error",
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        for(DetalleSalida c : lista){
-        modelo.addRow(new Object[]{ c.getSalida().getCodigo(),
-        c.getProducto().getCodigo(),c.getCantidad()});
+        for(DetalleSalida est : lista){
+            modelo.addRow(new Object[]{ est.getSalida().getCodigo(),est.getProducto().getCodigo(), 
+                est.getCantidad()});
         }
         tabla.setModel(modelo);
     }
-    
+       
 }

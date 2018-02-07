@@ -1,4 +1,5 @@
 package ec.com.arcotel.anegocio.vistas;
+
 import ec.com.arcotel.anegocio.dao.*;
 import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.*;
@@ -30,10 +31,11 @@ public class FrmListaSalida extends JInternalFrame{
     }
         public void cargarTabla(){
         modelo= new DefaultTableModel();
-        modelo.addColumn("Codigo");        
+        modelo.addColumn("Codigo");       
         modelo.addColumn("Fecha");
-        modelo.addColumn("Valor compra");        
-        modelo.addColumn("Detalle");
+        modelo.addColumn("Precio compra");
+        modelo.addColumn("Descripcion");
+        
         List<Salida> lista = new ArrayList<>();
         try{
             ISalida salidaDao = new SalidaImpl();
@@ -43,8 +45,8 @@ public class FrmListaSalida extends JInternalFrame{
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Salida est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha(),
-                est.getPreciocompra(),est.getDetalle()});
+            modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha().toString(), 
+                est.getPreciocompra(), est.getDescripcion()});
         }
         tabla.setModel(modelo);
     }

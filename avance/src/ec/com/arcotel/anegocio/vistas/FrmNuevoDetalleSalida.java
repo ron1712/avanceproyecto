@@ -24,8 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FrmNuevoDetalleSalida extends JInternalFrame{
-     List <Salida> lstSalida; 
-    
+     List <Salida> lstSalida;     
     List<Producto> lstProducto;
     
     JComboBox<Salida> cmbSalida;
@@ -61,7 +60,7 @@ public class FrmNuevoDetalleSalida extends JInternalFrame{
         
         Salida = new JLabel("SALIDA");
         Producto = new JLabel("PRODUCTO");
-        Cantidad = new JLabel("VALOR COMPRA");
+        Cantidad = new JLabel("CANTIDAD");
         
         
         txtCantidad = new JTextField();
@@ -153,7 +152,7 @@ public class FrmNuevoDetalleSalida extends JInternalFrame{
             lstSalida = personaDao.obtener();
             
         }catch(Exception ex){
-             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS PERSONAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS SALIDAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
         }
     
     }

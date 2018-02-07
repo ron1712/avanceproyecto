@@ -5,16 +5,16 @@ public class Salida {
    private String codigo;
    private Date fecha;
    private double preciocompra;
-   private String detalle;
+   private String descripcion;
 
     public Salida() {
     }
     
-    public Salida(String codigo, Date fecha, double preciocompra, String detalle) {
+    public Salida(String codigo, Date fecha, double preciocompra, String descripcion) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.preciocompra = preciocompra;
-        this.detalle = detalle;
+        this.descripcion = descripcion;
     } 
 
     public String getCodigo() {
@@ -41,17 +41,17 @@ public class Salida {
         this.preciocompra = preciocompra;
     }
 
-    public String getDetalle() {
-        return detalle;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
     public String toString() {
-        return detalle;
+        return codigo;
     }
     
 }

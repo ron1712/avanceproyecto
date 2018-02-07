@@ -39,8 +39,8 @@ public class EntradaImpl implements IEntrada{
     public int modificar(Entrada entrada) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE entrada"
-                + "   SET codigo=?, codProveedor=?, fecha=?, valortotal=?"
-                + " detalle=? where codigo=?";
+                + "   SET codigo=?, codProveedor=?, fecha=?, preciototal=?"
+                + " descripcion=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, entrada.getCodigo()));
         lstPar.add(new Parametro(2, entrada.getProveedor().getCodigo()));
@@ -86,7 +86,7 @@ public class EntradaImpl implements IEntrada{
     @Override
     public Entrada obtener(int codigo) throws Exception {
         Entrada entrada = null;
-        String sql = "SELECT codigo, codProveedor, fecha,valortotal, detalle FROM entrada where codigo=?;";
+        String sql = "SELECT codigo, codProveedor, fecha,preciototal, descripcion FROM entrada where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -116,7 +116,7 @@ public class EntradaImpl implements IEntrada{
     @Override
     public List<Entrada> obtener() throws Exception {
         List<Entrada> lista = new ArrayList<>();
-         String sql = "SELECT codigo, codProveedor, fecha, valortotal, detalle FROM entrada ";        
+         String sql = "SELECT codigo, codProveedor, fecha, preciototal, descripcion FROM entrada ";        
         Conexion con = null;
         try {
             con = new Conexion();

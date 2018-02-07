@@ -13,7 +13,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
     @Override
     public int insertar(DetalleEntrada detalleentrada) throws Exception {
         int Filas = 0;
-        String csql = "Insert into DetalleEntrada (codEntrada, codProducto, valorcompra) Values (?,?,?)";
+        String csql = "Insert into DetalleEntrada (codEntrada, codProducto, preciocompra) Values (?,?,?)";
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, detalleentrada.getEntrada().getCodigo()));
         lstP.add(new Parametro(2, detalleentrada.getProducto().getCodigo()));
@@ -41,7 +41,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao = new EntradaImpl();
         Producto producto=null;
         IProducto producDao=new ProductoImpl();
-        String csql = "Select codigo, codigo, valorcompra From DetalleEntrada Where codigo=?";
+        String csql = "Select codEntrada, codProducto, preciocompra From DetalleEntrada Where codigo=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigoDetalleEntrada));
         Conexion con = null;
@@ -76,7 +76,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         IEntrada entradaDao=new EntradaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codigo, codigo, valorcompra from DetalleEntrada";
+        String csql="select codEntrada, codProducto, preciocompra from DetalleEntrada";
         Conexion con=null;
         try {
             con=new Conexion();

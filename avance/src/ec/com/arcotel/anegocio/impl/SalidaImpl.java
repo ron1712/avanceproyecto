@@ -17,7 +17,7 @@ public class SalidaImpl implements ISalida{
         lstPar.add(new Parametro(1, salida.getCodigo()));
         lstPar.add(new Parametro(2, salida.getFecha()));
         lstPar.add(new Parametro(3, salida.getPreciocompra()));        
-        lstPar.add(new Parametro(4, salida.getDetalle())); 
+        lstPar.add(new Parametro(4, salida.getDescripcion())); 
         Conexion con = null;
         try {
             con = new Conexion();
@@ -37,12 +37,12 @@ public class SalidaImpl implements ISalida{
     public int modificar(Salida salida) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE salida"
-                + "   SET codigo=?,fecha=?, valorcompra=?, detalle=? where codigo=?";
+                + "   SET codigo=?,fecha=?, preciocompra=?, descripcion=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();        
         lstPar.add(new Parametro(1, salida.getCodigo()));
         lstPar.add(new Parametro(2, salida.getFecha()));
         lstPar.add(new Parametro(3, salida.getPreciocompra())); 
-        lstPar.add(new Parametro(4, salida.getDetalle())); 
+        lstPar.add(new Parametro(4, salida.getDescripcion())); 
         Conexion con = null;
         try {
             con = new Conexion();
@@ -82,7 +82,7 @@ public class SalidaImpl implements ISalida{
     @Override
     public Salida obtener(int codigo) throws Exception {
         Salida salida = null;
-        String sql = "SELECT codigo, fecha, valorcompra, detalle FROM salida where codigo=?;";
+        String sql = "SELECT codigo, fecha, preciocompra, descripcion FROM salida where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -95,7 +95,7 @@ public class SalidaImpl implements ISalida{
                 salida.setCodigo(rst.getString(1));   
                 salida.setFecha(rst.getDate(2));
                 salida.setPreciocompra(rst.getDouble(3));                             
-                salida.setDetalle(rst.getString(4));
+                salida.setDescripcion(rst.getString(4));
             }
         } catch (Exception e) {
             throw e;
@@ -109,7 +109,7 @@ public class SalidaImpl implements ISalida{
     @Override
     public List<Salida> obtener() throws Exception {
         List<Salida> lista = new ArrayList<>();
-         String sql = "SELECT codigo,fecha, valorcompra, detalle FROM salida ";        
+         String sql = "SELECT codigo,fecha, preciocompra, descripcion FROM salida ";        
         Conexion con = null;
         try {
             con = new Conexion();
@@ -121,7 +121,7 @@ public class SalidaImpl implements ISalida{
                 salida.setCodigo(rst.getString(1));   
                 salida.setFecha(rst.getDate(2));
                 salida.setPreciocompra(rst.getDouble(3));  
-                salida.setDetalle(rst.getString(4));
+                salida.setDescripcion(rst.getString(4));
                 lista.add(salida);
             }
         } catch (Exception e) {
