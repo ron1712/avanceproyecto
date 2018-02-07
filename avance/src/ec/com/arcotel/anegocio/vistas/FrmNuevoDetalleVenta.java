@@ -161,7 +161,6 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
              JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LOS PRODUCTOS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     private void cargarVentas() {       
         IVentas ventasDao = new VentaImpl();
         try{            

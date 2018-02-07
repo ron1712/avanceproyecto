@@ -54,3 +54,4 @@ public class FrmListaDetalleVenta extends JInternalFrame{
     }
        
 }
+
