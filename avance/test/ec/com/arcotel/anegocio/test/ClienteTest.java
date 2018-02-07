@@ -10,53 +10,39 @@ import java.util.*;
 
 public class ClienteTest {
 
-    public ClienteTest() {
-    }
-
+    public ClienteTest() {}  
+    
     @Test
-    public void pruebageneral() {
-        int filasAfectadas = 0;
+    public void prueba(){
+     //              INSERTAR
+        int filasAfectadas =0;
         ICliente clienteDao = new ClienteImpl();
-        Cliente cliente = new Cliente(
-                10007, "Juan", "Pérez", "060272477-5","las palmas", "0984912356",
-                "flaviotswl@gmail.com");
-        try {
+        Cliente cliente = new Cliente(2,"Angel","Ramos","0650256050","0998679028","Riobamba","angelrc1998@hotmail.com");
+        try{
             filasAfectadas = clienteDao.insertar(cliente);
-        } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
+            System.out.println("Cliente ingresado!!!");
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
         }
-        assertEquals((filasAfectadas > 0), true);
-
-        cliente = null;
-        try {
-            cliente = clienteDao.obtener(10003);
-        } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-        assertTrue(cliente != null);
-
-        try {
-            cliente.setNombre("Prueba");
-            filasAfectadas= clienteDao.modificar(cliente);
-        } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-         assertEquals((filasAfectadas > 0), true);
-         
-         List<Cliente> lista = new ArrayList<>();
+        assertEquals(filasAfectadas>0, true);
+        //              LISTADO DE PEdido
+        List<Cliente> lista = new ArrayList<>();
         try {
             lista = clienteDao.obtener();
+            for (Cliente es:lista){
+                System.out.println("\nDatos cliente");
+                System.out.println("Codigo :"+es.getCodigo());
+                System.out.println("Nombre :"+es.getNombre());
+                System.out.println("Apellido :"+es.getApellido());                
+                System.out.println("Cedula :"+es.getCedula());                
+                System.out.println("Direccion :"+es.getDireccion());
+                System.out.println("Telefono :"+es.getTelefono());
+                System.out.println("Email :"+es.getEmail());                
+            }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
         assertTrue(lista.size()>0);
-
-        try {            
-            filasAfectadas= clienteDao.eliminar(cliente);
-        } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-         assertEquals((filasAfectadas > 0), true);
     }
-
+    
 }

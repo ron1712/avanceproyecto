@@ -386,9 +386,11 @@ public class FrmMenuPrincipal extends JFrame {
         this.add(mnbPrincipal, BorderLayout.NORTH);
         this.add(dkpEscritorio, BorderLayout.CENTER);
         this.setExtendedState(MAXIMIZED_BOTH); //Para maximizar
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Para terminar el programa
-    //    JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo) 
-   //  SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenSkin"); // Setencia que aplica el skin Creme de Substance
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        JFrame.setDefaultLookAndFeelDecorated(true); 
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.NebulaSkin"); 
+        SubstanceLookAndFeel.setCurrentTheme( "org.jvnet.substance.theme.SubstanceSaturatedTheme");
+        SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
     }    
     public void mniNuevoClienteActionPerformed(ActionEvent e){
         FrmNuevoCliente frm = new FrmNuevoCliente();
