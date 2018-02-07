@@ -3,23 +3,23 @@ package ec.com.arcotel.anegocio.entidades;
 public class DetalleEntrada {
     private Entrada entrada;
     private Producto producto;
-    private int valorcompra;
+    private int preciocompra;
 
     public DetalleEntrada() {
     }
 
-    public DetalleEntrada(Entrada entrada, Producto producto, int valorcompra) {
+    public DetalleEntrada(Entrada entrada, Producto producto, int preciocompra) {
         this.entrada = entrada;
         this.producto = producto;
-        this.valorcompra = valorcompra;
+        this.preciocompra = preciocompra;
     }
 
-    public int getValorcompra() {
-        return valorcompra;
+    public int getPreciocompra() {
+        return preciocompra;
     }
 
-    public void setValorcompra(int valorcompra) {
-        this.valorcompra = valorcompra;
+    public void setPreciocompra(int preciocompra) {
+        this.preciocompra = preciocompra;
     }
 
     public Entrada getEntrada() {

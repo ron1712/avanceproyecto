@@ -100,7 +100,7 @@ public class FrmNuevoEntrada extends JInternalFrame{
     public void btnAceptarActionListener(ActionEvent e){
         IEntrada entradaDao = new EntradaImpl();
         Entrada entrada = new Entrada();
-        entrada.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        entrada.setCodigo(txtCodigo.getText());
         entrada.setProveedor((Proveedor) cmbProveedor.getSelectedItem());
         DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {                        
@@ -109,8 +109,8 @@ public class FrmNuevoEntrada extends JInternalFrame{
             JOptionPane.showMessageDialog(this,"Error en la fecha!!",
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
         }
-        entrada.setValortotal(Double.parseDouble(txtValortotal.getText()));      
-        entrada.setDetalle(txtDetalle.getText());
+        entrada.setPreciototal(Double.parseDouble(txtValortotal.getText()));      
+        entrada.setDescripcion(txtDetalle.getText());
         
         try {
             if(entradaDao.insertar(entrada)>0){

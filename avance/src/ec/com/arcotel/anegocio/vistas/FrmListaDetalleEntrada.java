@@ -59,7 +59,7 @@ public class FrmListaDetalleEntrada extends JInternalFrame{
         }
         for(DetalleEntrada c : lista){
         modelo.addRow(new Object[]{ c.getEntrada().getCodigo(),
-        c.getProducto().getCodigo(),c.getValorcompra()});
+        c.getProducto().getCodigo(),c.getPreciocompra()});
         }
         tabla.setModel(modelo);
     }

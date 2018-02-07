@@ -2,26 +2,26 @@ package ec.com.arcotel.anegocio.entidades;
 import java.util.*;
 
 public class Salida {
-   private int codigo;
+   private String codigo;
    private Date fecha;
-   private double valorcompra;
+   private double preciocompra;
    private String detalle;
 
     public Salida() {
     }
     
-    public Salida(int codigo, Date fecha, double valorcompra, String detalle) {
+    public Salida(String codigo, Date fecha, double preciocompra, String detalle) {
         this.codigo = codigo;
         this.fecha = fecha;
-        this.valorcompra = valorcompra;
+        this.preciocompra = preciocompra;
         this.detalle = detalle;
     } 
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -33,12 +33,12 @@ public class Salida {
         this.fecha = fecha;
     }
 
-    public double getValorcompra() {
-        return valorcompra;
+    public double getPreciocompra() {
+        return preciocompra;
     }
 
-    public void setValorcompra(double valorcompra) {
-        this.valorcompra = valorcompra;
+    public void setPreciocompra(double preciocompra) {
+        this.preciocompra = preciocompra;
     }
 
     public String getDetalle() {

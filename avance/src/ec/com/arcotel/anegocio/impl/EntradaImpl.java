@@ -17,8 +17,8 @@ public class EntradaImpl implements IEntrada{
         lstPar.add(new Parametro(1, entrada.getCodigo()));
         lstPar.add(new Parametro(2, entrada.getProveedor().getCodigo()));
         lstPar.add(new Parametro(3, entrada.getFecha()));
-        lstPar.add(new Parametro(4, entrada.getValortotal()));
-        lstPar.add(new Parametro(5, entrada.getDetalle()));
+        lstPar.add(new Parametro(4, entrada.getPreciototal()));
+        lstPar.add(new Parametro(5, entrada.getDescripcion()));
         
         Conexion con = null;
         try {
@@ -45,8 +45,8 @@ public class EntradaImpl implements IEntrada{
         lstPar.add(new Parametro(1, entrada.getCodigo()));
         lstPar.add(new Parametro(2, entrada.getProveedor().getCodigo()));
         lstPar.add(new Parametro(3, entrada.getFecha()));
-        lstPar.add(new Parametro(4, entrada.getValortotal()));
-        lstPar.add(new Parametro(5, entrada.getDetalle()));
+        lstPar.add(new Parametro(4, entrada.getPreciototal()));
+        lstPar.add(new Parametro(5, entrada.getDescripcion()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -96,13 +96,13 @@ public class EntradaImpl implements IEntrada{
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 entrada = new Entrada();
-                entrada.setCodigo(rst.getInt(1));
+                entrada.setCodigo(rst.getString(1));
                 IProveedor proveedordao = new ProveedorImpl();
                 Proveedor proveedor = proveedordao.obtener(rst.getInt(2));
                 entrada.setProveedor(proveedor);
                 entrada.setFecha(rst.getDate(3));
-                entrada.setValortotal(rst.getDouble(4));              
-                entrada.setDetalle(rst.getString(5)); 
+                entrada.setPreciototal(rst.getDouble(4));              
+                entrada.setDescripcion(rst.getString(5)); 
             }
         } catch (Exception e) {
             throw e;
@@ -125,13 +125,13 @@ public class EntradaImpl implements IEntrada{
             Entrada entrada=null;
             while (rst.next()) {
                 entrada = new Entrada();
-                entrada.setCodigo(rst.getInt(1));
+                entrada.setCodigo(rst.getString(1));
                 IProveedor proveedordao = new ProveedorImpl();
                 Proveedor proveedor = proveedordao.obtener(rst.getInt(2));
                 entrada.setProveedor(proveedor);
                 entrada.setFecha(rst.getDate(3));
-                entrada.setValortotal(rst.getDouble(4));        
-                entrada.setDetalle(rst.getString(5)); 
+                entrada.setPreciototal(rst.getDouble(4));        
+                entrada.setDescripcion(rst.getString(5)); 
                 lista.add(entrada);
             }
         } catch (Exception e) {

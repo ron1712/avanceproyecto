@@ -145,7 +145,7 @@ public class FrmNuevoKardex extends JInternalFrame{
     public void btnAceptarActionListener(ActionEvent e){
         IKardex kardexDao = new KardexImpl();
         Kardex kardex = new Kardex();
-        kardex.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        kardex.setCodigo(txtCodigo.getText());
         kardex.setProducto((Producto) cmbProducto.getSelectedItem());
         kardex.setEntrada((Entrada) cmbEntrada.getSelectedItem());
         kardex.setSalida((Salida) cmbSalida.getSelectedItem());

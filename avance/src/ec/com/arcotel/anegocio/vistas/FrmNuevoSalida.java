@@ -90,7 +90,7 @@ public class FrmNuevoSalida extends JInternalFrame{
     public void btnAceptarActionListener(ActionEvent e){
         ISalida salidaDao = new SalidaImpl();
         Salida salida = new Salida();
-        salida.setCodigo(Integer.parseInt(txtCodigo.getText()));       
+        salida.setCodigo(txtCodigo.getText());       
         DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {                        
             salida.setFecha( formatoFecha.parse(txtFecha.getText()));            
@@ -98,7 +98,7 @@ public class FrmNuevoSalida extends JInternalFrame{
             JOptionPane.showMessageDialog(this,"Error en la fecha!!",
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
         }
-        salida.setValorcompra(Double.parseDouble(txtValorcompra.getText()));  
+        salida.setPreciocompra(Double.parseDouble(txtValorcompra.getText()));  
         salida.setDetalle(txtDetalle.getText());
         try {
             if(salidaDao.insertar(salida)>0){

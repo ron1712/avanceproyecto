@@ -17,7 +17,7 @@ public class ProductoImpl implements IProducto{
         lstPar.add(new Parametro(1, producto.getCodigo()));
         lstPar.add(new Parametro(2, producto.getNombre()));
         lstPar.add(new Parametro(3, producto.getCantidad()));
-        lstPar.add(new Parametro(4, producto.getValorunitario()));        
+        lstPar.add(new Parametro(4, producto.getPreciounitario()));        
         lstPar.add(new Parametro(5, producto.getDescripcion()));
       
         Conexion con = null;
@@ -45,7 +45,7 @@ public class ProductoImpl implements IProducto{
         lstPar.add(new Parametro(1, producto.getCodigo()));
         lstPar.add(new Parametro(2, producto.getNombre()));
         lstPar.add(new Parametro(3, producto.getCantidad()));
-        lstPar.add(new Parametro(4, producto.getValorunitario()));        
+        lstPar.add(new Parametro(4, producto.getPreciounitario()));        
         lstPar.add(new Parametro(5, producto.getDescripcion()));
         lstPar.add(new Parametro(6, producto.getCodigo()));
         
@@ -102,7 +102,7 @@ public class ProductoImpl implements IProducto{
                 producto.setCodigo(rst.getInt(1));
                 producto.setNombre(rst.getString(2));
                 producto.setCantidad(rst.getInt(3)); 
-                producto.setValorunitario(rst.getDouble(4));
+                producto.setPreciounitario(rst.getDouble(4));
                 producto.setDescripcion(rst.getString(5));              
                
             }
@@ -130,7 +130,7 @@ public class ProductoImpl implements IProducto{
                 producto.setCodigo(rst.getInt(1));
                 producto.setNombre(rst.getString(2));
                 producto.setCantidad(rst.getInt(3)); 
-                producto.setValorunitario(rst.getDouble(4));
+                producto.setPreciounitario(rst.getDouble(4));
                 producto.setDescripcion(rst.getString(5));                             
                 lista.add(producto);
             }

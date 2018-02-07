@@ -16,7 +16,7 @@ public class SalidaImpl implements ISalida{
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, salida.getCodigo()));
         lstPar.add(new Parametro(2, salida.getFecha()));
-        lstPar.add(new Parametro(3, salida.getValorcompra()));        
+        lstPar.add(new Parametro(3, salida.getPreciocompra()));        
         lstPar.add(new Parametro(4, salida.getDetalle())); 
         Conexion con = null;
         try {
@@ -41,7 +41,7 @@ public class SalidaImpl implements ISalida{
         List<Parametro> lstPar = new ArrayList<>();        
         lstPar.add(new Parametro(1, salida.getCodigo()));
         lstPar.add(new Parametro(2, salida.getFecha()));
-        lstPar.add(new Parametro(3, salida.getValorcompra())); 
+        lstPar.add(new Parametro(3, salida.getPreciocompra())); 
         lstPar.add(new Parametro(4, salida.getDetalle())); 
         Conexion con = null;
         try {
@@ -92,9 +92,9 @@ public class SalidaImpl implements ISalida{
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 salida = new Salida();
-                salida.setCodigo(rst.getInt(1));   
+                salida.setCodigo(rst.getString(1));   
                 salida.setFecha(rst.getDate(2));
-                salida.setValorcompra(rst.getDouble(3));                             
+                salida.setPreciocompra(rst.getDouble(3));                             
                 salida.setDetalle(rst.getString(4));
             }
         } catch (Exception e) {
@@ -118,9 +118,9 @@ public class SalidaImpl implements ISalida{
             Salida salida=null;
             while (rst.next()) {
                 salida = new Salida();
-                salida.setCodigo(rst.getInt(1));   
+                salida.setCodigo(rst.getString(1));   
                 salida.setFecha(rst.getDate(2));
-                salida.setValorcompra(rst.getDouble(3));  
+                salida.setPreciocompra(rst.getDouble(3));  
                 salida.setDetalle(rst.getString(4));
                 lista.add(salida);
             }

@@ -106,7 +106,7 @@ public class KardexImpl implements IKardex{
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 kardex = new Kardex();
-                kardex.setCodigo(rst.getInt(1));
+                kardex.setCodigo(rst.getString(1));
                 IProducto productodao = new ProductoImpl();
                 Producto producto = productodao.obtener(rst.getInt(2));
                 kardex.setProducto(producto);
@@ -145,7 +145,7 @@ public class KardexImpl implements IKardex{
             Kardex kardex=null;
             while (rst.next()) {
                 kardex = new Kardex();
-                kardex.setCodigo(rst.getInt(1));
+                kardex.setCodigo(rst.getString(1));
                 IProducto productodao = new ProductoImpl();
                 Producto producto = productodao.obtener(rst.getInt(2));
                 kardex.setProducto(producto);

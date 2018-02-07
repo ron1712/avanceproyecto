@@ -4,17 +4,17 @@ public class Producto {
     private int codigo;
     private String nombre;
     private int cantidad;
-    private double valorunitario;
+    private double preciounitario;
     private String descripcion;
 
     public Producto() {
     }
 
-    public Producto(int codigo, String nombre, int cantidad, double valorunitario, String descripcion) {
+    public Producto(int codigo, String nombre, int cantidad, double preciounitario, String descripcion) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.cantidad = cantidad;
-        this.valorunitario = valorunitario;
+        this.preciounitario = preciounitario;
         this.descripcion = descripcion;
     }
 
@@ -50,12 +50,12 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public double getValorunitario() {
-        return valorunitario;
+    public double getPreciounitario() {
+        return preciounitario;
     }
 
-    public void setValorunitario(double valorunitario) {
-        this.valorunitario = valorunitario;
+    public void setPreciounitario(double preciounitario) {
+        this.preciounitario = preciounitario;
     }
     @Override
     public String toString() {

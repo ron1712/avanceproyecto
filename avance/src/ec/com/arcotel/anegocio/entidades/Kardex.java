@@ -1,7 +1,7 @@
 package ec.com.arcotel.anegocio.entidades;
 
 public class Kardex {
-   private int codigo;
+   private String codigo;
    private Producto producto;
    private Entrada entrada;
    private Salida salida;
@@ -14,7 +14,7 @@ public class Kardex {
     public Kardex() {
     }
 
-    public Kardex(int codigo, Producto producto, Entrada entrada, Salida salida, int cantidad, double preciocompra, double precioventa, int cantidadinicial, int cantidadactual) {
+    public Kardex(String codigo, Producto producto, Entrada entrada, Salida salida, int cantidad, double preciocompra, double precioventa, int cantidadinicial, int cantidadactual) {
         this.codigo = codigo;
         this.producto = producto;
         this.entrada = entrada;
@@ -34,11 +34,11 @@ public class Kardex {
         this.cantidadactual = cantidadactual;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

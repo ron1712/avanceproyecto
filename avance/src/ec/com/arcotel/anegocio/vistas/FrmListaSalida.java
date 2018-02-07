@@ -44,7 +44,7 @@ public class FrmListaSalida extends JInternalFrame{
         }
         for(Salida est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha(),
-                est.getValorcompra(),est.getDetalle()});
+                est.getPreciocompra(),est.getDetalle()});
         }
         tabla.setModel(modelo);
     }

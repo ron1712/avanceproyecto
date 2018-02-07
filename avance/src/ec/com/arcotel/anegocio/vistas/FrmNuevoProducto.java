@@ -106,7 +106,7 @@ public class FrmNuevoProducto extends JInternalFrame{
         producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
         producto.setNombre(txtNombre.getText());
         producto.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        producto.setValorunitario(Integer.parseInt(txtValorunitario.getText()));
+        producto.setPreciounitario(Integer.parseInt(txtValorunitario.getText()));
         producto.setDescripcion(txtDescripcion.getText());
         
          try{

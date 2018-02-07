@@ -2,36 +2,36 @@ package ec.com.arcotel.anegocio.entidades;
 import java.util.*;
 
 public class Entrada {
-    private int codigo;
+    private String codigo;
     private Proveedor proveedor;
     private Date fecha;
-    private double valortotal;
-    private String detalle;
+    private double preciototal;
+    private String descripcion;
 
     public Entrada() {
     }
 
-    public Entrada(int codigo, Proveedor proveedor, Date fecha, double valortotal, String detalle) {
+    public Entrada(String codigo, Proveedor proveedor, Date fecha, double preciototal, String descripcion) {
         this.codigo = codigo;
         this.proveedor = proveedor;
         this.fecha = fecha;
-        this.valortotal = valortotal;
-        this.detalle = detalle;
+        this.preciototal = preciototal;
+        this.descripcion = descripcion;
     }
 
-    public String getDetalle() {
-        return detalle;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -51,17 +51,17 @@ public class Entrada {
         this.fecha = fecha;
     }
 
-    public double getValortotal() {
-        return valortotal;
+    public double getPreciototal() {
+        return preciototal;
     }
 
-    public void setValortotal(double valortotal) {
-        this.valortotal = valortotal;
+    public void setPreciototal(double preciototal) {
+        this.preciototal = preciototal;
     }
 
     @Override
     public String toString() {
-        return detalle;
+        return descripcion;
     }
     
 }

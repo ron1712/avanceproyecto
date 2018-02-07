@@ -115,7 +115,7 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
              DetalleEntrada detalleentrada = new DetalleEntrada();
              detalleentrada.setEntrada((Entrada) cmbEntrada.getSelectedItem());
              detalleentrada.setProducto((Producto) cmbProducto.getSelectedItem());
-             detalleentrada.setValorcompra(Integer.parseInt(txtValorcompra.getText()));
+             detalleentrada.setPreciocompra(Integer.parseInt(txtValorcompra.getText()));
             try{                  
                   if (detalleentradaDao.insertar(detalleentrada) > 0) {
 

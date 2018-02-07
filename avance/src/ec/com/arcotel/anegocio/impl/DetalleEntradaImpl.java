@@ -17,7 +17,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, detalleentrada.getEntrada().getCodigo()));
         lstP.add(new Parametro(2, detalleentrada.getProducto().getCodigo()));
-        lstP.add(new Parametro(3, detalleentrada.getValorcompra()));
+        lstP.add(new Parametro(3, detalleentrada.getPreciocompra()));
       
         Conexion con = null;
         try {
@@ -56,7 +56,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 trata=new DetalleEntrada();
                 trata.setEntrada(entrada);
                 trata.setProducto(producto);
-                trata.setValorcompra(rst.getInt(3));
+                trata.setPreciocompra(rst.getInt(3));
                
             }
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class DetalleEntradaImpl implements IDetalleEntrada {
                 comp=new DetalleEntrada();
                 comp.setEntrada(entrada);
                 comp.setProducto(producto);
-                comp.setValorcompra(rst.getInt(3));             
+                comp.setPreciocompra(rst.getInt(3));             
                 comps.add(comp);
             }
         } catch (Exception e) {

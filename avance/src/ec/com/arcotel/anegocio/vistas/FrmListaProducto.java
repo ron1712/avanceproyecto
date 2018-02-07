@@ -47,7 +47,7 @@ public class FrmListaProducto  extends JInternalFrame{
         }
         for(Producto pro: lista){
         modelo.addRow(new Object[]{pro.getCodigo(),pro.getNombre(),
-            pro.getCantidad(),pro.getValorunitario(),pro.getDescripcion()});
+            pro.getCantidad(),pro.getPreciounitario(),pro.getDescripcion()});
         }
         tabla.setModel(modelo);
       }
