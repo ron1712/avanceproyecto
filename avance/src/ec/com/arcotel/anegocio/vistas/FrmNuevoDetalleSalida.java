@@ -57,9 +57,9 @@ public class FrmNuevoDetalleSalida extends JInternalFrame{
         pnlA.setLayout(new GridLayout(12, 2, 5, 5));
         pnlB.setLayout(new GridLayout(1, 2, 5, 5));
         
-        Titulo = new JLabel("DATOS DE LA DETALE ENTRADA");
+        Titulo = new JLabel("DATOS DE LA DETALLE SALIDA");
         
-        Salida = new JLabel("NOMBRE DE LA ENTRADA");
+        Salida = new JLabel("SALIDA");
         Producto = new JLabel("PRODUCTO");
         Cantidad = new JLabel("VALOR COMPRA");
         

@@ -2,7 +2,7 @@ package ec.com.arcotel.anegocio.entidades;
 import java.util.*;
 
 public class Ventas {
-   private int codigo;
+   private String codigo;
    private Cliente cliente;
    private Date fecha;
    private Vendedor vendedor;
@@ -10,7 +10,7 @@ public class Ventas {
     public Ventas() {
     }
 
-    public Ventas(int codigo, Cliente cliente, Date fecha, Vendedor vendedor) {
+    public Ventas(String codigo, Cliente cliente, Date fecha, Vendedor vendedor) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.fecha = fecha;
@@ -25,11 +25,11 @@ public class Ventas {
         this.vendedor = vendedor;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -48,6 +48,10 @@ public class Ventas {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-   
+
+    @Override
+    public String toString() {
+        return codigo;
+    }
+
 }

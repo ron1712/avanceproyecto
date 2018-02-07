@@ -18,7 +18,7 @@ public class DetalleVentaImpl implements IDetalleVenta{
     @Override
     public int insertar(Detalleventa detalleventa) throws Exception {
         int Filas = 0;
-        String csql = "Insert into DetalleVenta (codigoVenta, codigoProducto, cantidad, fecha, total) Values (?,?,?,?,?)";
+        String csql = "Insert into DetalleVenta (codVenta, codProducto, cantidad, fecha, total) Values (?,?,?,?,?)";
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, detalleventa.getVentas().getCodigo()));
         lstP.add(new Parametro(2, detalleventa.getProducto().getCodigo()));
@@ -42,22 +42,22 @@ public class DetalleVentaImpl implements IDetalleVenta{
     }
 
     @Override
-    public Detalleventa obtener(int codigoDetalleventa) throws Exception {
+    public Detalleventa obtener(int codVenta) throws Exception {
         Detalleventa trata = null;
         Ventas ventas=null;
         IVentas ventasDao = new VentaImpl();
         Producto producto=null;
         IProducto producDao=new ProductoImpl();
-        String csql = "Select codigoVenta, codigoProducto, cantidad, fecha, total From DetalleVenta Where codigo=?";
+        String csql = "Select codVenta, codProducto, cantidad, fecha, total From DetalleVenta Where codVenta=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, codigoDetalleventa));
+        lstPar.add(new Parametro(1, codVenta));
         Conexion con = null;
         try {
             con = new Conexion();
             ResultSet rst = con.ejecutarQuery(csql, lstPar);
             while (rst.next()) {
                 ventas=new Ventas();
-                ventas=ventasDao.obtener(rst.getInt(1));
+                ventas=ventasDao.obtener(rst.getString(1));
                 producto =new Producto();
                 producto = producDao.obtener(rst.getInt(2));
                 trata=new Detalleventa();
@@ -94,7 +94,7 @@ public class DetalleVentaImpl implements IDetalleVenta{
             Detalleventa comp=null;
             while(rst.next()){
                 ventas=new Ventas();
-                ventas=ventaDao.obtener(rst.getInt(1));
+                ventas=ventaDao.obtener(rst.getString(1));
                 producto = new Producto();
                 producto = productoDao.obtener(rst.getInt(2));
                 comp=new Detalleventa();

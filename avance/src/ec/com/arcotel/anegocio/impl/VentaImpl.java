@@ -82,7 +82,7 @@ public class VentaImpl implements IVentas{
     }
 
     @Override
-    public Ventas obtener(int codigo) throws Exception {
+    public Ventas obtener(String codigo) throws Exception {
         Ventas venta = null;
         String sql = "SELECT codigo, codCliente, fecha,login FROM venta where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
@@ -94,7 +94,7 @@ public class VentaImpl implements IVentas{
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
                 venta = new Ventas();
-                venta.setCodigo(rst.getInt(1));
+                venta.setCodigo(rst.getString(1));
                 ICliente clientedao = new ClienteImpl();
                 Cliente cliente = clientedao.obtener(rst.getInt(2));
                 venta.setCliente(cliente);
@@ -125,7 +125,7 @@ public class VentaImpl implements IVentas{
             Ventas venta=null;
             while (rst.next()) {
                 venta = new Ventas();
-                venta.setCodigo(rst.getInt(1));
+                venta.setCodigo(rst.getString(1));
                 ICliente clientedao = new ClienteImpl();
                 Cliente cliente = clientedao.obtener(rst.getInt(2));
                 venta.setCliente(cliente);

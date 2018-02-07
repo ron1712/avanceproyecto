@@ -28,7 +28,7 @@ public class FrmListaVenta extends JInternalFrame{
         this.add(jscTabla, BorderLayout.CENTER);
         cargarTabla();        
     }
-            public void cargarTabla(){
+        public void cargarTabla(){
         modelo= new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Cliente");

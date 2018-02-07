@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,8 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FrmNuevoDetalleVenta extends JInternalFrame{
-     List <Ventas> lstVentas; 
-    
+     List <Ventas> lstVentas;     
     List<Producto> lstProducto;
     
     JComboBox<Ventas> cmbVentas;
@@ -35,14 +36,15 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
     JLabel Ventas;
     JLabel Producto;
     JLabel Cantidad;
+    JLabel Fecha;
+    JLabel Total;
     JTextField txtCantidad;
-
+    JTextField txtFecha;
+    JTextField txtTotal;
     
     JButton btnLimpiar;
-    JButton btnAceptar;
-    
-    
-    
+    JButton btnAceptar;   
+       
     JPanel pnlA;
     JPanel pnlB;
     
@@ -54,21 +56,26 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
         pnlA = new JPanel();
         pnlB = new JPanel();
         
-        pnlA.setLayout(new GridLayout(12, 2, 5, 5));
+        pnlA.setLayout(new GridLayout(10, 2, 5, 5));
         pnlB.setLayout(new GridLayout(1, 2, 5, 5));
         
-        Titulo = new JLabel("DATOS DE LA DETALE ENTRADA");
+        Titulo = new JLabel("DATOS DE LA DETALLE VENTA");
         
-        Ventas = new JLabel("NOMBRE DE LA ENTRADA");
+        Ventas = new JLabel("VENTA");
         Producto = new JLabel("PRODUCTO");
-        Cantidad = new JLabel("VALOR COMPRA");
+        Cantidad = new JLabel("CANTIDAD");
+        Fecha =new JLabel("FECHA:");
+        Total = new JLabel("TOTAL");
         
         
-        txtCantidad = new JTextField();
+        
         cargarProducto();
         cmbProducto = new JComboBox(lstProducto.toArray());
         cargarVentas();
         cmbVentas = new JComboBox(lstVentas.toArray());
+        txtCantidad = new JTextField(2);
+        txtFecha = new JTextField(2);
+        txtTotal = new JTextField(2);
         btnAceptar = new JButton("ACEPTAR");
         btnLimpiar = new JButton("LIMPIAR");
         
@@ -80,9 +87,13 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
         pnlA.add(cmbProducto);
         pnlA.add(Cantidad);
         pnlA.add(txtCantidad);
-        pnlB.add(btnAceptar);
+        pnlA.add(Fecha);
+        pnlA.add(txtFecha);
+        pnlA.add(Total);
+        pnlA.add(txtTotal);
+       
         pnlB.add(btnLimpiar);
-        
+        pnlB.add(btnAceptar);
         
         btnAceptar.addActionListener(new ActionListener() {
             @Override
@@ -108,22 +119,27 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
         FrmNuevoDetalleVenta frmcompra = new FrmNuevoDetalleVenta();
         frmcompra.setVisible(true);
 
-    }
+    }      
        
-       
-     public void btnAceptarActionListener(ActionEvent e) {      
+     public void btnAceptarActionListener(ActionEvent e) {    
          
          
-             IDetalleVenta tiendaDao = new DetalleVentaImpl();
-             Detalleventa ntienda = new Detalleventa();
-             ntienda.setVentas((Ventas) cmbVentas.getSelectedItem());
-             ntienda.setProducto((Producto) cmbProducto.getSelectedItem());
-             ntienda.setCantidad(Integer.parseInt(txtCantidad.getText()));
-
-              
-              try{
+             IDetalleVenta detalleventaDao = new DetalleVentaImpl();
+             Detalleventa detalleventa = new Detalleventa();
+             detalleventa.setVentas((Ventas) cmbVentas.getSelectedItem());
+             detalleventa.setProducto((Producto) cmbProducto.getSelectedItem());
+             detalleventa.setCantidad(Integer.parseInt(txtCantidad.getText())); 
+             DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+             try {                        
+                 detalleventa.setFecha( formatoFecha.parse(txtFecha.getText()));            
+             } catch (Exception ex) {
+                   JOptionPane.showMessageDialog(this,"Error en la fecha!!",
+                "Transacción", JOptionPane.INFORMATION_MESSAGE);
+            }             
+            detalleventa.setTotal(Double.parseDouble(txtTotal.getText()));
+            try{
                   
-                  if (tiendaDao.insertar(ntienda) > 0) {
+                  if (detalleventaDao.insertar(detalleventa) > 0) {
 
                 JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
 
@@ -146,15 +162,13 @@ public class FrmNuevoDetalleVenta extends JInternalFrame{
         }
     }
 
-    private void cargarVentas() {
-       
-        IVentas personaDao = new VentaImpl();
-        try{
-            
-            lstVentas = personaDao.obtener();
+    private void cargarVentas() {       
+        IVentas ventasDao = new VentaImpl();
+        try{            
+            lstVentas = ventasDao.obtener();
             
         }catch(Exception ex){
-             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS PERSONAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS VENTAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
         }
     
     }

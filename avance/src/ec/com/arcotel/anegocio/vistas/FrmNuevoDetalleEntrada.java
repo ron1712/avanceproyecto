@@ -60,7 +60,7 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
         
         Titulo = new JLabel("DATOS DE LA DETALE ENTRADA");
         
-        Entrada = new JLabel("NOMBRE DE LA ENTRADA");
+        Entrada = new JLabel("ENTRADA");
         Producto = new JLabel("PRODUCTO");
         Valorcompra = new JLabel("VALOR COMPRA");
         
@@ -109,22 +109,15 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
         FrmNuevoDetalleEntrada frmcompra = new FrmNuevoDetalleEntrada();
         frmcompra.setVisible(true);
 
-    }
-       
-       
-     public void btnAceptarActionListener(ActionEvent e) {      
-         
-         
-             IDetalleEntrada tiendaDao = new DetalleEntradaImpl();
-             DetalleEntrada ntienda = new DetalleEntrada();
-             ntienda.setEntrada((Entrada) cmbEntrada.getSelectedItem());
-             ntienda.setProducto((Producto) cmbProducto.getSelectedItem());
-             ntienda.setValorcompra(Integer.parseInt(txtValorcompra.getText()));
-
-              
-              try{
-                  
-                  if (tiendaDao.insertar(ntienda) > 0) {
+    }         
+     public void btnAceptarActionListener(ActionEvent e) {                  
+             IDetalleEntrada detalleentradaDao = new DetalleEntradaImpl();
+             DetalleEntrada detalleentrada = new DetalleEntrada();
+             detalleentrada.setEntrada((Entrada) cmbEntrada.getSelectedItem());
+             detalleentrada.setProducto((Producto) cmbProducto.getSelectedItem());
+             detalleentrada.setValorcompra(Integer.parseInt(txtValorcompra.getText()));
+            try{                  
+                  if (detalleentradaDao.insertar(detalleentrada) > 0) {
 
                 JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
 
@@ -147,15 +140,13 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
         }
     }
 
-    private void cargarEntrada() {
-       
+    private void cargarEntrada() {       
         IEntrada entradaDao = new EntradaImpl();
-        try{
-            
+        try{            
             lstEntrada = entradaDao.obtener();
             
         }catch(Exception ex){
-             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS PERSONAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "ERROR AL CARGAR LAS ENTRADAS!!", "Transaction", JOptionPane.ERROR_MESSAGE);
         }
     
     }
