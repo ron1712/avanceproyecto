@@ -33,7 +33,7 @@ public class FrmListaSalida extends JInternalFrame{
         modelo.addColumn("Codigo");        
         modelo.addColumn("Fecha");
         modelo.addColumn("Valor compra");        
-        
+        modelo.addColumn("Detalle");
         List<Salida> lista = new ArrayList<>();
         try{
             ISalida salidaDao = new SalidaImpl();
@@ -44,7 +44,7 @@ public class FrmListaSalida extends JInternalFrame{
         }
         for(Salida est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(),est.getFecha(),
-                est.getValorcompra()});
+                est.getValorcompra(),est.getDetalle()});
         }
         tabla.setModel(modelo);
     }

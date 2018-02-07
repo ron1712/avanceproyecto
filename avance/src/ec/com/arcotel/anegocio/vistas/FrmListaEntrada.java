@@ -35,6 +35,7 @@ public class FrmListaEntrada extends JInternalFrame{
         modelo.addColumn("Proveedor");
         modelo.addColumn("Fecha");
         modelo.addColumn("Valor total");
+        modelo.addColumn("Detalle");
         
         List<Entrada> lista = new ArrayList<>();
         try{
@@ -46,7 +47,7 @@ public class FrmListaEntrada extends JInternalFrame{
         }
         for(Entrada est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(), est.getProveedor().getCodigo(),
-               est.getFecha().toString(), est.getValortotal()});
+               est.getFecha().toString(), est.getValortotal(), est.getDetalle()});
         }
         tabla.setModel(modelo);
     }

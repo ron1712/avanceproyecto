@@ -19,11 +19,13 @@ public class FrmNuevoEntrada extends JInternalFrame{
     JLabel lblProveedor;
     JLabel lblFecha;
     JLabel lblValortotal;
+    JLabel lblDetalle;
     JLabel lblTitulo0;
     
     JTextField txtCodigo;
     JTextField txtFecha;
     JTextField txtValortotal;
+    JTextField txtDetalle;
  
     JButton btnLimpiar;
     JButton btnAceptar;
@@ -44,12 +46,15 @@ public class FrmNuevoEntrada extends JInternalFrame{
         lblProveedor= new JLabel("Proveedor:");
         lblFecha= new JLabel("Fecha:");
         lblValortotal= new JLabel("Valor total:");
-
+        lblDetalle= new JLabel("Detalle:");
+        
         txtCodigo = new JTextField(2);        
         cargarProveedores();
         cmbProveedor= new JComboBox(lstProveedor.toArray());
         txtFecha= new JTextField(2);
         txtValortotal= new JTextField(2);                
+        txtDetalle = new JTextField(2);
+        
         btnAceptar= new JButton("Aceptar");
         btnLimpiar= new JButton("Limpiar");
         
@@ -61,7 +66,8 @@ public class FrmNuevoEntrada extends JInternalFrame{
         pnlCentral.add(txtFecha);
         pnlCentral.add(lblValortotal);
         pnlCentral.add(txtValortotal);       
-                
+        pnlCentral.add(lblDetalle);
+        pnlCentral.add(txtDetalle);       
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,7 +110,7 @@ public class FrmNuevoEntrada extends JInternalFrame{
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
         }
         entrada.setValortotal(Double.parseDouble(txtValortotal.getText()));      
-        ;
+        entrada.setDetalle(txtDetalle.getText());
         
         try {
             if(entradaDao.insertar(entrada)>0){

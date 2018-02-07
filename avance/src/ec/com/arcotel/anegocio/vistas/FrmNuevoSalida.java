@@ -15,11 +15,14 @@ public class FrmNuevoSalida extends JInternalFrame{
     JLabel lblCodigo;
     JLabel lblFecha;
     JLabel lblValorcompra;
+    JLabel lblDetalle;
+    
     JLabel lblTitulo0;
     
     JTextField txtCodigo;
     JTextField txtFecha;
     JTextField txtValorcompra;   
+    JTextField txtDetalle;
     
     JButton btnLimpiar;
     JButton btnAceptar;
@@ -41,10 +44,12 @@ public class FrmNuevoSalida extends JInternalFrame{
         lblCodigo= new JLabel("Código:");
         lblFecha= new JLabel("Fecha:");
         lblValorcompra= new JLabel("Valor compra:");
-
+        lblDetalle= new JLabel("Detalle:");
+        
         txtCodigo = new JTextField(2);
         txtFecha= new JTextField(2);
         txtValorcompra= new JTextField(2);
+        txtDetalle = new JTextField(2);
         
         btnLimpiar= new JButton("Limpiar");
         btnAceptar= new JButton("Aceptar");
@@ -55,7 +60,8 @@ public class FrmNuevoSalida extends JInternalFrame{
         pnlCentral.add(txtFecha);
         pnlCentral.add(lblValorcompra);
         pnlCentral.add(txtValorcompra);
-        
+         pnlCentral.add(lblDetalle);
+        pnlCentral.add(txtDetalle);
         
                 
         btnAceptar.addActionListener(new ActionListener() {
@@ -92,7 +98,8 @@ public class FrmNuevoSalida extends JInternalFrame{
             JOptionPane.showMessageDialog(this,"Error en la fecha!!",
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
         }
-        salida.setValorcompra(Double.parseDouble(txtValorcompra.getText()));        
+        salida.setValorcompra(Double.parseDouble(txtValorcompra.getText()));  
+        salida.setDetalle(txtDetalle.getText());
         try {
             if(salidaDao.insertar(salida)>0){
                 JOptionPane.showMessageDialog(this,"Guaradado correctamente!!",
