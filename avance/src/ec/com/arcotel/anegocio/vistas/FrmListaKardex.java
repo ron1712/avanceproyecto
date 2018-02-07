@@ -50,8 +50,8 @@ public class FrmListaKardex extends JInternalFrame{
         }
         for(Kardex est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(), est.getProducto().getCodigo(),
-               est.getSalida().getCodigo(), est.getCantidad(),est.getPreciocompra(),
-                est.getPrecioventa(),est.getCantidadinicial(),est.getCantidadactual() });
+               est.getEntrada().getCodigo(),est.getSalida().getCodigo(), est.getCantidad(),
+               est.getPreciocompra(),est.getPrecioventa(),est.getCantidadinicial(),est.getCantidadactual() });
         }
         tabla.setModel(modelo);
     }

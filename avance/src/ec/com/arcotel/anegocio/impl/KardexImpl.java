@@ -136,7 +136,9 @@ public class KardexImpl implements IKardex{
     @Override
     public List<Kardex> obtener() throws Exception {
         List<Kardex> lista = new ArrayList<>();
-         String sql = "SELECT codigo, codProducto, fecha, valortotal FROM kardex ";        
+         String sql = "SELECT codigo, codProducto, codEntrada, codSalida,"
+                + "cantidad, preciocompra, precioventa, cantidadinicial, "
+                + "cantidadactual FROM kardex ";        
         Conexion con = null;
         try {
             con = new Conexion();
