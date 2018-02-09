@@ -1,4 +1,5 @@
 package ec.com.arcotel.anegocio.vistas;
+
 import ec.com.arcotel.anegocio.dao.*;
 import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.*;
@@ -12,16 +13,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class FrmListaDetalleVenta extends JInternalFrame{
+public class FrmListaVenta extends JInternalFrame{
     JLabel lblTitulo;
     JTable tabla;
     DefaultTableModel modelo;
     JScrollPane jscTabla;
-    public FrmListaDetalleVenta(){
-        this.setSize(600, 600);
+    public FrmListaVenta(){
+        this.setSize(800, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
-        lblTitulo = new JLabel("Listado DetalleVentas");
+        lblTitulo = new JLabel("Listado Venta");
         tabla= new JTable();
         jscTabla = new JScrollPane(tabla);
         this.add(lblTitulo, BorderLayout.NORTH);
@@ -30,23 +31,22 @@ public class FrmListaDetalleVenta extends JInternalFrame{
     }
         public void cargarTabla(){
         modelo= new DefaultTableModel();
+        modelo.addColumn("Codigo");
         modelo.addColumn("Venta");
-        modelo.addColumn("Producto");
-        modelo.addColumn("Cantidad");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Total");
+        modelo.addColumn("Vendedor");   
         
-        List<Detalleventa> lista = new ArrayList<>();
+        List<Ventas> lista = new ArrayList<>();
         try{
-            IDetalleVenta detalleventasDao = new DetalleVentaImpl();
-            lista = detalleventasDao.obtener();
+            IVentas ventasDao = new VentaImpl();
+            lista = ventasDao.obtener();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        for(Detalleventa est : lista){
-            modelo.addRow(new Object[]{ est.getVentas().getCodigo(), est.getProducto().getCodigo(),
-               est.getFecha(), est.getTotal()});
+        for(Ventas est : lista){
+            modelo.addRow(new Object[]{ est.getCodigo(), est.getCliente().getCodigo(),
+               est.getFecha(), est.getVendedor().getNombre()});
         }
         tabla.setModel(modelo);
     }

@@ -255,7 +255,12 @@ public class FrmMenuPrincipal extends JFrame {
         mniEliminaVenta= new JMenuItem("Elimina");
         mniBuscaVenta= new JMenuItem("Busca");
         mniListaVenta= new JMenuItem("Lista"); 
-        
+        mniListaVenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaVentaActionPerformed(e);
+            }
+        });
         mnVenta.add(mniNuevoVenta);
         mnVenta.add(mniModificaVenta);
         mnVenta.add(mniEliminaVenta);
@@ -432,7 +437,11 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-        
+    public void mniListaVentaActionPerformed(ActionEvent e){
+        FrmListaVenta frm = new FrmListaVenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }   
     public void mniNuevoDetalleEntradaActionPerformed(ActionEvent e){
         FrmNuevoDetalleEntrada frm = new FrmNuevoDetalleEntrada();
         dkpEscritorio.add(frm);

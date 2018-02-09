@@ -42,7 +42,7 @@ public class FrmNuevoVenta extends JInternalFrame{
         lblTitulo0 = new JLabel("Datos Venta");
         
         lblCodigo= new JLabel("Código:");
-        lblCliente= new JLabel("Ciente:");
+        lblCliente= new JLabel("Cliente:");
         lblFecha= new JLabel("Fecha:");
         lblVendedor= new JLabel("Vendedor:");
         
@@ -112,7 +112,7 @@ public class FrmNuevoVenta extends JInternalFrame{
             IVentas ventaDao = new VentaImpl();
             Ventas venta = new Ventas();
             venta.setCodigo(txtCodigo.getText());            
-            venta.setCliente((Cliente) cmbCliente.getSelectedItem());
+            venta.setCliente((Cliente)cmbCliente.getSelectedItem());
             DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
             try {                        
             venta.setFecha( formatoFecha.parse(txtFecha.getText()));
