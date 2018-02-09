@@ -9,5 +9,40 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class DetalleEntradaTest {
+
+    public DetalleEntradaTest() {
+    }
+    @Test
+    public void prueba() throws Exception{
+     //              INSERTAR
+        int filasAfectadas =0;
+        IDetalleEntrada detalleentradaDao = new DetalleEntradaImpl();
+        IEntrada entradaDao = new EntradaImpl();
+        Entrada entrada = entradaDao.obtener(2);
+        IProducto productoDao = new ProductoImpl();
+        Producto producto = productoDao.obtener(2);
+        DetalleEntrada detalleentrada = new DetalleEntrada(entrada,producto,250);
+        try{
+            filasAfectadas = detalleentradaDao.insertar(detalleentrada);
+            System.out.println("DetalleEntrada ingresado!!!");
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        assertEquals(filasAfectadas>0, true);
+        //              LISTADO DE PEdido
+        List<DetalleEntrada> lista = new ArrayList<>();
+        try {
+            lista = detalleentradaDao.obtener();
+            for (DetalleEntrada es:lista){
+                System.out.println("\nDatos detalleentrada");
+                System.out.println("Entrada:"+es.getEntrada().getCodigo());
+                System.out.println("Producto:"+es.getProducto().getCodigo());
+                System.out.println("Precio compra:"+es.getPreciocompra());                
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        assertTrue(lista.size()>0);
+    }
     
 }
