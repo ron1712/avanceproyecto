@@ -19,7 +19,7 @@ public class FrmListaEntrada extends JInternalFrame{
     DefaultTableModel modelo;
     JScrollPane jscTabla;
     public FrmListaEntrada(){
-        this.setSize(600, 600);
+        this.setSize(800, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
         lblTitulo = new JLabel("Listado Entrada");
@@ -34,7 +34,7 @@ public class FrmListaEntrada extends JInternalFrame{
         modelo.addColumn("Codigo");
         modelo.addColumn("Proveedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Valor total");
+        modelo.addColumn("Precio total");        
         modelo.addColumn("Descripcion");
         
         List<Entrada> lista = new ArrayList<>();
@@ -47,7 +47,7 @@ public class FrmListaEntrada extends JInternalFrame{
         }
         for(Entrada est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(), est.getProveedor().getCodigo(),
-               est.getFecha().toString(), est.getPreciototal(), est.getDescripcion()});
+               est.getFecha(), est.getPreciototal(),est.getDescripcion()});
         }
         tabla.setModel(modelo);
     }
