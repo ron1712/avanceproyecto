@@ -8,5 +8,5 @@ public interface IDetalleSalida {
     public int modificar(DetalleSalida detallesalida) throws Exception;
     public int eliminar(DetalleSalida detallesalida) throws Exception;
     public DetalleSalida obtener(int codSalida) throws Exception;
-    public List<DetalleSalida> obtener() throws Exception;    
+    public List<DetalleSalida> obtener() throws Exception;     
 }

@@ -39,7 +39,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
     }
 
     @Override
-    public DetalleSalida obtener(int codigoDetalleSalida) throws Exception {
+    public DetalleSalida obtener(int codSalida) throws Exception {
         DetalleSalida trata = null;
         Salida salida=null;
         ISalida salidaDao = new SalidaImpl();
@@ -47,7 +47,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
         IProducto producDao=new ProductoImpl();
         String csql = "Select codSalida, codProducto, cantidad From DetalleSalida Where codigo=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, codigoDetalleSalida));
+        lstPar.add(new Parametro(1, codSalida));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -80,7 +80,7 @@ public class DetalleSalidaImpl implements IDetalleSalida{
         ISalida salidaDao=new SalidaImpl();
         Producto producto=null;
         IProducto productoDao=new ProductoImpl();
-        String csql="select codSalida, codProducto, cantidad from DeatlleSalida";
+        String csql="select codSalida, codProducto, cantidad from DetalleSalida";
         Conexion con=null;
         try {
             con=new Conexion();

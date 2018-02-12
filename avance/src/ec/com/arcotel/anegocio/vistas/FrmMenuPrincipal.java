@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.watermark.SubstanceImageWatermark;
 
 public class FrmMenuPrincipal extends JFrame {
 
@@ -391,6 +392,7 @@ public class FrmMenuPrincipal extends JFrame {
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.NebulaSkin"); 
         SubstanceLookAndFeel.setCurrentTheme( "org.jvnet.substance.theme.SubstanceSaturatedTheme");
         SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
+        //SubstanceLookAndFeel.setCurrentWatermark( new SubstanceImageWatermark("tuxx.jpg"));
     }    
     public void mniNuevoClienteActionPerformed(ActionEvent e){
         FrmNuevoCliente frm = new FrmNuevoCliente();
