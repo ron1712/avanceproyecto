@@ -32,14 +32,11 @@ public class FrmListaKardex extends JInternalFrame{
         public void cargarTabla(){
         modelo= new DefaultTableModel();
         modelo.addColumn("Codigo");
-        modelo.addColumn("Producto");
-        modelo.addColumn("Entrada");
-        modelo.addColumn("Salida");        
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Precio compra");
-        modelo.addColumn("precio venta");             
-        modelo.addColumn("Cantidad inicial");
-        modelo.addColumn("Cantidad actual");
+        modelo.addColumn("Producto");    
+        modelo.addColumn("Fecha emision");
+        modelo.addColumn("Tipo transaccion");
+        modelo.addColumn("Existencias");             
+        modelo.addColumn("Valor total");
         
         List<Kardex> lista = new ArrayList<>();
         try{
@@ -51,9 +48,8 @@ public class FrmListaKardex extends JInternalFrame{
         }
         for(Kardex est : lista){
             modelo.addRow(new Object[]{ est.getCodigo(), est.getProducto().getCodigo(),
-               est.getEntrada().getCodigo(), est.getSalida().getCodigo(),est.getCantidad(),
-               est.getPreciocompra(),est.getPrecioventa(),est.getCantidadinicial(),
-               est.getCantidadactual()});
+               est.getFecha_emision(),est.getTipo_transaccion(),est.getExistencias(),
+               est.getValor_total()});
         }
         tabla.setModel(modelo);
     }

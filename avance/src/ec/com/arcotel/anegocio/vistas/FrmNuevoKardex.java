@@ -15,26 +15,18 @@ public class FrmNuevoKardex extends JInternalFrame{
     JLabel lblCodigo;
     List<Producto> lstProducto;
     JComboBox<Producto> cmbProducto;
-    List<Entrada> lstEntrada;
-    JComboBox<Entrada> cmbEntrada;
-    List<Salida> lstSalida;
-    JComboBox<Salida> cmbSalida;
-    JLabel lblCantidad;
-    JLabel lblPreciocompra;
-    JLabel lblPrecioventa;
-    JLabel lblCantidadinicial;
-    JLabel lblCantidadactual;   
-    JLabel lblProducto; 
-    JLabel lblEntrada; 
-    JLabel lblSalida; 
+    JLabel lblProducto;    
+    JLabel lblFecha_Emision;
+    JLabel lblTipo_Transaccion;
+    JLabel lblExistencias;
+    JLabel lblValor_Total;
     JLabel lblTitulo0;
     
     JTextField txtCodigo;
-    JTextField txtCantidad;
-    JTextField txtPreciocompra;
-    JTextField txtPrecioventa;
-    JTextField txtCantidadinicial;
-    JTextField txtCantidadactual;
+    JTextField txtFecha_Emision;
+    JTextField txtTipo_Transaccion;
+    JTextField txtExistencias;
+    JTextField txtValor_Total;
     
     JButton btnLimpiar;
     JButton btnAceptar;
@@ -53,27 +45,19 @@ public class FrmNuevoKardex extends JInternalFrame{
         lblTitulo0 = new JLabel("Datos Kardex");
         
         lblCodigo= new JLabel("Código:");
-        lblProducto= new JLabel("Producto:");
-        lblEntrada= new JLabel("Entrada:");
-        lblSalida= new JLabel("Salida:");
-        lblCantidad= new JLabel("Cantidad:");
-        lblPreciocompra= new JLabel("Precio compra:");
-        lblPrecioventa= new JLabel("Precio venta:");
-        lblCantidadinicial= new JLabel("Cantidad inicial:");
-        lblCantidadactual= new JLabel("Cantidad actual:");
+        lblProducto= new JLabel("Producto:");        
+        lblFecha_Emision= new JLabel("Fecha_Emision:");
+        lblTipo_Transaccion= new JLabel("Tipo transaccion:");
+        lblExistencias= new JLabel("Existencias:");
+        lblValor_Total= new JLabel("Valor total:");
 
         txtCodigo = new JTextField(2);
         cargarProductos();
-        cmbProducto= new JComboBox(lstProducto.toArray());
-        cargarEntradas();
-        cmbEntrada= new JComboBox(lstEntrada.toArray());
-        cargarSalidas();
-        cmbSalida= new JComboBox(lstSalida.toArray());
-        txtCantidad= new JTextField(2);
-        txtPreciocompra= new JTextField(2);
-        txtPrecioventa= new JTextField(2);
-        txtCantidadinicial= new JTextField(2);
-        txtCantidadactual= new JTextField(2);              
+        cmbProducto= new JComboBox(lstProducto.toArray());        
+        txtFecha_Emision= new JTextField(2);
+        txtTipo_Transaccion= new JTextField(2);
+        txtExistencias= new JTextField(2);
+        txtValor_Total= new JTextField(2);             
         btnLimpiar= new JButton("Limpiar");
         btnAceptar= new JButton("Aceptar");
         
@@ -81,20 +65,14 @@ public class FrmNuevoKardex extends JInternalFrame{
         pnlCentral.add(txtCodigo);
         pnlCentral.add(lblProducto);
         pnlCentral.add(cmbProducto);
-        pnlCentral.add(lblEntrada);
-        pnlCentral.add(cmbEntrada);
-        pnlCentral.add(lblSalida);
-        pnlCentral.add(cmbSalida);
-        pnlCentral.add(lblCantidad);
-        pnlCentral.add(txtCantidad);
-        pnlCentral.add(lblPreciocompra);
-        pnlCentral.add(txtPreciocompra);
-        pnlCentral.add(lblPrecioventa);
-        pnlCentral.add(txtPrecioventa);
-        pnlCentral.add(lblCantidadinicial);
-        pnlCentral.add(txtCantidadinicial);
-        pnlCentral.add(lblCantidadactual);
-        pnlCentral.add(txtCantidadactual);                           
+        pnlCentral.add(lblFecha_Emision);
+        pnlCentral.add(txtFecha_Emision);
+        pnlCentral.add(lblTipo_Transaccion);
+        pnlCentral.add(txtTipo_Transaccion);
+        pnlCentral.add(lblExistencias);
+        pnlCentral.add(txtExistencias);
+        pnlCentral.add(lblValor_Total);
+        pnlCentral.add(txtValor_Total);                           
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,37 +101,22 @@ public class FrmNuevoKardex extends JInternalFrame{
             JOptionPane.showMessageDialog(this,"Error al cargar los productos!!",
                 "Error"+e.getMessage(), JOptionPane.ERROR_MESSAGE);
         }       
-    }
-     public void cargarEntradas(){
-        IEntrada entradaDao = new EntradaImpl();
-        try {
-            lstEntrada = entradaDao.obtener();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error al cargar los entradas!!",
-                "Error"+e.getMessage(), JOptionPane.ERROR_MESSAGE);
-        }       
-    }
-    public void cargarSalidas(){
-        ISalida salidaDao = new SalidaImpl();
-        try {
-            lstSalida = salidaDao.obtener();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error al cargar los salidas!!",
-                "Error"+e.getMessage(), JOptionPane.ERROR_MESSAGE);
-        }       
-    } 
+    }    
     public void btnAceptarActionListener(ActionEvent e){
         IKardex kardexDao = new KardexImpl();
         Kardex kardex = new Kardex();
-        kardex.setCodigo(txtCodigo.getText());
+        kardex.setCodigo(Integer.parseInt(txtCodigo.getText()));
         kardex.setProducto((Producto) cmbProducto.getSelectedItem());
-        kardex.setEntrada((Entrada) cmbEntrada.getSelectedItem());
-        kardex.setSalida((Salida) cmbSalida.getSelectedItem());
-        kardex.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        kardex.setPreciocompra(Double.parseDouble(txtPreciocompra.getText()));                   
-        kardex.setPrecioventa(Double.parseDouble(txtPrecioventa.getText()));
-        kardex.setCantidadinicial(Integer.parseInt(txtCantidadinicial.getText()));
-        kardex.setCantidadactual(Integer.parseInt(txtCantidadactual.getText()));
+        kardex.setTipo_transaccion(txtTipo_Transaccion.getText());                    
+        DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        try {                        
+            kardex.setFecha_emision(formatoFecha.parse(txtFecha_Emision.getText()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error en la fecha!!",
+                "Transacción", JOptionPane.INFORMATION_MESSAGE);
+        }
+        kardex.setExistencias(Integer.parseInt(txtExistencias.getText()));
+        kardex.setValor_total(Double.parseDouble(txtValor_Total.getText()));
         try {
             if(kardexDao.insertar(kardex)>0){
                 JOptionPane.showMessageDialog(this,"Guaradado correctamente!!",
@@ -161,7 +124,8 @@ public class FrmNuevoKardex extends JInternalFrame{
             }else{
                 JOptionPane.showMessageDialog(this,"Error desconocido!!",
                 "Transacción", JOptionPane.INFORMATION_MESSAGE);
-            }           
+            }      
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,"Error al guardar!!: " + ex.getMessage(),
                 "Error", JOptionPane.INFORMATION_MESSAGE);

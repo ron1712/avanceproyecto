@@ -31,10 +31,9 @@ public class FrmListaCliente extends JInternalFrame{
     }
         public void cargarTabla(){
         modelo= new DefaultTableModel();
-        modelo.addColumn("Codigo");
+        modelo.addColumn("Cedula");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Cedula");        
+        modelo.addColumn("Apellido");                
         modelo.addColumn("Direccion");
         modelo.addColumn("Telefono");
         modelo.addColumn("Email");        
