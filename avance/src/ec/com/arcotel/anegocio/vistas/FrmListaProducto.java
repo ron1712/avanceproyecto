@@ -32,10 +32,10 @@ public class FrmListaProducto extends JInternalFrame{
         public void cargarTabla(){
         modelo= new DefaultTableModel();
         modelo.addColumn("Codigo");
+        modelo.addColumn("Categoria");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Precio unitario");        
-        modelo.addColumn("Descripcion");  
+        modelo.addColumn("Precio");        
+        
         
         List<Producto> lista = new ArrayList<>();
         try{
@@ -46,8 +46,8 @@ public class FrmListaProducto extends JInternalFrame{
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Producto est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(), est.getNombre(),
-               est.getCantidad(), est.getPreciounitario(),est.getDescripcion()});
+            modelo.addRow(new Object[]{ est.getCodigo(),est.getCategoria().getCodigo() ,est.getNombre(),
+                est.getPrecio()});
         }
         tabla.setModel(modelo);
     }

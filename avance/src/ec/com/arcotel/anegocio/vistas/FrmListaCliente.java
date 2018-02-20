@@ -47,8 +47,8 @@ public class FrmListaCliente extends JInternalFrame{
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Cliente est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(), est.getNombre(),
-               est.getApellido(), est.getCedula(),est.getDireccion(),
+            modelo.addRow(new Object[]{ est.getCedula(), est.getNombre(),
+               est.getApellido(),est.getDireccion(),
                 est.getTelefono(),est.getEmail()});
         }
         tabla.setModel(modelo);

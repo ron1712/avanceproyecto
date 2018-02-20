@@ -13,23 +13,23 @@ import java.util.List;
 
 public class FrmNuevoCliente extends JInternalFrame{
     
-    JLabel lblCodigo;
     JLabel lblCedula;
     JLabel lblNombre;
     JLabel lblApellido;
+    JLabel lblDireccion;
     JLabel lblTelefono;
     JLabel lblEmail;
-    JLabel lblDireccion;
+  
   
     JLabel lblTitulo0;
     
-    JTextField txtCodigo;
     JTextField txtCedula;
     JTextField txtNombre;
     JTextField txtApellido;
+    JTextField txtDireccion;
     JTextField txtTelefono;
     JTextField txtEmail;     
-    JTextField txtDireccion;
+    
    
     
     JButton btnLimpiar;
@@ -48,28 +48,27 @@ public class FrmNuevoCliente extends JInternalFrame{
         
         lblTitulo0 = new JLabel("Datos Cliente");
         
-        lblCodigo= new JLabel("Código:");
+        
         lblCedula= new JLabel("Cédula:");
         lblNombre= new JLabel("Nombres:");
         lblApellido= new JLabel("Apellidos:");
+        lblDireccion= new JLabel("Dirección:");
         lblEmail= new JLabel("Email:");
         lblTelefono= new JLabel("Teléfono:");
-        lblDireccion= new JLabel("Dirección:");
+       
         
-
-        txtCodigo = new JTextField(2);
         txtCedula= new JTextField(2);
         txtNombre= new JTextField(2);
         txtApellido= new JTextField(2);
+        txtDireccion= new JTextField(2); 
         txtEmail= new JTextField(2);
         txtTelefono= new JTextField(2);        
-        txtDireccion= new JTextField(2); 
+        
        
         btnLimpiar= new JButton("Limpiar");
         btnAceptar= new JButton("Aceptar");
         
-        pnlCentral.add(lblCodigo);
-        pnlCentral.add(txtCodigo);
+        
         pnlCentral.add(lblCedula);
         pnlCentral.add(txtCedula);
         pnlCentral.add(lblNombre);
@@ -111,13 +110,13 @@ public class FrmNuevoCliente extends JInternalFrame{
        public void btnAceptarActionListener(ActionEvent e){
         ICliente clienteDao=new ClienteImpl();
         Cliente cliente=new Cliente();
-        cliente.setCodigo(Integer.parseInt(txtCodigo.getText()));
         cliente.setCedula(txtCedula.getText());
         cliente.setNombre(txtNombre.getText());
         cliente.setApellido(txtApellido.getText());
+        cliente.setDireccion(txtDireccion.getText());
         cliente.setEmail(txtEmail.getText());
         cliente.setTelefono(txtTelefono.getText());
-        cliente.setDireccion(txtDireccion.getText());
+        
          try{
          if(clienteDao.insertar(cliente)>0){
          JOptionPane.showMessageDialog(this,"guardado correctamente!!",

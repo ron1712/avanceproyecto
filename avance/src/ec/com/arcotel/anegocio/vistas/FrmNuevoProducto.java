@@ -13,19 +13,20 @@ import java.util.List;
 
 public class FrmNuevoProducto extends JInternalFrame{
     
+    List<Categoria> lstCategoria;
+    JComboBox<Categoria> cmbCategoria;
     JLabel lblCodigo;
+    JLabel lblCategoria;
     JLabel lblNombre;
-    JLabel lblCantidad;
-    JLabel lblPreciounitario;
-    JLabel lblDescripcion;
-    
+  
+    JLabel lblPrecio;
     JLabel lblTitulo0;
+    
     
     JTextField txtCodigo;
     JTextField txtNombre;
-    JTextField txtCantidad;
-    JTextField txtPreciounitario;
-    JTextField txtDescripcion;     
+
+    JTextField txtPrecio;     
 
    
     
@@ -46,18 +47,19 @@ public class FrmNuevoProducto extends JInternalFrame{
         lblTitulo0 = new JLabel("Datos Producto");
         
         lblCodigo= new JLabel("Código:");
+        lblCategoria= new JLabel("Categoria:");
         lblNombre= new JLabel("Nombres:");
-        lblCantidad= new JLabel("Cantidad:");
-        lblPreciounitario= new JLabel("Precio unitario:");
-        lblDescripcion= new JLabel("Descripcion:");
-       
+      
+        lblPrecio= new JLabel("Precio unitario:"); 
         
 
         txtCodigo = new JTextField(2);
+        cargarCategorias();
+        cmbCategoria= new JComboBox(lstCategoria.toArray());
         txtNombre= new JTextField(2);
-        txtCantidad= new JTextField(2);
-        txtPreciounitario= new JTextField(2);
-        txtDescripcion= new JTextField(2);        
+        
+        txtPrecio= new JTextField(2);
+              
        
        
         btnLimpiar= new JButton("Limpiar");
@@ -65,14 +67,14 @@ public class FrmNuevoProducto extends JInternalFrame{
         
         pnlCentral.add(lblCodigo);
         pnlCentral.add(txtCodigo);
+        pnlCentral.add(lblCategoria);
+        pnlCentral.add(cmbCategoria);
         pnlCentral.add(lblNombre);
         pnlCentral.add(txtNombre);
-        pnlCentral.add(lblCantidad);
-        pnlCentral.add(txtCantidad);
-        pnlCentral.add(lblPreciounitario);
-        pnlCentral.add(txtPreciounitario);
-        pnlCentral.add(lblDescripcion);
-        pnlCentral.add(txtDescripcion);
+        
+        pnlCentral.add(lblPrecio);
+        pnlCentral.add(txtPrecio);
+        
         
       
         
@@ -99,15 +101,22 @@ public class FrmNuevoProducto extends JInternalFrame{
         FrmNuevoProducto frmMenu= new FrmNuevoProducto();
         frmMenu.setVisible(true);
     } 
-   
+   public void cargarCategorias(){
+        ICategoria categoriaDao = new CategoriaImpl();
+        try {
+            lstCategoria = categoriaDao.obtener();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Error al cargar las categorias!!",
+                "Error"+e.getMessage(), JOptionPane.ERROR_MESSAGE);
+        }       
+    }
        public void btnAceptarActionListener(ActionEvent e){
         IProducto productoDao=new ProductoImpl();
         Producto producto=new Producto();
         producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        producto.setCategoria((Categoria) cmbCategoria.getSelectedItem());
         producto.setNombre(txtNombre.getText());
-        producto.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        producto.setPreciounitario(Integer.parseInt(txtPreciounitario.getText()));
-        producto.setDescripcion(txtDescripcion.getText());
+        producto.setPrecio(Integer.parseInt(txtPrecio.getText()));
         
          try{
          if(productoDao.insertar(producto)>0){

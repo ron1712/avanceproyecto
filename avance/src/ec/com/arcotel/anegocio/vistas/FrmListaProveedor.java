@@ -31,10 +31,8 @@ public class FrmListaProveedor extends JInternalFrame{
     }
         public void cargarTabla(){
         modelo= new DefaultTableModel();
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Cedula");        
+        modelo.addColumn("Ruc");
+        modelo.addColumn("Nombre");        
         modelo.addColumn("Direccion");
         modelo.addColumn("Telefono");
         modelo.addColumn("Email");        
@@ -48,9 +46,8 @@ public class FrmListaProveedor extends JInternalFrame{
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Proveedor est : lista){
-            modelo.addRow(new Object[]{ est.getCodigo(), est.getNombre(),
-               est.getApellido(), est.getCedula(),est.getDireccion(),
-                est.getTelefono(),est.getEmail()});
+            modelo.addRow(new Object[]{ est.getRuc(), est.getNombre(),
+               est.getDireccion(),est.getTelefono(),est.getEmail()});
         }
         tabla.setModel(modelo);
     }
