@@ -13,11 +13,13 @@ public class ProductoTest {
     public ProductoTest() {
     }
     @Test
-    public void prueba(){
+    public void prueba() throws Exception{
      //              INSERTAR
         int filasAfectadas =0;
         IProducto productoDao = new ProductoImpl();
-        Producto producto = new Producto(2,"Angel",10,60,"arroz");
+        ICategoria categoriaDao = new CategoriaImpl();
+        Categoria categoria = categoriaDao.obtener(2);
+        Producto producto = new Producto(2,categoria,"flavio",25);
         try{
             filasAfectadas = productoDao.insertar(producto);
             System.out.println("Producto ingresado!!!");
@@ -32,10 +34,10 @@ public class ProductoTest {
             for (Producto es:lista){
                 System.out.println("\nDatos producto");
                 System.out.println("Codigo :"+es.getCodigo());
-                System.out.println("Nombre :"+es.getNombre());
-                System.out.println("Cantidad :"+es.getCantidad());                
-                System.out.println("Precio unitario :"+es.getPreciounitario());                
-                System.out.println("Descripcion :"+es.getDescripcion());
+                System.out.println("Categoria :"+es.getCategoria().getCodigo());
+                System.out.println("Cantidad :"+es.getNombre());                
+                System.out.println("Precio unitario :"+es.getPrecio());                
+                
             }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());

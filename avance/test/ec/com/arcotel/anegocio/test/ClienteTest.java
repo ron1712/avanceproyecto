@@ -1,5 +1,7 @@
 package ec.com.arcotel.anegocio.test;
 
+
+
 import ec.com.arcotel.anegocio.dao.ICliente;
 import ec.com.arcotel.anegocio.entidades.Cliente;
 import ec.com.arcotel.anegocio.impl.ClienteImpl;
@@ -17,7 +19,7 @@ public class ClienteTest {
      //              INSERTAR
         int filasAfectadas =0;
         ICliente clienteDao = new ClienteImpl();
-        Cliente cliente = new Cliente(2,"Angel","Ramos","0650256050","0998679028","Riobamba","angelrc1998@hotmail.com");
+        Cliente cliente = new Cliente("1501051682","Angel","Ramos","viaguano","0998679028","angelrc1998@hotmail.com",new Date());
         try{
             filasAfectadas = clienteDao.insertar(cliente);
             System.out.println("Cliente ingresado!!!");
@@ -31,13 +33,14 @@ public class ClienteTest {
             lista = clienteDao.obtener();
             for (Cliente es:lista){
                 System.out.println("\nDatos cliente");
-                System.out.println("Codigo :"+es.getCodigo());
+                System.out.println("Cedula :"+es.getCedula());
                 System.out.println("Nombre :"+es.getNombre());
-                System.out.println("Apellido :"+es.getApellido());                
-                System.out.println("Cedula :"+es.getCedula());                
+                System.out.println("Apellido :"+es.getApellido());                             
                 System.out.println("Direccion :"+es.getDireccion());
                 System.out.println("Telefono :"+es.getTelefono());
-                System.out.println("Email :"+es.getEmail());                
+                System.out.println("Email :"+es.getEmail()); 
+                System.out.println("Email :"+es.getFecha_nac());
+                
             }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());

@@ -9,6 +9,8 @@ import javax.swing.*;
 import ec.com.arcotel.anegocio.dao.*;
 import ec.com.arcotel.anegocio.impl.*;
 import ec.com.arcotel.anegocio.entidades.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class FrmNuevoCliente extends JInternalFrame{
@@ -19,6 +21,7 @@ public class FrmNuevoCliente extends JInternalFrame{
     JLabel lblDireccion;
     JLabel lblTelefono;
     JLabel lblEmail;
+    JLabel lblFecha_nac;
   
   
     JLabel lblTitulo0;
@@ -29,6 +32,7 @@ public class FrmNuevoCliente extends JInternalFrame{
     JTextField txtDireccion;
     JTextField txtTelefono;
     JTextField txtEmail;     
+    JTextField txtFecha_nac;  
     
    
     
@@ -55,6 +59,7 @@ public class FrmNuevoCliente extends JInternalFrame{
         lblDireccion= new JLabel("Dirección:");
         lblEmail= new JLabel("Email:");
         lblTelefono= new JLabel("Teléfono:");
+        lblFecha_nac= new JLabel("Fecha de nac:");
        
         
         txtCedula= new JTextField(2);
@@ -62,7 +67,8 @@ public class FrmNuevoCliente extends JInternalFrame{
         txtApellido= new JTextField(2);
         txtDireccion= new JTextField(2); 
         txtEmail= new JTextField(2);
-        txtTelefono= new JTextField(2);        
+        txtTelefono= new JTextField(2);
+        txtFecha_nac= new JTextField(2); 
         
        
         btnLimpiar= new JButton("Limpiar");
@@ -81,6 +87,8 @@ public class FrmNuevoCliente extends JInternalFrame{
         pnlCentral.add(txtTelefono);
         pnlCentral.add(lblDireccion);
         pnlCentral.add(txtDireccion);
+        pnlCentral.add(lblFecha_nac);
+        pnlCentral.add(txtFecha_nac);
       
         
                 
@@ -116,6 +124,13 @@ public class FrmNuevoCliente extends JInternalFrame{
         cliente.setDireccion(txtDireccion.getText());
         cliente.setEmail(txtEmail.getText());
         cliente.setTelefono(txtTelefono.getText());
+        DateFormat Fecha_nac = new SimpleDateFormat("yyyy-MM-dd");
+        try {                        
+            cliente.setFecha_nac(Fecha_nac.parse(txtFecha_nac.getText()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error en la fecha!!",
+                "Transacción", JOptionPane.INFORMATION_MESSAGE);
+        };
         
          try{
          if(clienteDao.insertar(cliente)>0){

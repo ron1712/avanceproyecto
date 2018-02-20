@@ -17,7 +17,7 @@ public class ProveedorTest {
      //              INSERTAR
         int filasAfectadas =0;
         IProveedor proveedorDao = new ProveedorImpl();
-        Proveedor proveedor = new Proveedor(2,"Angel","Ramos","0650256050","0998679028","Riobamba","angelrc1998@hotmail.com");
+        Proveedor proveedor = new Proveedor("12345","Angel","21deabril","0650256050","angelrc1998@hotmail.com");
         try{
             filasAfectadas = proveedorDao.insertar(proveedor);
             System.out.println("Proveedor ingresado!!!");
@@ -31,10 +31,8 @@ public class ProveedorTest {
             lista = proveedorDao.obtener();
             for (Proveedor es:lista){
                 System.out.println("\nDatos proveedor");
-                System.out.println("Codigo :"+es.getCodigo());
-                System.out.println("Nombre :"+es.getNombre());
-                System.out.println("Apellido :"+es.getApellido());                
-                System.out.println("Cedula :"+es.getCedula());                
+                System.out.println("Codigo :"+es.getRuc());
+                System.out.println("Nombre :"+es.getNombre());                
                 System.out.println("Direccion :"+es.getDireccion());
                 System.out.println("Telefono :"+es.getTelefono());
                 System.out.println("Email :"+es.getEmail());                

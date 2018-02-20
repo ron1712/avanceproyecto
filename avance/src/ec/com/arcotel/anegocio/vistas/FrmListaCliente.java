@@ -36,7 +36,8 @@ public class FrmListaCliente extends JInternalFrame{
         modelo.addColumn("Apellido");                
         modelo.addColumn("Direccion");
         modelo.addColumn("Telefono");
-        modelo.addColumn("Email");        
+        modelo.addColumn("Email");
+        modelo.addColumn("Fechade nac");         
         
         List<Cliente> lista = new ArrayList<>();
         try{
@@ -49,7 +50,7 @@ public class FrmListaCliente extends JInternalFrame{
         for(Cliente est : lista){
             modelo.addRow(new Object[]{ est.getCedula(), est.getNombre(),
                est.getApellido(),est.getDireccion(),
-                est.getTelefono(),est.getEmail()});
+                est.getTelefono(),est.getEmail(),est.getFecha_nac()});
         }
         tabla.setModel(modelo);
     }
