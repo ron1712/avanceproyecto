@@ -1,20 +1,19 @@
 package ec.com.arcotel.anegocio.entidades;
-import java.util.*;
 
-public class Detalleventa {
+public class DetalleCompra {
     private String codigo;
     private Producto producto;
-    private FacturaVenta facturaventa;
+    private FacturaCompra facturacompra;
     private int cantidad;
     private double precio_total;
 
-    public Detalleventa() {
+    public DetalleCompra() {
     }
 
-    public Detalleventa(String codigo, Producto producto, FacturaVenta facturaventa, int cantidad, double precio_total) {
+    public DetalleCompra(String codigo, Producto producto, FacturaCompra facturacompra, int cantidad, double precio_total) {
         this.codigo = codigo;
         this.producto = producto;
-        this.facturaventa = facturaventa;
+        this.facturacompra = facturacompra;
         this.cantidad = cantidad;
         this.precio_total = precio_total;
     }
@@ -43,12 +42,12 @@ public class Detalleventa {
         this.producto = producto;
     }
 
-    public FacturaVenta getFacturaventa() {
-        return facturaventa;
+    public FacturaCompra getFacturacompra() {
+        return facturacompra;
     }
 
-    public void setFacturaventa(FacturaVenta facturaventa) {
-        this.facturaventa = facturaventa;
+    public void setFacturacompra(FacturaCompra facturacompra) {
+        this.facturacompra = facturacompra;
     }
 
     public int getCantidad() {
@@ -58,6 +57,10 @@ public class Detalleventa {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
+
+    @Override
+    public String toString() {
+        return codigo;
+    }
     
 }

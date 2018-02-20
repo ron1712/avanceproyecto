@@ -1,12 +1,11 @@
 package ec.com.arcotel.anegocio.vistas;
 
-import ec.com.arcotel.anegocio.dao.IDetalleEntrada;
 import ec.com.arcotel.anegocio.dao.IEntrada;
 import ec.com.arcotel.anegocio.dao.IProducto;
-import ec.com.arcotel.anegocio.entidades.DetalleEntrada;
+import ec.com.arcotel.anegocio.entidades.DetalleCompra;
 import ec.com.arcotel.anegocio.entidades.Entrada;
 import ec.com.arcotel.anegocio.entidades.Producto;
-import ec.com.arcotel.anegocio.impl.DetalleEntradaImpl;
+import ec.com.arcotel.anegocio.impl.DetalleCompraImpl;
 import ec.com.arcotel.anegocio.impl.EntradaImpl;
 import ec.com.arcotel.anegocio.impl.ProductoImpl;
 import java.awt.BorderLayout;
@@ -22,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import ec.com.arcotel.anegocio.dao.IDetalleCompra;
 
 public class FrmNuevoDetalleEntrada extends JInternalFrame{
     
@@ -111,8 +111,8 @@ public class FrmNuevoDetalleEntrada extends JInternalFrame{
 
     }         
      public void btnAceptarActionListener(ActionEvent e) {                  
-             IDetalleEntrada detalleentradaDao = new DetalleEntradaImpl();
-             DetalleEntrada detalleentrada = new DetalleEntrada();
+             IDetalleCompra detalleentradaDao = new DetalleCompraImpl();
+             DetalleCompra detalleentrada = new DetalleCompra();
              detalleentrada.setEntrada((Entrada) cmbEntrada.getSelectedItem());
              detalleentrada.setProducto((Producto) cmbProducto.getSelectedItem());
              detalleentrada.setPreciocompra(Integer.parseInt(txtPreciocompra.getText()));

@@ -34,15 +34,15 @@ public class FrmListaDetalleEntrada extends JInternalFrame{
         modelo.addColumn("Entrada");
         modelo.addColumn("Producto");
         modelo.addColumn("Precio compra");        
-        List<DetalleEntrada> lista = new ArrayList<>();
+        List<DetalleCompra> lista = new ArrayList<>();
         try{
-            IDetalleEntrada detalleentradaDao = new DetalleEntradaImpl();
+            IDetalleCompra detalleentradaDao = new DetalleCompraImpl();
             lista = detalleentradaDao.obtener();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        for(DetalleEntrada est : lista){
+        for(DetalleCompra est : lista){
             modelo.addRow(new Object[]{ est.getEntrada().getCodigo(),
                 est.getProducto().getCodigo(), est.getPreciocompra()});
         }

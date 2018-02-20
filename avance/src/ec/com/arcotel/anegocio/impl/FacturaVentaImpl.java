@@ -7,17 +7,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalidaImpl implements ISalida{
-     @Override
-    public int insertar(Salida salida) throws Exception {
+public class FacturaVentaImpl implements IFacturaVenta {
+
+    @Override
+    public int insertar(FacturaVenta facturacompra) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into salida  values "
-                +"(?,?,?,?)";
+        String sql = "insert into facturacompra  values "
+                +"(?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, salida.getCodigo()));
-        lstPar.add(new Parametro(2, salida.getFecha()));
-        lstPar.add(new Parametro(3, salida.getPreciocompra()));        
-        lstPar.add(new Parametro(4, salida.getDescripcion())); 
+        lstPar.add(new Parametro(1, facturacompra.getCodigo()));
+        lstPar.add(new Parametro(2, facturacompra.getFecha()));
+        lstPar.add(new Parametro(3, facturacompra.getCliente().getNombre()));        
+       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -34,36 +35,14 @@ public class SalidaImpl implements ISalida{
     }
 
     @Override
-    public int modificar(Salida salida) throws Exception {
+    public int modificar(FacturaVenta facturacompra) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE salida"
-                + "   SET codigo=?,fecha=?, preciocompra=?, descripcion=? where codigo=?";
-        List<Parametro> lstPar = new ArrayList<>();        
-        lstPar.add(new Parametro(1, salida.getCodigo()));
-        lstPar.add(new Parametro(2, salida.getFecha()));
-        lstPar.add(new Parametro(3, salida.getPreciocompra())); 
-        lstPar.add(new Parametro(4, salida.getDescripcion())); 
-        Conexion con = null;
-        try {
-            con = new Conexion();
-            con.conectar();
-            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            if (con != null) {
-                con.desconectar();
-            }
-        }
-        return numFilasAfectadas;
-    }
-
-    @Override
-    public int eliminar(Salida salida) throws Exception {
-        int numFilasAfectadas = 0;
-         String sql = "DELETE FROM salida  where codigo=?";
+        String sql = "UPDATE facturacompra"
+                + "   SET codigo=?, fecha=?, codigoCliente=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, salida.getCodigo()));       
+        lstPar.add(new Parametro(1, facturacompra.getCodigo()));
+        lstPar.add(new Parametro(2, facturacompra.getFecha()));
+        lstPar.add(new Parametro(3, facturacompra.getCliente().getNombre()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -80,9 +59,30 @@ public class SalidaImpl implements ISalida{
     }
 
     @Override
-    public Salida obtener(int codigo) throws Exception {
-        Salida salida = null;
-        String sql = "SELECT codigo, fecha, preciocompra, descripcion FROM salida where codigo=?;";
+    public int eliminar(FacturaVenta facturacompra) throws Exception {
+        int numFilasAfectadas = 0;
+         String sql = "DELETE FROM facturacompra  where codigo=?";
+        List<Parametro> lstPar = new ArrayList<>();
+        lstPar.add(new Parametro(1, facturacompra.getCodigo()));       
+        Conexion con = null;
+        try {
+            con = new Conexion();
+            con.conectar();
+            numFilasAfectadas = con.ejecutarComando(sql, lstPar);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (con != null) {
+                con.desconectar();
+            }
+        }
+        return numFilasAfectadas;
+    }
+
+    @Override
+    public FacturaVenta obtener(int codigo) throws Exception {
+        FacturaVenta facturacompra = null;
+        String sql = "SELECT codigo, fecha, codigoCliente FROM facturacompra where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -91,11 +91,13 @@ public class SalidaImpl implements ISalida{
             con.conectar();
             ResultSet rst = con.ejecutarQuery(sql, lstPar);
             while (rst.next()) {
-                salida = new Salida();
-                salida.setCodigo(rst.getString(1));   
-                salida.setFecha(rst.getDate(2));
-                salida.setPreciocompra(rst.getDouble(3));                             
-                salida.setDescripcion(rst.getString(4));
+                facturacompra = new FacturaVenta();
+                facturacompra.setCodigo(rst.getString(1));
+                facturacompra.setFecha(rst.getDate(2)); 
+                ICliente clienterdao = new ClienteImpl();
+                Cliente clienter = clienterdao.obtener(rst.getString(3));
+                facturacompra.setCliente(clienter);
+                            
             }
         } catch (Exception e) {
             throw e;
@@ -103,26 +105,27 @@ public class SalidaImpl implements ISalida{
             if(con!=null)
             con.desconectar();
         }
-        return salida;
+        return facturacompra;
     }
 
     @Override
-    public List<Salida> obtener() throws Exception {
-        List<Salida> lista = new ArrayList<>();
-         String sql = "SELECT codigo,fecha, preciocompra, descripcion FROM salida ";        
+    public List<FacturaVenta> obtener() throws Exception {
+        List<FacturaVenta> lista = new ArrayList<>();
+         String sql ="SELECT codigo, fecha, codigoCliente FROM facturacompra";       
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
             ResultSet rst = con.ejecutarQuery(sql, null);
-            Salida salida=null;
-            while (rst.next()) {
-                salida = new Salida();
-                salida.setCodigo(rst.getString(1));   
-                salida.setFecha(rst.getDate(2));
-                salida.setPreciocompra(rst.getDouble(3));  
-                salida.setDescripcion(rst.getString(4));
-                lista.add(salida);
+            FacturaVenta facturacompra=null;
+            while (rst.next()) {                
+                facturacompra = new FacturaVenta();
+                 facturacompra.setCodigo(rst.getString(1));
+                facturacompra.setFecha(rst.getDate(2)); 
+                ICliente clienterdao = new ClienteImpl();
+                Cliente clienter = clienterdao.obtener(rst.getString(3));
+                facturacompra.setCliente(clienter);
+                lista.add(facturacompra);
             }
         } catch (Exception e) {
             throw e;
@@ -133,3 +136,7 @@ public class SalidaImpl implements ISalida{
         return lista;
     }
 }
+
+
+
+

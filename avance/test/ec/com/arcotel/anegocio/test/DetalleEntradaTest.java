@@ -16,12 +16,12 @@ public class DetalleEntradaTest {
     public void prueba() throws Exception{
      //              INSERTAR
         int filasAfectadas =0;
-        IDetalleEntrada detalleentradaDao = new DetalleEntradaImpl();
+        IDetalleCompra detalleentradaDao = new DetalleCompraImpl();
         IEntrada entradaDao = new EntradaImpl();
         Entrada entrada = entradaDao.obtener(2);
         IProducto productoDao = new ProductoImpl();
         Producto producto = productoDao.obtener(2);
-        DetalleEntrada detalleentrada = new DetalleEntrada(entrada,producto,250);
+        DetalleCompra detalleentrada = new DetalleCompra(entrada,producto,250);
         try{
             filasAfectadas = detalleentradaDao.insertar(detalleentrada);
             System.out.println("DetalleEntrada ingresado!!!");
@@ -30,10 +30,10 @@ public class DetalleEntradaTest {
         }
         assertEquals(filasAfectadas>0, true);
         //              LISTADO DE PEdido
-        List<DetalleEntrada> lista = new ArrayList<>();
+        List<DetalleCompra> lista = new ArrayList<>();
         try {
             lista = detalleentradaDao.obtener();
-            for (DetalleEntrada es:lista){
+            for (DetalleCompra es:lista){
                 System.out.println("\nDatos detalleentrada");
                 System.out.println("Entrada:"+es.getEntrada().getCodigo());
                 System.out.println("Producto:"+es.getProducto().getCodigo());

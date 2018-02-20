@@ -392,7 +392,7 @@ public class FrmMenuPrincipal extends JFrame {
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.NebulaSkin"); 
         SubstanceLookAndFeel.setCurrentTheme( "org.jvnet.substance.theme.SubstanceSaturatedTheme");
         SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
-        //SubstanceLookAndFeel.setCurrentWatermark( new SubstanceImageWatermark("tuxx.jpg"));
+        SubstanceLookAndFeel.setCurrentWatermark( new SubstanceImageWatermark("c:\\unach.jpg"));
     }    
     public void mniNuevoClienteActionPerformed(ActionEvent e){
         FrmNuevoCliente frm = new FrmNuevoCliente();

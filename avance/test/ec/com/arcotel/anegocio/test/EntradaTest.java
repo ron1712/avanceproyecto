@@ -23,7 +23,7 @@ public class EntradaTest {
         Entrada cliente = new Entrada("2",proveedor,new Date(),154,"compra");
         try{
             filasAfectadas = clienteDao.insertar(cliente);
-            System.out.println("Entrada ingresado!!!\n");
+            System.out.println("Entrada ingresado!!!");
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
         }

@@ -1,34 +1,43 @@
 package ec.com.arcotel.anegocio.entidades;
 
+import java.util.Date;
+
 public class Cliente {
-    private int codigo;
-    private String nombre;
-    private String apellido;
     private String cedula;
-    private String telefono;
-    private String direccion;  
+    private String nombre;
+    private String apellido;   
+    private String direccion; 
+    private String telefono;     
     private String email;
-   
+    private Date fecha_nac;
     
     public Cliente() {
     }
 
-    public Cliente(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
-        this.codigo = codigo;
+    public Cliente(String cedula, String nombre, String apellido, String direccion, String telefono, String email, Date fecha_nac) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.cedula = cedula;
-        this.telefono = telefono;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.email = email;
+        this.fecha_nac = fecha_nac;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Date getFecha_nac() {
+        return fecha_nac;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setFecha_nac(Date fecha_nac) {
+        this.fecha_nac = fecha_nac;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -47,12 +56,12 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -63,14 +72,6 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -78,10 +79,12 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Override
     public String toString() {
-        return nombre; 
+        return nombre;
     }
-   
+
+    
 }
     

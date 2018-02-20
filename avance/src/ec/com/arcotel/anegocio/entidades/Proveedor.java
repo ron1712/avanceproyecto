@@ -2,33 +2,29 @@ package ec.com.arcotel.anegocio.entidades;
 
 
 public class Proveedor {
-    private int codigo;
+    private String ruc;
     private String nombre;
-    private String apellido;
-    private String cedula;
-    private String telefono;
     private String direccion;
+    private String telefono;   
     private String email;
 
     public Proveedor() {
     }
 
-    public Proveedor(int codigo, String nombre, String apellido, String cedula, String telefono, String direccion, String email) {
-        this.codigo = codigo;
+    public Proveedor(String ruc, String nombre, String direccion, String telefono, String email) {
+        this.ruc = ruc;
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.cedula = cedula;
-        this.telefono = telefono;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.email = email;
+    }   
+    
+    public String getRuc() {
+        return ruc;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigoProveedor) {
-        this.codigo = codigoProveedor;
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
     }
 
     public String getNombre() {
@@ -39,20 +35,12 @@ public class Proveedor {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -63,14 +51,6 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -78,6 +58,7 @@ public class Proveedor {
     public void setEmail(String email) {
         this.email = email;
     }
+    
     @Override
     public String toString() {
         return nombre; 

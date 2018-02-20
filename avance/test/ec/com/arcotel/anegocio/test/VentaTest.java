@@ -25,7 +25,7 @@ public class VentaTest {
         Ventas venta = new Ventas("2",cliente, new Date(),vendedor);
         try{
             filasAfectadas = ventaDao.insertar(venta);
-            System.out.println("Venta ingresado!!!\n");
+            System.out.println("Venta ingresado!!!");
         }catch(Exception e){
             System.out.println("Error:.. "+e.getMessage());
         }
@@ -36,7 +36,7 @@ public class VentaTest {
         try {
             lista = ventaDao.obtener();
             for (Ventas v:lista){
-                System.out.println("Codigo:"+v.getCodigo());
+                System.out.println("\nCodigo:"+v.getCodigo());
                 System.out.println("Cliente:"+v.getCliente().getCodigo());
                 System.out.println("Fecha:"+v.getFecha());                
                 System.out.println("Vendedor: "+v.getVendedor().getLogin());

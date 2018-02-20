@@ -2,36 +2,34 @@ package ec.com.arcotel.anegocio.entidades;
 
 public class Producto {
     private int codigo;
+    private Categoria categoria;
     private String nombre;
-    private int cantidad;
-    private double preciounitario;
-    private String descripcion;
+    private double precio;
 
     public Producto() {
     }
 
-    public Producto(int codigo, String nombre, int cantidad, double preciounitario, String descripcion) {
+    public Producto(int codigo, Categoria categoria, String nombre, double precio) {
         this.codigo = codigo;
+        this.categoria = categoria;
         this.nombre = nombre;
-        this.cantidad = cantidad;
-        this.preciounitario = preciounitario;
-        this.descripcion = descripcion;
+        this.precio = precio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public String getNombre() {
@@ -42,21 +40,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
-
-    public double getPreciounitario() {
-        return preciounitario;
-    }
-
-    public void setPreciounitario(double preciounitario) {
-        this.preciounitario = preciounitario;
-    }
+    
     @Override
     public String toString() {
         return nombre; 

@@ -1,44 +1,32 @@
 package ec.com.arcotel.anegocio.entidades;
 
+import java.util.Date;
+
 public class Kardex {
-   private String codigo;
-   private Producto producto;
-   private Entrada entrada;
-   private Salida salida;
-   private int cantidad;
-   private double preciocompra;
-   private double precioventa;
-   private int cantidadinicial;
-   private int cantidadactual;
+  private int codigo;
+  private Producto producto;
+  private Date fecha_emision;
+  private String tipo_transaccion;
+  private int existencias;
+  private double valor_total;
 
     public Kardex() {
     }
 
-    public Kardex(String codigo, Producto producto, Entrada entrada, Salida salida, int cantidad, double preciocompra, double precioventa, int cantidadinicial, int cantidadactual) {
+    public Kardex(int codigo, Producto producto, Date fecha_emision, String tipo_transaccion, int existencias, double valor_total) {
         this.codigo = codigo;
         this.producto = producto;
-        this.entrada = entrada;
-        this.salida = salida;
-        this.cantidad = cantidad;
-        this.preciocompra = preciocompra;
-        this.precioventa = precioventa;
-        this.cantidadinicial = cantidadinicial;
-        this.cantidadactual = cantidadactual;
-    }
+        this.fecha_emision = fecha_emision;
+        this.tipo_transaccion = tipo_transaccion;
+        this.existencias = existencias;
+        this.valor_total = valor_total;
+    }  
 
-    public int getCantidadactual() {
-        return cantidadactual;
-    }
-
-    public void setCantidadactual(int cantidadactual) {
-        this.cantidadactual = cantidadactual;
-    }
-
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -50,57 +38,36 @@ public class Kardex {
         this.producto = producto;
     }
 
-    public Entrada getEntrada() {
-        return entrada;
+    public Date getFecha_emision() {
+        return fecha_emision;
     }
 
-    public void setEntrada(Entrada entrada) {
-        this.entrada = entrada;
+    public void setFecha_emision(Date fecha_emision) {
+        this.fecha_emision = fecha_emision;
     }
 
-    public Salida getSalida() {
-        return salida;
+    public String getTipo_transaccion() {
+        return tipo_transaccion;
     }
 
-    public void setSalida(Salida salida) {
-        this.salida = salida;
+    public void setTipo_transaccion(String tipo_transaccion) {
+        this.tipo_transaccion = tipo_transaccion;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getExistencias() {
+        return existencias;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setExistencias(int existencias) {
+        this.existencias = existencias;
     }
 
-    public double getPreciocompra() {
-        return preciocompra;
+    public double getValor_total() {
+        return valor_total;
     }
 
-    public void setPreciocompra(double preciocompra) {
-        this.preciocompra = preciocompra;
+    public void setValor_total(double valor_total) {
+        this.valor_total = valor_total;
     }
-
-    public double getPrecioventa() {
-        return precioventa;
-    }
-
-    public void setPrecioventa(double precioventa) {
-        this.precioventa = precioventa;
-    }
-
-    public int getCantidadinicial() {
-        return cantidadinicial;
-    }
-
-    public void setCantidadinicial(int cantidadinicial) {
-        this.cantidadinicial = cantidadinicial;
-    }
-
-    @Override
-    public String toString() {
-        return codigo;
-    }
-   
+    
 }
