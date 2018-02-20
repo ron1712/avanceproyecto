@@ -44,6 +44,7 @@ public class ClienteImpl implements ICliente {
         String sql = "UPDATE cliente"
                 + "   SET cedula=?,nombre=?, apellido=?,direccion=?, "
                 + "telefono=?, email=?, fecha_nac=? where cedula=?";
+        
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente.getCedula()));
         lstPar.add(new Parametro(2, cliente.getNombre()));
