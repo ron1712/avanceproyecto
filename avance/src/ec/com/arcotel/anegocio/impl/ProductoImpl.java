@@ -12,13 +12,13 @@ public class ProductoImpl implements IProducto{
     public int insertar(Producto producto) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "insert into producto  values "
-                +"(?,?,?,?,?)";
+                +"(?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, producto.getCodigo()));
-        lstPar.add(new Parametro(2, producto.getNombre()));
-        lstPar.add(new Parametro(3, producto.getCantidad()));
-        lstPar.add(new Parametro(4, producto.getPreciounitario()));        
-        lstPar.add(new Parametro(5, producto.getDescripcion()));
+        lstPar.add(new Parametro(2, producto.getCategoria().getCodigo()));
+        lstPar.add(new Parametro(3, producto.getNombre()));
+        lstPar.add(new Parametro(4, producto.getPrecio()));        
+       
       
         Conexion con = null;
         try {
@@ -39,14 +39,13 @@ public class ProductoImpl implements IProducto{
     public int modificar(Producto producto) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE producto"
-                + "   SET codigo=?, nombre=?, cantidad=?, preciounitario=? "
-                + "descripcion=? where codigo=?";
-        List<Parametro> lstPar = new ArrayList<>();
+                + "   SET codigo=?,codigocategoria=?, nombre=?, precio=? "
+                + " where codigo=?";
+    List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, producto.getCodigo()));
-        lstPar.add(new Parametro(2, producto.getNombre()));
-        lstPar.add(new Parametro(3, producto.getCantidad()));
-        lstPar.add(new Parametro(4, producto.getPreciounitario()));        
-        lstPar.add(new Parametro(5, producto.getDescripcion()));
+        lstPar.add(new Parametro(2, producto.getCategoria().getCodigo()));
+        lstPar.add(new Parametro(3, producto.getNombre()));
+        lstPar.add(new Parametro(4, producto.getPrecio())); 
         
         
         Conexion con = null;
@@ -88,8 +87,8 @@ public class ProductoImpl implements IProducto{
     @Override
     public Producto obtener(int codigo) throws Exception {
         Producto producto = null;
-        String sql = "SELECT codigo, nombre, cantidad,preciounitario,"
-                + "descripcion FROM producto where codigo=?;";
+        String sql = "SELECT codigo,codigocategoria, nombre,precio,"
+                + " FROM producto where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -100,11 +99,11 @@ public class ProductoImpl implements IProducto{
             while (rst.next()) {
                 producto = new Producto();
                 producto.setCodigo(rst.getInt(1));
-                producto.setNombre(rst.getString(2));
-                producto.setCantidad(rst.getInt(3)); 
-                producto.setPreciounitario(rst.getDouble(4));
-                producto.setDescripcion(rst.getString(5));              
-               
+                ICategoria categoriadao = new CategoriaImpl();
+                Categoria categoria = categoriadao.obtener(rst.getInt(2));
+                producto.setNombre(rst.getString(3));
+                producto.setPrecio(rst.getDouble(4));
+                
             }
         } catch (Exception e) {
             throw e;
@@ -118,7 +117,7 @@ public class ProductoImpl implements IProducto{
     @Override
     public List<Producto> obtener() throws Exception {
         List<Producto> lista = new ArrayList<>();
-         String sql = "SELECT codigo, nombre, cantidad, preciounitario,descripcion FROM producto ";        
+         String sql = "SELECT codigo,codigocategoria ,nombre,precio FROM producto ";        
         Conexion con = null;
         try {
             con = new Conexion();
@@ -128,10 +127,10 @@ public class ProductoImpl implements IProducto{
             while (rst.next()) {
                 producto = new Producto();
                 producto.setCodigo(rst.getInt(1));
-                producto.setNombre(rst.getString(2));
-                producto.setCantidad(rst.getInt(3)); 
-                producto.setPreciounitario(rst.getDouble(4));
-                producto.setDescripcion(rst.getString(5));                             
+                ICategoria categoriadao = new CategoriaImpl();
+                Categoria categoria = categoriadao.obtener(rst.getInt(2));
+                producto.setNombre(rst.getString(3));
+                producto.setPrecio(rst.getDouble(4));                            
                 lista.add(producto);
             }
         } catch (Exception e) {
