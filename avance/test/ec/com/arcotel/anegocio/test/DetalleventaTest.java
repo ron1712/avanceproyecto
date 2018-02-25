@@ -22,7 +22,7 @@ public class DetalleventaTest {
         Ventas venta = ventaDao.obtener("2");
         IProducto productoDao = new ProductoImpl();
         Producto producto = productoDao.obtener(2);
-        Detalleventa detalleventa = new Detalleventa(venta,producto,320, new Date(),2000);
+        DetalleVenta detalleventa = new DetalleVenta(venta,producto,320, new Date(),2000);
         try{
             filasAfectadas = detalleventaDao.insertar(detalleventa);
             System.out.println("DetalleVenta ingresado!!!");
@@ -31,10 +31,10 @@ public class DetalleventaTest {
         }
         assertEquals(filasAfectadas>0, true);
         //              LISTADO DE PEdido
-        List<Detalleventa> lista = new ArrayList<>();
+        List<DetalleVenta> lista = new ArrayList<>();
         try {
             lista = detalleventaDao.obtener();
-            for (Detalleventa es:lista){
+            for (DetalleVenta es:lista){
                 System.out.println("\nDatos detalleventa");
                 System.out.println("Venta:"+es.getVentas().getCodigo());
                 System.out.println("Producto:"+es.getProducto().getCodigo());

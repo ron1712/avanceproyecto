@@ -9,109 +9,142 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetalleCompraImpl implements IDetalleCompra {
-
-    @Override
+    
+ @Override
     public int insertar(DetalleCompra detallecompra) throws Exception {
-        int Filas = 0;
-        String csql = "Insert into DetalleCompra values (?,?,?,?,?)";
-        ArrayList<Parametro> lstP = new ArrayList<>();
-        lstP.add(new Parametro(1, detallecompra.getCodigo()));
-        lstP.add(new Parametro(2, detallecompra.getProducto().getCodigo()));
-        lstP.add(new Parametro(3, detallecompra.get()));
-      
+        int numFilas = 0;
+        String sqlC = "INSERT INTO DetalleCompra VALUES (?,?,?,?,?)";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, detallecompra.getCodigo()));        
+        lisParametros.add(new Parametro(2, detallecompra.getProducto().getCodigo()));
+        lisParametros.add(new Parametro(3, detallecompra.getFacturacompra().getCodigo()));        
+        lisParametros.add(new Parametro(4, detallecompra.getCantidad()));
+        lisParametros.add(new Parametro(5, detallecompra.getPrecio_total()));
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
-            Filas = con.ejecutarComando(csql, lstP);
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage() + " " + e.getLocalizedMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
             }
         }
-        return Filas;
+        return numFilas;
     }
 
-    @Override
-    public DetalleCompra obtener(int codigoDetalleCompra) throws Exception {
-        DetalleCompra trata = null;
-        Compra compra=null;
-        ICompra compraDao = new CompraImpl();
-        Producto producto=null;
-        IProducto producDao=new ProductoImpl();
-        String csql = "Select codCompra, codProducto, preciocompra From DetalleCompra Where codigo=?";
-        ArrayList<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, codigoDetalleCompra));
+     @Override
+    public int modificar(DetalleCompra detallecompra) throws Exception {
+        int numFilas = 0;
+        String sqlC = "UPDATE DetalleCompra SET codigo=?, codProducto=?, codFacturaCompra=?, cantidad=?. precio_total=? WHERE codigo=?";
+        
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, detallecompra.getCodigo()));        
+        lisParametros.add(new Parametro(2, detallecompra.getProducto().getCodigo()));
+        lisParametros.add(new Parametro(3, detallecompra.getFacturacompra().getCodigo()));        
+        lisParametros.add(new Parametro(4, detallecompra.getCantidad()));
+        lisParametros.add(new Parametro(5, detallecompra.getPrecio_total()));
         Conexion con = null;
         try {
             con = new Conexion();
-            ResultSet rst = con.ejecutarQuery(csql, lstPar);
-            while (rst.next()) {
-                compra=new Compra();
-                compra=compraDao.obtener(rst.getInt(1));
-                producto =new Producto();
-                producto = producDao.obtener(rst.getInt(2));
-                trata=new DetalleCompra();
-                trata.setCompra(compra);
-                trata.setProducto(producto);
-                trata.setPreciocompra(rst.getInt(3));
-               
-            }
+            con.conectar();
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage() + " " + e.getLocalizedMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
             }
         }
-        return trata;
+        return numFilas;
     }
 
+      @Override
+    public int eliminar(DetalleCompra detallecompra) throws Exception {
+        int numFilas = 0;
+        String sqlC = "DELETE FROM DetalleCompra WHERE codigo=?";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, detallecompra.getCodigo()));
+        Conexion con = null;
+        try {
+            con = new Conexion();
+            con.conectar();
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            if (con != null) {
+                con.desconectar();
+            }
+        }
+        return numFilas;
+    }
+     @Override
+    public DetalleCompra obtener(int codDetalleCompra) throws Exception {
+        DetalleCompra detallecompra = null;
+        String sqlC = "SELECT codigo, codProducto, codFacturaCompra, cantidad, precio_total FROM DetalleCompra WHERE codigo=?";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, codDetalleCompra));
+        Conexion con = null;
+        try {
+            con = new Conexion();
+            con.conectar();
+            ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
+            
+            while (rst.next()) {     
+                detallecompra = new DetalleCompra();
+                detallecompra.setCodigo(rst.getString(1));
+                IProducto productoDao = new ProductoImpl();
+                Producto producto = productoDao.obtener(rst.getInt(2));
+                detallecompra.setProducto(producto);
+                IFacturaCompra facturacompradao = new FacturaCompraImpl();
+                FacturaCompra facturacompra = facturacompradao.obtener(rst.getInt(3));
+                detallecompra.setFacturacompra(facturacompra);
+                detallecompra.setCantidad(Integer.parseInt(rst.getString(4)));
+                detallecompra.setPrecio_total(Double.parseDouble(rst.getString(5)));  
+                
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            if (con != null) {
+                con.desconectar();
+            }
+        }
+        return detallecompra;  
+    }  
+    
     @Override
     public List<DetalleCompra> obtener() throws Exception {
-        ArrayList<DetalleCompra> comps = new ArrayList<>();
-        Compra compra=null;
-        ICompra compraDao=new CompraImpl();
-        Producto producto=null;
-        IProducto productoDao=new ProductoImpl();
-        String csql="select codCompra, codProducto, preciocompra from DetalleCompra";
-        Conexion con=null;
+        List<DetalleCompra> lista = new ArrayList<>();
+         String sql ="SELECT codidog, codProducto, codFacturaCompra, cantidad, precio_total FROM DetalleCompra";       
+        Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            ResultSet rst=con.ejecutarQuery(csql, null);
-            DetalleCompra comp=null;
-            while(rst.next()){
-                compra=new Compra();
-                compra=compraDao.obtener(rst.getInt(1));
-                producto = new Producto();
-                producto = productoDao.obtener(rst.getInt(2));
-                comp=new DetalleCompra();
-                comp.setCompra(compra);
-                comp.setProducto(producto);
-                comp.setPreciocompra(rst.getInt(3));             
-                comps.add(comp);
+            ResultSet rst = con.ejecutarQuery(sql, null);
+            DetalleCompra detallecompra=null;
+            while (rst.next()) {                
+                detallecompra = new DetalleCompra();
+                detallecompra.setCodigo(rst.getString(1));
+                IProducto productoDao = new ProductoImpl();
+                Producto producto = productoDao.obtener(rst.getInt(2));
+                detallecompra.setProducto(producto);
+                IFacturaCompra facturacompradao = new FacturaCompraImpl();
+                FacturaCompra facturacompra = facturacompradao.obtener(rst.getInt(3));
+                detallecompra.setFacturacompra(facturacompra);
+                detallecompra.setCantidad(Integer.parseInt(rst.getString(4)));
+                detallecompra.setPrecio_total(Double.parseDouble(rst.getString(5)));
+                lista.add(detallecompra);
             }
         } catch (Exception e) {
             throw e;
-        } finally{
-            if(con!=null){
-                con.desconectar();
-            }
+        } finally {
+            if(con!=null)
+            con.desconectar();
         }
-        return comps;
-    }    
-
-    @Override
-    public int modificar(DetalleCompra detallecompra) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return lista;
     }
-
-    @Override
-    public int eliminar(DetalleCompra detallecompra) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
