@@ -1,6 +1,6 @@
 package ec.com.arcotel.anegocio.dao;
 
-import ec.com.arcotel.anegocio.entidades.DetalleVenta;
+import ec.com.arcotel.anegocio.entidades.*;
 import java.util.List;
 
 public interface IDetalleVenta {
