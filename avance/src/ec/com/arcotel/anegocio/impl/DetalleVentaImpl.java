@@ -11,9 +11,9 @@ import java.util.List;
 public class DetalleVentaImpl implements IDetalleVenta {
     
  @Override
-    public int insertar(DetalleVenta detalleventa) throws Exception {
+    public int insertar(Detalleventa detalleventa) throws Exception {
         int numFilas = 0;
-        String sqlC = "INSERT INTO DetalleVenta VALUES (?,?,?,?,?)";
+        String sqlC = "INSERT INTO Detalleventa VALUES (?,?,?,?,?)";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, detalleventa.getCodigo()));        
         lisParametros.add(new Parametro(2, detalleventa.getProducto().getCodigo()));
@@ -36,9 +36,9 @@ public class DetalleVentaImpl implements IDetalleVenta {
     }
 
      @Override
-    public int modificar(DetalleVenta detalleventa) throws Exception {
+    public int modificar(Detalleventa detalleventa) throws Exception {
         int numFilas = 0;
-        String sqlC = "UPDATE DetalleVenta SET codigo=?, codProducto=?, codFacturaVenta=?, cantidad=?. precio_total=? WHERE codigo=?";
+        String sqlC = "UPDATE Detalleventa SET codigo=?, codProducto=?, codFacturaVenta=?, cantidad=?. precio_total=? WHERE codigo=?";
         
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, detalleventa.getCodigo()));        
@@ -62,9 +62,9 @@ public class DetalleVentaImpl implements IDetalleVenta {
     }
 
     @Override
-    public int eliminar(DetalleVenta detalleventa) throws Exception {
+    public int eliminar(Detalleventa detalleventa) throws Exception {
         int numFilas = 0;
-        String sqlC = "DELETE FROM DetalleVenta WHERE codigo=?";
+        String sqlC = "DELETE FROM Detalleventa WHERE codigo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, detalleventa.getCodigo()));
         Conexion con = null;
@@ -82,11 +82,11 @@ public class DetalleVentaImpl implements IDetalleVenta {
         return numFilas;
     }
      @Override
-    public DetalleVenta obtener(int codDetalleVenta) throws Exception {
-        DetalleVenta detalleventa = null;
-        String sqlC = "SELECT codigo, codProducto, codFacturaVenta, cantidad, precio_total FROM DetalleVenta WHERE codigo=?";
+    public Detalleventa obtener(int codDetalleventa) throws Exception {
+        Detalleventa detalleventa = null;
+        String sqlC = "SELECT codigo, codProducto, codFacturaVenta, cantidad, precio_total FROM Detalleventa WHERE codigo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, codDetalleVenta));
+        lisParametros.add(new Parametro(1, codDetalleventa));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -94,7 +94,7 @@ public class DetalleVentaImpl implements IDetalleVenta {
             ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
             
             while (rst.next()) {     
-                detalleventa = new DetalleVenta();
+                detalleventa = new Detalleventa();
                 detalleventa.setCodigo(rst.getString(1));
                 IProducto productoDao = new ProductoImpl();
                 Producto producto = productoDao.obtener(rst.getInt(2));
@@ -117,17 +117,17 @@ public class DetalleVentaImpl implements IDetalleVenta {
     }  
     
     @Override
-    public List<DetalleVenta> obtener() throws Exception {
-        List<DetalleVenta> lista = new ArrayList<>();
-         String sql ="SELECT codidog, codProducto, codFacturaVenta, cantidad, precio_total FROM DetalleVenta";       
+    public List<Detalleventa> obtener() throws Exception {
+        List<Detalleventa> lista = new ArrayList<>();
+         String sql ="SELECT codidog, codProducto, codFacturaVenta, cantidad, precio_total FROM Detalleventa";       
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
             ResultSet rst = con.ejecutarQuery(sql, null);
-            DetalleVenta detalleventa=null;
+            Detalleventa detalleventa=null;
             while (rst.next()) {                
-                detalleventa = new DetalleVenta();
+                detalleventa = new Detalleventa();
                 detalleventa.setCodigo(rst.getString(1));
                 IProducto productoDao = new ProductoImpl();
                 Producto producto = productoDao.obtener(rst.getInt(2));
