@@ -71,7 +71,7 @@ public class ClienteImpl implements ICliente {
     @Override
     public int eliminar(Cliente cliente) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cliente  where cedula=?";
+        String sql = "DELETE FROM cliente  where cedula=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente.getCedula()));       
         Conexion con = null;
@@ -109,9 +109,7 @@ public class ClienteImpl implements ICliente {
                 cliente.setDireccion(rst.getString(4));
                 cliente.setTelefono(rst.getString(5));
                 cliente.setEmail(rst.getString(6));                  
-                cliente.setFecha_nac(rst.getDate(7));  
-                
-            
+                cliente.setFecha_nac(rst.getDate(7));                          
             }
         } catch (Exception e) {
             throw e;

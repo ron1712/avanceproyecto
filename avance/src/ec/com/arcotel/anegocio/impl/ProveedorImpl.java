@@ -18,7 +18,7 @@ public class ProveedorImpl implements IProveedor {
         lstPar.add(new Parametro(1, proveedor.getRuc()));
         lstPar.add(new Parametro(2, proveedor.getNombre()));
         lstPar.add(new Parametro(3, proveedor.getDireccion()));
-        lstPar.add(new Parametro(4,proveedor.getTelefono()));        
+        lstPar.add(new Parametro(4, proveedor.getTelefono()));        
         lstPar.add(new Parametro(5, proveedor.getEmail()));     
         Conexion con = null;
         try {
@@ -40,7 +40,7 @@ public class ProveedorImpl implements IProveedor {
         int numFilasAfectadas = 0;
         String sql = "UPDATE proveedor"
                 + "   SET ruc=?,nombre=?,direccion=?,telefono=?, "
-                + "email=? where codigo=?";
+                + "email=? where ruc=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, proveedor.getRuc()));
         lstPar.add(new Parametro(2, proveedor.getNombre()));
@@ -65,7 +65,7 @@ public class ProveedorImpl implements IProveedor {
     @Override
     public int eliminar(Proveedor proveedor) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM proveedor  where codigo=?";
+         String sql = "DELETE FROM proveedor  where ruc=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, proveedor.getRuc()));       
         Conexion con = null;
@@ -87,7 +87,7 @@ public class ProveedorImpl implements IProveedor {
     public Proveedor obtener(int codigo) throws Exception {
         Proveedor proveedor = null;
         String sql = "SELECT ruc,nombre,direccion,telefono,"
-                + " email FROM proveedor where codigo=?;";
+                + " email FROM proveedor where ruc=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;

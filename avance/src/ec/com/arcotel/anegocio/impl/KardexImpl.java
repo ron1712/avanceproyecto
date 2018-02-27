@@ -39,8 +39,8 @@ public class KardexImpl implements IKardex{
     public int modificar(Kardex kardex) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE kardex"
-                + "   SET codigo=?, codigoProducto=?, fechaEmision=?, tipoTransaccion=?,"
-                + "existencias=?, valortotal=? where codigo=?";
+                + "   SET codigo=?, codProducto=?, fechaEmision=?, tipoTransaccion=?,"
+                + "existencias=?, valor_total=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, kardex.getCodigo()));
         lstPar.add(new Parametro(2, kardex.getProducto().getCodigo()));
@@ -87,8 +87,8 @@ public class KardexImpl implements IKardex{
     @Override
     public Kardex obtener(int codigo) throws Exception {
         Kardex kardex = null;
-        String sql = "SELECT codigo, codigoProducto, fechaEmision, tipoTransaccion"
-                + "existencias, valortotal FROM kardex where codigo=?;";
+        String sql = "SELECT codigo, codProducto, fechaEmision, tipoTransaccion"
+                + "existencias, valor_total FROM kardex where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -121,8 +121,8 @@ public class KardexImpl implements IKardex{
     @Override
     public List<Kardex> obtener() throws Exception {
         List<Kardex> lista = new ArrayList<>();
-         String sql = "SELECT codigo,codigoProducto, fechaEmision,"
-                 + "tipoTransaccion, existencias, valortotal FROM kardex ";        
+         String sql = "SELECT codigo,codProducto, fechaEmision,"
+                 + "tipoTransaccion, existencias, valor_total FROM kardex ";        
         Conexion con = null;
         try {
             con = new Conexion();

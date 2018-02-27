@@ -37,12 +37,11 @@ public class CategoriaImpl implements ICategoria {
     @Override
     public int modificar(Categoria categoria) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE categoria"
-                + "   SET codigo=?, nombre=?, descripcion=? where codigo=?";
+        String sql =  "UPDATE Categoria SET codigo=?,nombre=?, descripcion=? WHERE codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, categoria.getCodigo()));
         lstPar.add(new Parametro(2, categoria.getNombre()));
-        lstPar.add(new Parametro(3, categoria.getDescripcion())); 
+        lstPar.add(new Parametro(3, categoria.getDescripcion()));
         Conexion con = null;
         try {
             con = new Conexion();

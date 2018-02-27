@@ -38,7 +38,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
     public int modificar(FacturaCompra facturacompra) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE facturacompra"
-                + "   SET codigo=?, fecha=?, codigoProveedor=? where codigo=?";
+                + "   SET codigo=?, fecha=?, codProveedor=? where codigo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, facturacompra.getCodigo()));
         lstPar.add(new Parametro(2, facturacompra.getFecha()));
@@ -82,7 +82,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
     @Override
     public FacturaCompra obtener(int codigo) throws Exception {
         FacturaCompra facturacompra = null;
-        String sql = "SELECT codigo, fecha, codigoProveedor FROM facturacompra where codigo=?;";
+        String sql = "SELECT codigo, fecha, codProveedor FROM facturacompra where codigo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -111,7 +111,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
     @Override
     public List<FacturaCompra> obtener() throws Exception {
         List<FacturaCompra> lista = new ArrayList<>();
-         String sql ="SELECT codigo, fecha, codigoProveedor FROM facturacompra";       
+         String sql ="SELECT codigo, fecha, codProveedor FROM facturacompra";       
         Conexion con = null;
         try {
             con = new Conexion();
