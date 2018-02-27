@@ -42,8 +42,8 @@ public class ClienteImpl implements ICliente {
     public int modificar(Cliente cliente) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE cliente"
-                + "   SET cedula=?,nombre=?, apellido=?,direccion=?, "
-                + "telefono=?, email=?, fecha_nac=? where cedula=?";
+                + "   SET cedula=?,nombres=?, apellidos=?,direccion=?, "
+                + "telefono=?, email=?, fecha_Nace=? where cedula=?";
         
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente.getCedula()));
@@ -92,8 +92,8 @@ public class ClienteImpl implements ICliente {
     @Override
     public Cliente obtener(String cedula) throws Exception {
         Cliente cliente = null;
-        String sql = "SELECT cedula,nombre,apellido,direccion,"
-                + " telefono, email,fecha_nac FROM cliente where cedula=?;";
+        String sql = "SELECT cedula,nombres,apellidos,direccion,"
+                + " telefono, email,fecha_Nace FROM cliente where cedula=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cedula));
         Conexion con = null;
@@ -123,8 +123,8 @@ public class ClienteImpl implements ICliente {
     @Override
     public List<Cliente> obtener() throws Exception {
         List<Cliente> lista = new ArrayList<>();
-         String sql ="SELECT cedula,nombre,apellido,direccion,"
-                + " telefono, email, fecha_nac FROM cliente";       
+         String sql ="SELECT cedula, nombres, apellidos, direccion,"
+                + " telefono, email, fecha_Nace FROM cliente";       
         Conexion con = null;
         try {
             con = new Conexion();

@@ -33,11 +33,13 @@ public class FrmNuevoProducto extends JInternalFrame {
     JLabel lblCodigo;
     JLabel lblNombre;
     JLabel lblPrecio;
+    JLabel lblDescripcion;
     JLabel lblCategoria;
 
     JTextField txtCodigo;
     JTextField txtNombre;
     JTextField txtPrecio;
+    JTextField txtDescripcion;
     
     JButton btnLimpiar;
     JButton btnIngresar;
@@ -58,25 +60,26 @@ public class FrmNuevoProducto extends JInternalFrame {
         lblCodigo = new JLabel("Código:");
         lblNombre = new JLabel("Nombre:");
         lblPrecio = new JLabel("Precio:");
+        lblDescripcion= new JLabel("Descripcion");
         lblCategoria  = new JLabel("Categoria:");
 
         txtCodigo = new JTextField(2);
         txtNombre = new JTextField(2);
         txtPrecio = new JTextField(2);
+        txtDescripcion = new JTextField(2);
         cargarCategorias();
         cmbCategoria = new JComboBox(lstCategoria.toArray());
         btnLimpiar = new JButton("Limpiar");
         btnIngresar = new JButton("Ingresar");
         
         pnlCentral.add(lblCodigo);
-        pnlCentral.add(txtCodigo);
-       
+        pnlCentral.add(txtCodigo);       
         pnlCentral.add(lblNombre);
         pnlCentral.add(txtNombre);
         pnlCentral.add(lblPrecio);
-        pnlCentral.add(txtPrecio);
-        
-      
+        pnlCentral.add(txtPrecio);        
+        pnlCentral.add(lblDescripcion);
+        pnlCentral.add(txtDescripcion);      
         pnlCentral.add(lblCategoria);
         pnlCentral.add(cmbCategoria);
         
@@ -93,7 +96,6 @@ public class FrmNuevoProducto extends JInternalFrame {
         });
         pnlPie.add(btnIngresar);
         pnlPie.add(btnLimpiar);
-        
         
         this.add(lblTitulo0, BorderLayout.NORTH);
         this.add(pnlCentral, BorderLayout.CENTER);
@@ -116,9 +118,9 @@ public class FrmNuevoProducto extends JInternalFrame {
         IProducto productoDao = new ProductoImpl();
         Producto producto = new Producto();
         producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
-        producto.setCategoria((Categoria) cmbCategoria.getSelectedItem());
         producto.setNombre(txtNombre.getText());
-        producto.setPrecio(Double.parseDouble(txtPrecio.getText()));                
+        producto.setPrecio(Integer.parseInt(txtPrecio.getText()));
+        producto.setCategoria((Categoria) cmbCategoria.getSelectedItem());        
         try {
             if(productoDao.insertar(producto)>0){
                 JOptionPane.showMessageDialog(this,"Guaradado correctamente!!",

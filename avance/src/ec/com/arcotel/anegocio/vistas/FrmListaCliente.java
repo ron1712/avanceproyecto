@@ -6,8 +6,7 @@
 package ec.com.arcotel.anegocio.vistas;
 
 import ec.com.arcotel.anegocio.dao.ICliente;
-import ec.com.arcotel.anegocio.entidades.Cliente;
-import ec.com.arcotel.anegocio.entidades.Cliente;
+import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.ClienteImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ DefaultTableModel modelo;
         initComponents();
         this.Clientes();
     }
-    public void Clientes(){
+     public void Clientes(){
                               
         DefaultTableModel modelo = (DefaultTableModel) TablaClienteListar.getModel();               
         List<Cliente> lista = new ArrayList<>();
@@ -43,13 +42,13 @@ DefaultTableModel modelo;
                     JOptionPane.ERROR_MESSAGE);
         }
         for(Cliente cli : lista){
-            modelo.addRow(new Object[]{ cli.getCedula(),cli.getNombre(), 
-            cli.getApellido(),cli.getFecha_nac(),cli.getDireccion(),cli.getTelefono(),
-            cli.getEmail()});            
+            modelo.addRow(new Object[]{ cli.getCedula(),cli.getNombre(),cli.getApellido(),
+            cli.getFecha_nac(),cli.getDireccion(),cli.getTelefono(),cli.getEmail()});            
         }
         TablaClienteListar.setModel(modelo);        
     
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,7 +77,7 @@ DefaultTableModel modelo;
         ));
         jScrollPane1.setViewportView(TablaClienteListar);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("LISTADO DE CLIENTES");
 
@@ -87,19 +86,20 @@ DefaultTableModel modelo;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(222, 222, 222)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

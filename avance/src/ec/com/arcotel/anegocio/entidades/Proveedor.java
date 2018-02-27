@@ -61,6 +61,6 @@ public class Proveedor {
     
     @Override
     public String toString() {
-        return nombre; 
+        return ruc; 
     }
 }
