@@ -268,7 +268,26 @@ public class FrmProveedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtRucActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+    IProveedor proveedorDao = new ProveedorImpl();
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Realmente quiere modificar el proveedor?", "Confirme",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+        try {            
+            proveedor.setRuc(txtRuc.getText());
+            proveedor.setNombre(txtNombre.getText());
+            proveedor.setDireccion(txtDireccion.getText());            
+            proveedor.setTelefono(txtTelefono.getText());                         
+            proveedor.setEmail(txtEmail.getText());            
+            if(proveedorDao.modificar(proveedor)>0 ){
+                JOptionPane.showMessageDialog(this,"Modificado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }             
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void txtRucBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucBuscarActionPerformed

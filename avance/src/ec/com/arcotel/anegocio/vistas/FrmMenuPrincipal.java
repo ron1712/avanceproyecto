@@ -10,7 +10,7 @@ import org.jvnet.substance.watermark.SubstanceImageWatermark;
 public class FrmMenuPrincipal extends JFrame {
 
     JMenuBar mnbPrincipal;
-    JMenu mnInicio;
+    JMenu mnInicio;    
     JMenuItem mniLogin;
     JMenuItem mniSalir;
     
@@ -32,8 +32,10 @@ public class FrmMenuPrincipal extends JFrame {
     JMenu mnProveedor;    
     JMenuItem mniNuevoProveedor;
     JMenuItem mniProveedor;
-    JMenuItem mniListaProveedor;
-     
+    JMenuItem mniListaProveedor; 
+    
+    JMenuItem mniUsuario;
+    
     JDesktopPane dkpEscritorio;
 
     public FrmMenuPrincipal() {
@@ -42,6 +44,12 @@ public class FrmMenuPrincipal extends JFrame {
         mnbPrincipal = new JMenuBar();
         mnInicio = new JMenu("Inicio");
         mniLogin = new JMenuItem("Iniciar Sesión");
+        mniLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniUsuarioActionPerformed(e);
+            }
+        });
         mniSalir = new JMenuItem("Salir");
         mniSalir.addActionListener(new ActionListener() {
             @Override
@@ -155,10 +163,16 @@ public class FrmMenuPrincipal extends JFrame {
         mnCategoria.add(mniNuevoCategoria);
         mnCategoria.add(mniCategoria);
         mnCategoria.addSeparator();
-        mnCategoria.add(mniListaCategoria);
+        mnCategoria.add(mniListaCategoria);   
         
-      
-        
+        mniUsuario= new JMenuItem("Lista");
+        mniUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniUsuarioActionPerformed(e);
+            }
+        });   
+              
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
         mnbPrincipal.add(mnProducto);
@@ -173,6 +187,7 @@ public class FrmMenuPrincipal extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
         JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo) 
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.MistAquaSkin"); // Setencia que aplica el skin Creme de 
+        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceOliveTheme");
         this.setBounds(400, 400, 400, 400);
     }    
     public void mniNuevoClienteActionPerformed(ActionEvent e){
@@ -236,7 +251,12 @@ public class FrmMenuPrincipal extends JFrame {
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-
+     public void mniUsuarioActionPerformed(ActionEvent e){
+        FrmLogin frm = new FrmLogin();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    
     public void mniSalirActionPerformed(ActionEvent e){
         System.exit(0);
     }
