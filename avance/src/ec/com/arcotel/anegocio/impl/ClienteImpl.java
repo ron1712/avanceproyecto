@@ -53,6 +53,7 @@ public class ClienteImpl implements ICliente {
         lstPar.add(new Parametro(5, cliente.getTelefono()));
         lstPar.add(new Parametro(6, cliente.getEmail()));  
         lstPar.add(new Parametro(7, cliente.getFecha_nac()));
+        lstPar.add(new Parametro(8, cliente.getCedula()));
         Conexion con = null;
         try {
             con = new Conexion();

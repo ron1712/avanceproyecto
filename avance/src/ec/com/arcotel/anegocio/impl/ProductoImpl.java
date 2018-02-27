@@ -18,8 +18,7 @@ public class ProductoImpl implements IProducto{
         lstPar.add(new Parametro(2, producto.getCategoria().getCodigo()));
         lstPar.add(new Parametro(3, producto.getNombre()));
         lstPar.add(new Parametro(4, producto.getPrecio()));        
-       
-      
+           
         Conexion con = null;
         try {
             con = new Conexion();
@@ -46,7 +45,7 @@ public class ProductoImpl implements IProducto{
         lstPar.add(new Parametro(2, producto.getCategoria().getNombre()));
         lstPar.add(new Parametro(3, producto.getNombre()));
         lstPar.add(new Parametro(4, producto.getPrecio())); 
-        
+        lstPar.add(new Parametro(5, producto.getCodigo()));   
         
         Conexion con = null;
         try {

@@ -8,7 +8,11 @@ package ec.com.arcotel.anegocio.vistas;
 import ec.com.arcotel.anegocio.dao.*;
 import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
 import javax.swing.JOptionPane;
 
@@ -19,7 +23,7 @@ import javax.swing.JOptionPane;
 public class FrmCliente extends javax.swing.JInternalFrame {
     
     /**
-     * Creates new form frmBuscarProveedor
+     * Creates new form frmBuscarCliente
      */
     public FrmCliente() {
         initComponents();
@@ -35,12 +39,12 @@ public class FrmCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblBuscador = new javax.swing.JLabel();
-        lblDatosProveedor = new javax.swing.JLabel();
+        lblDatosCliente = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        lblRuc = new javax.swing.JLabel();
-        txtRuc = new javax.swing.JTextField();
+        lblCedula = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
@@ -50,19 +54,23 @@ public class FrmCliente extends javax.swing.JInternalFrame {
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtRucBuscar = new javax.swing.JTextField();
+        txtCedulaBuscar = new javax.swing.JTextField();
+        lblNombre1 = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        lblFecha_nac = new javax.swing.JLabel();
+        txtFecha_nac = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(460, 380));
+        setPreferredSize(new java.awt.Dimension(500, 400));
 
         lblBuscador.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        lblBuscador.setText("Ruc a buscar:");
+        lblBuscador.setText("Cedula a buscar:");
 
-        lblDatosProveedor.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        lblDatosProveedor.setText("Datos del Proveedor");
+        lblDatosCliente.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        lblDatosCliente.setText("Datos del Cliente");
 
         btnModificar.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         btnModificar.setText("Modificar");
@@ -89,17 +97,17 @@ public class FrmCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        lblRuc.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        lblRuc.setText("Ruc:");
+        lblCedula.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        lblCedula.setText("Cedula:");
 
-        txtRuc.addActionListener(new java.awt.event.ActionListener() {
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRucActionPerformed(evt);
+                txtCedulaActionPerformed(evt);
             }
         });
 
         lblNombre.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        lblNombre.setText("Nombre:");
+        lblNombre.setText("Nombres:");
 
         lblDireccion.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         lblDireccion.setText("Direccion:");
@@ -117,88 +125,106 @@ public class FrmCliente extends javax.swing.JInternalFrame {
         txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("PROVEEDOR");
+        jLabel1.setText("CLIENTE");
 
-        txtRucBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtCedulaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRucBuscarActionPerformed(evt);
+                txtCedulaBuscarActionPerformed(evt);
             }
         });
+
+        lblNombre1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        lblNombre1.setText("Apellidos:");
+
+        lblFecha_nac.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        lblFecha_nac.setText("Fecha nacimiento:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblBuscador)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRucBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblFecha_nac)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtFecha_nac))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblNombre)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtNombre))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblDireccion)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtDireccion))
+                        .addComponent(lblDatosCliente)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblCedula)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblNombre1)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblDatosProveedor)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(lblRuc)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNombre)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblTelefono)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblEmail)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(txtEmail)))
+                            .addComponent(lblTelefono)
+                            .addComponent(lblEmail))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDireccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtEmail)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(89, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblBuscador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCedulaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBuscador)
                     .addComponent(btnBuscar)
-                    .addComponent(txtRucBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(lblDatosProveedor)
+                    .addComponent(txtCedulaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDatosCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRuc))
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCedula))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombre))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombre1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFecha_nac)
+                    .addComponent(txtFecha_nac, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,91 +233,128 @@ public class FrmCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(94, 94, 94))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void limpiarControles() {
-        txtRuc.setText("");
-        txtNombre.setText("");  
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtFecha_nac.setText("");
         txtDireccion.setText("");
         txtTelefono.setText("");        
         txtEmail.setText("");
     }
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        IProveedor proveedorDao = new ProveedorImpl();
+        ICliente clienteenteDao = new ClienteImpl();
         try {
             limpiarControles();
-            proveedor = proveedorDao.obtener(
-                   Integer.parseInt(txtRucBuscar.getText()));
-            if (proveedor != null) {
-                txtRuc.setText(proveedor.getRuc());
-                txtNombre.setText(proveedor.getNombre());
-                txtDireccion.setText(proveedor.getDireccion());
-                txtTelefono.setText(proveedor.getDireccion());
-                txtEmail.setText(proveedor.getEmail());              
+            cliente = clienteenteDao.obtener(
+                   txtCedulaBuscar.getText());
+            if (cliente != null) {
+                txtCedula.setText(cliente.getCedula());
+                txtNombre.setText(cliente.getNombre());
+                txtApellidos.setText(cliente.getApellido());   
+                txtFecha_nac.setText(String.valueOf(cliente.getFecha_nac()));
+                txtDireccion.setText(cliente.getDireccion());
+                txtTelefono.setText(cliente.getTelefono());
+                txtEmail.setText(cliente.getEmail());
+                
                         }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al buscar el proveedor!!",
+            JOptionPane.showMessageDialog(this, "Error al buscar el clienteente!!",
                     "Error", JOptionPane.ERROR_MESSAGE);
-        }   
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        IProveedor proveedorDao = new ProveedorImpl();
+        ICliente clienteenteDao = new ClienteImpl();
         int confirmacion = JOptionPane.showConfirmDialog(this,
-                "¿Realmente quiere eliminar el proveedor?", "Confirme",
+                "¿Realmente quiere eliminar el cliente?", "Confirme",
                 JOptionPane.YES_NO_OPTION);
         if (confirmacion == JOptionPane.YES_OPTION) {
             try {
-                if (proveedorDao.eliminar(proveedor) > 0) {
+                if (clienteenteDao.eliminar(cliente) > 0) {
                     JOptionPane.showMessageDialog(this, 
-                            "Proveedor eliminado correctamente!!",
+                            "Cliente eliminado correctamente!!",
                             "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
                     limpiarControles();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error al eliminar el proveedor!!",
+                JOptionPane.showMessageDialog(this, "Error al eliminar el clienteente!!",
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void txtRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucActionPerformed
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRucActionPerformed
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        ICliente clienteDao = new ClienteImpl();
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Realmente quiere modificar el cliente?", "Confirme",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+        try {            
+            cliente.setCedula(txtCedula.getText());
+            cliente.setNombre(txtNombre.getText());   
+            cliente.setApellido(txtApellidos.getText());
+            DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                cliente.setFecha_nac(formatoFecha.parse(txtFecha_nac.getText()));
+                
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,"Error en la fecha!!",
+                "Error", JOptionPane.ERROR_MESSAGE);
+            };
+            cliente.setDireccion(txtDireccion.getText());            
+            cliente.setTelefono(txtTelefono.getText());                         
+            cliente.setEmail(txtEmail.getText());            
+            if(clienteDao.modificar(cliente)>0 ){
+                JOptionPane.showMessageDialog(this,"Modificado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }             
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void txtRucBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucBuscarActionPerformed
+    private void txtCedulaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRucBuscarActionPerformed
+    }//GEN-LAST:event_txtCedulaBuscarActionPerformed
 
-    Proveedor proveedor;
+    Cliente cliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblBuscador;
-    private javax.swing.JLabel lblDatosProveedor;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblDatosCliente;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFecha_nac;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblRuc;
+    private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedulaBuscar;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFecha_nac;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtRuc;
-    private javax.swing.JTextField txtRucBuscar;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

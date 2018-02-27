@@ -10,11 +10,13 @@ import ec.com.arcotel.anegocio.entidades.*;
 import ec.com.arcotel.anegocio.impl.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,8 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class FrmProducto extends javax.swing.JInternalFrame {
-    
+List<Categoria> lstCategoria;
+JComboBox<Categoria> cmbCategoria;    
     
     /**
      * Creates new form frmBuscarProducto
@@ -255,7 +258,25 @@ public class FrmProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
+    IProducto productoDao = new ProductoImpl();
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Realmente quiere modificar el producto?", "Confirme",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+        try {            
+            producto.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            producto.setNombre(txtNombre.getText());   
+            producto.setPrecio(Double.parseDouble(txtPrecio.getText()));  
+            producto.setCategoria((Categoria) cmbCategoria.getSelectedItem());
+            if(productoDao.modificar(producto)>0 ){
+                JOptionPane.showMessageDialog(this,"Modificado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }             
+        }        
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

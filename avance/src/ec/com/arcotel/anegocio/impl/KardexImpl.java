@@ -48,6 +48,7 @@ public class KardexImpl implements IKardex{
         lstPar.add(new Parametro(4, kardex.getTipo_transaccion()));
         lstPar.add(new Parametro(5, kardex.getExistencias()));
         lstPar.add(new Parametro(6, kardex.getValor_total()));
+        lstPar.add(new Parametro(7, kardex.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();

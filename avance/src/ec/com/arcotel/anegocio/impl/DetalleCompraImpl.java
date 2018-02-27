@@ -46,6 +46,7 @@ public class DetalleCompraImpl implements IDetalleCompra {
         lisParametros.add(new Parametro(3, detallecompra.getFacturacompra().getCodigo()));        
         lisParametros.add(new Parametro(4, detallecompra.getCantidad()));
         lisParametros.add(new Parametro(5, detallecompra.getPrecio_total()));
+        lisParametros.add(new Parametro(6, detallecompra.getCodigo())); 
         Conexion con = null;
         try {
             con = new Conexion();

@@ -46,7 +46,8 @@ public class ProveedorImpl implements IProveedor {
         lstPar.add(new Parametro(2, proveedor.getNombre()));
         lstPar.add(new Parametro(3, proveedor.getDireccion()));
         lstPar.add(new Parametro(4,proveedor.getTelefono()));        
-        lstPar.add(new Parametro(5, proveedor.getEmail()));         
+        lstPar.add(new Parametro(5, proveedor.getEmail()));  
+        lstPar.add(new Parametro(6, proveedor.getRuc()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -84,12 +85,12 @@ public class ProveedorImpl implements IProveedor {
     }
 
     @Override
-    public Proveedor obtener(int codigo) throws Exception {
+    public Proveedor obtener(String ruc) throws Exception {
         Proveedor proveedor = null;
         String sql = "SELECT ruc,nombre,direccion,telefono,"
                 + " email FROM proveedor where ruc=?;";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, codigo));
+        lstPar.add(new Parametro(1, ruc));
         Conexion con = null;
         try {
             con = new Conexion();

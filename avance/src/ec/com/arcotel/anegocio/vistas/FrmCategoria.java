@@ -230,32 +230,24 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        ICategoria categoriaDao = new CategoriaImpl();
-        try {
-            categoria.setNombre(txtNombre.getText());
-            categoria.setDescripcion(txtDescripcion.getText());
-
-            if (categoriaDao.modificar(categoria) > 0) {
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-                alerta.setTitle("INFORMACION DEL SISTEMA");
-                alerta.setHeaderText(null);
-                alerta.setContentText("Modificacion Correcto!!");
-                alerta.showAndWait();
-            } else {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("INFORMACION DEL SISTEMA");
-                alerta.setHeaderText(null);
-                alerta.setContentText("Modificacion Fallido!! ");
-                alerta.showAndWait();
+    ICategoria categoriaDao = new CategoriaImpl();
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Realmente quiere modificar el categoria?", "Confirme",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+        try {            
+            categoria.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            categoria.setNombre(txtNombre.getText());   
+            categoria.setDescripcion(txtDescripcion.getText());     
+            if(categoriaDao.modificar(categoria)>0 ){
+                JOptionPane.showMessageDialog(this,"Modificado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
             }
-
-        } catch (Exception e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("INFORMACION DEL SISTEMA");
-            alerta.setHeaderText(null);
-            alerta.setContentText("No se pudo Modificar: " + e.getMessage());
-            alerta.showAndWait();
-        }    
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }             
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     Categoria categoria;

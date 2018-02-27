@@ -58,6 +58,12 @@ public class FrmMenuPrincipal extends JFrame {
             }
         });
         mniCliente= new JMenuItem("Cliente");
+        mniCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniClienteActionPerformed(e);
+            }
+        });
         mniListaCliente= new JMenuItem("Lista");
         mniListaCliente.addActionListener(new ActionListener() {
             @Override
@@ -78,12 +84,18 @@ public class FrmMenuPrincipal extends JFrame {
                 mniNuevoProductoActionPerformed(e);
             }           
         });
-        mniProducto= new JMenuItem("¨Producto");
-        mniListaProducto= new JMenuItem("Lista");
-        mniListaProducto.addActionListener(new ActionListener() {
+        mniProducto= new JMenuItem("Producto");
+        mniNuevoProducto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mniListaProductoActionPerformed(e);
+                mniNuevoProductoActionPerformed(e);
+            }           
+        });
+        mniListaProducto= new JMenuItem("Lista");
+        mniProducto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniProductoActionPerformed(e);
             }
         });
         mnProducto.add(mniNuevoProducto);
@@ -100,6 +112,12 @@ public class FrmMenuPrincipal extends JFrame {
             }
         });
         mniProveedor= new JMenuItem("Proveedor");
+         mniProveedor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniProveedorActionPerformed(e);
+            }
+        });
         mniListaProveedor= new JMenuItem("Lista");
         mniListaProveedor.addActionListener(new ActionListener() {
             @Override
@@ -121,6 +139,12 @@ public class FrmMenuPrincipal extends JFrame {
             }
         });
         mniCategoria= new JMenuItem("Categoria");
+        mniCategoria.addActionListener(new ActionListener() {
+        @Override
+            public void actionPerformed(ActionEvent e) {
+                mniCategoriaActionPerformed(e);
+            }
+        });
         mniListaCategoria= new JMenuItem("Lista");
         mniListaCategoria.addActionListener(new ActionListener() {
             @Override

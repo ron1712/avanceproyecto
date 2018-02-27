@@ -43,6 +43,7 @@ public class FacturaVentaImpl implements IFacturaVenta {
         lstPar.add(new Parametro(1, facturacompra.getCodigo()));
         lstPar.add(new Parametro(2, facturacompra.getFecha()));
         lstPar.add(new Parametro(3, facturacompra.getCliente().getNombre()));
+        lstPar.add(new Parametro(4, facturacompra.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();

@@ -43,6 +43,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
         lstPar.add(new Parametro(1, facturacompra.getCodigo()));
         lstPar.add(new Parametro(2, facturacompra.getFecha()));
         lstPar.add(new Parametro(3, facturacompra.getProveedor().getNombre()));
+        lstPar.add(new Parametro(4, facturacompra.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -95,7 +96,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
                 facturacompra.setCodigo(rst.getString(1));
                 facturacompra.setFecha(rst.getDate(2)); 
                 IProveedor proveedordao = new ProveedorImpl();
-                Proveedor proveedor = proveedordao.obtener(rst.getInt(3));
+                Proveedor proveedor = proveedordao.obtener(rst.getString(3));
                 facturacompra.setProveedor(proveedor);
                             
             }
@@ -123,7 +124,7 @@ public class FacturaCompraImpl implements IFacturaCompra {
                  facturacompra.setCodigo(rst.getString(1));
                 facturacompra.setFecha(rst.getDate(2)); 
                 IProveedor proveedordao = new ProveedorImpl();
-                Proveedor proveedor = proveedordao.obtener(rst.getInt(3));
+                Proveedor proveedor = proveedordao.obtener(rst.getString(3));
                 facturacompra.setProveedor(proveedor);
                 lista.add(facturacompra);
             }

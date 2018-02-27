@@ -42,6 +42,7 @@ public class CategoriaImpl implements ICategoria {
         lstPar.add(new Parametro(1, categoria.getCodigo()));
         lstPar.add(new Parametro(2, categoria.getNombre()));
         lstPar.add(new Parametro(3, categoria.getDescripcion()));
+        lstPar.add(new Parametro(4, categoria.getCodigo()));
         Conexion con = null;
         try {
             con = new Conexion();

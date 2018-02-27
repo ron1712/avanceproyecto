@@ -65,8 +65,9 @@ DefaultTableModel modelo;
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setPreferredSize(new java.awt.Dimension(850, 420));
 
-        TablaClienteListar.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        TablaClienteListar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         TablaClienteListar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -85,21 +86,18 @@ DefaultTableModel modelo;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(222, 222, 222)
+                .addGap(265, 265, 265)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
         );
 
         pack();
