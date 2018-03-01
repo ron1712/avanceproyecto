@@ -34,6 +34,9 @@ public class FrmMenuPrincipal extends JFrame {
     JMenuItem mniProveedor;
     JMenuItem mniListaProveedor; 
     
+     JMenu mnKardex;    
+    JMenuItem mniKardex;
+    
     JMenuItem mniUsuario;
     
     JDesktopPane dkpEscritorio;
@@ -172,12 +175,23 @@ public class FrmMenuPrincipal extends JFrame {
                 mniUsuarioActionPerformed(e);
             }
         });   
-              
+        
+        mnKardex= new JMenu("Kardex");
+        mniKardex= new JMenuItem("Kardex");
+        mniKardex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniKardexActionPerformed(e);
+            }
+        });
+        mnKardex.add(mniKardex); 
+        
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
         mnbPrincipal.add(mnProducto);
         mnbPrincipal.add(mnProveedor);
         mnbPrincipal.add(mnCategoria);
+        mnbPrincipal.add(mnKardex);
         mnInicio.add(mniLogin);
         mnInicio.add(mniSalir);
         this.setLayout(new BorderLayout());
@@ -257,6 +271,12 @@ public class FrmMenuPrincipal extends JFrame {
         frm.setVisible(true);
     }
     
+      public void mniKardexActionPerformed(ActionEvent e){
+        FrmKardex frm = new FrmKardex();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+     
     public void mniSalirActionPerformed(ActionEvent e){
         System.exit(0);
     }
